@@ -20,3 +20,8 @@ html[lang="en"] body {
 .font-custom {
     font-family: 'Open Sans', sans-serif !important;
 }
+
+/* This is the crucial line that makes the buttons work */
+.hidden {
+    display: none !important;
+}
