@@ -20,217 +20,174 @@
             </div>
             
             <div class="flex items-center space-x-6">
-                <div class="relative inline-block text-gray-700">
-                    <button id="lang-menu-btn" class="flex items-center px-4 py-2 border rounded-full hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M3 9h9m-9 4h12m6 2l-6 6-6-6M9 17v-6"></path>
+                <div class="relative inline-block text-left">
+                    <button id="lang-btn" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
+                        Language
+                        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                        <span id="current-lang-text" class="ml-2">English</span>
                     </button>
-                    <div id="lang-menu-dropdown" class="hidden absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="en">English</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="si">සිංහල (Sinhala)</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ta">தமிழ் (Tamil)</a>
+                    <div id="lang-menu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden z-10">
+                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="lang-btn">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="en">English</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="si">Sinhala</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="ta">Tamil</a>
+                        </div>
                     </div>
                 </div>
-
-                <nav class="hidden md:flex items-center space-x-4">
-                    <a href="#about" class="text-gray-700 hover:text-indigo-600 transition duration-300" data-lang-key="navAbout">About Us</a>
-                    <a href="#locations" class="text-gray-700 hover:text-indigo-600 transition duration-300" data-lang-key="navLocations">Our Locations</a>
-                    <a href="#sermons" class="text-gray-700 hover:text-indigo-600 transition duration-300" data-lang-key="navSermons">Sermons</a>
-                    <a href="#events" class="text-gray-700 hover:text-indigo-600 transition duration-300" data-lang-key="navEvents">Events</a>
-                    <a href="#contact" class="px-4 py-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300" data-lang-key="navContact">Contact Us</a>
-                </nav>
-
-                <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-indigo-600 focus:outline-none">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
             </div>
         </nav>
     </header>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-4">
-        <a href="#about" class="block px-6 py-2 text-gray-700 hover:bg-gray-100" data-lang-key="navAbout">About Us</a>
-        <a href="#locations" class="block px-6 py-2 text-gray-700 hover:bg-gray-100" data-lang-key="navLocations">Our Locations</a>
-        <a href="#sermons" class="block px-6 py-2 text-gray-700 hover:bg-gray-100" data-lang-key="navSermons">Sermons</a>
-        <a href="#events" class="block px-6 py-2 text-gray-700 hover:bg-gray-100" data-lang-key="navEvents">Events</a>
-        <a href="#contact" class="block px-6 py-2 text-gray-700 hover:bg-gray-100" data-lang-key="navContact">Contact Us</a>
-    </div>
-
     <main>
-        <section class="relative h-screen bg-cover bg-center flex items-center justify-center text-center text-white" style="background-image: url('https://images.unsplash.com/photo-1518066000714-58c45f1a2c0a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDkwMDJ8MHwxfHNlYXJjaHw4fHxza3klMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTcwMTg4MTEyOXww&ixlib=rb-4.0.3&q=80&w=1080');">
-            <div class="absolute inset-0 bg-black opacity-60"></div>
-            <div class="relative z-10 p-8 max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4" data-lang-key="heroTitle">
-                    Welcome to the Church of Christ
-                </h1>
-                <p class="text-lg md:text-2xl font-light mb-8" data-lang-key="heroSubtitle">
-                    Seeking God's truth and sharing His love.
-                </p>
-                <a href="#locations" class="px-8 py-4 bg-indigo-600 text-white rounded-full text-xl font-semibold hover:bg-indigo-700 transition duration-300" data-lang-key="heroCta">
-                    Find a Location Near You
-                </a>
+        <section id="hero" class="bg-blue-800 text-white py-20 text-center">
+            <h1 class="text-5xl font-bold mb-4" data-lang-key="heroTitle"></h1>
+            <p class="text-xl mb-6" data-lang-key="heroSubtitle"></p>
+            <a href="#locations" class="bg-white text-blue-800 px-6 py-3 rounded-lg font-bold hover:bg-gray-200 transition-colors" data-lang-key="heroCta"></a>
+        </section>
+
+        <section id="bible-verse" class="bg-blue-900 text-white py-12 text-center">
+            <p class="text-3xl font-serif italic mb-2" data-lang-key="bibleVerse"></p>
+            <p class="text-xl font-bold" data-lang-key="bibleReference"></p>
+        </section>
+
+        <section id="about" class="container mx-auto px-6 py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="aboutTitle"></h2>
+                <p class="text-lg text-gray-600" data-lang-key="missionStatement"></p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard1Title"></h3>
+                    <p class="text-gray-600" data-lang-key="aboutCard1Text"></p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard2Title"></h3>
+                    <p class="text-gray-600" data-lang-key="aboutCard2Text"></p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard3Title"></h3>
+                    <p class="text-gray-600" data-lang-key="aboutCard3Text"></p>
+                </div>
+            </div>
+            <div class="text-center">
+                <p class="text-sm font-bold text-gray-700" data-lang-key="beliefsTitle"></p>
+                <p class="text-md text-gray-600" data-lang-key="missionVerse1"></p>
+                <p class="text-md text-gray-600" data-lang-key="missionVerse2"></p>
             </div>
         </section>
 
-        <section id="bible-verse" class="py-16 bg-gray-200">
-            <div class="container mx-auto px-6 text-center">
-                <div class="max-w-3xl mx-auto p-8 bg-white rounded-lg shadow-xl border-t-4 border-indigo-600">
-                    <p class="text-xl md:text-2xl italic text-gray-700 mb-4" data-lang-key="bibleVerse">
-                        The churches of Christ salute you.
-                    </p>
-                    <cite class="text-lg font-bold text-gray-900" data-lang-key="bibleReference">
-                        — Romans 16:16
-                    </cite>
+        <section id="bible-studies" class="container mx-auto px-6 py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="bibleStudiesTitle"></h2>
+                <p class="text-lg text-gray-600" data-lang-key="bibleStudiesSubtitle"></p>
+            </div>
+        
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <img src="study1.jpg" alt="The Parable of the Sower" class="rounded-lg mb-4 w-full">
+                    <h3 class="text-2xl font-bold mb-2" data-lang-key="study1Title"></h3>
+                    <p class="text-gray-600 mb-4" data-lang-key="study1Desc"></p>
+                    <button onclick="toggleStudy('study1')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        <span data-lang-key="downloadStudy"></span>
+                    </button>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <img src="study2.jpg" alt="The Good Samaritan" class="rounded-lg mb-4 w-full">
+                    <h3 class="text-2xl font-bold mb-2" data-lang-key="study2Title"></h3>
+                    <p class="text-gray-600 mb-4" data-lang-key="study2Desc"></p>
+                    <button onclick="toggleStudy('study2')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        <span data-lang-key="downloadStudy"></span>
+                    </button>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <img src="study3.jpg" alt="The Prodigal Son" class="rounded-lg mb-4 w-full">
+                    <h3 class="text-2xl font-bold mb-2" data-lang-key="study3Title"></h3>
+                    <p class="text-gray-600 mb-4" data-lang-key="study3Desc"></p>
+                    <button onclick="toggleStudy('study3')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        <span data-lang-key="downloadStudy"></span>
+                    </button>
                 </div>
             </div>
-        </section>
 
-        <section id="about" class="py-16 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8" data-lang-key="aboutTitle">
-                    Our Vision & Mission
-                </h2>
-                <div class="max-w-3xl mx-auto">
-                    <p class="text-gray-700 mb-4 text-lg" data-lang-key="missionStatement">
-                        Teaching the Bible towards salvation individually or collectively.
-                    </p>
-                    <p class="italic text-gray-600 mb-2" data-lang-key="missionVerse1">
-                        "Freely you have received, freely you give." <span class="font-semibold">Matt. 10:8</span>
-                    </p>
-                    <p class="italic text-gray-600 mb-8" data-lang-key="missionVerse2">
-                        "Come to me, all who are weary and burdened, and I will give you rest." <span class="font-semibold">Matt. 11:28</span>
-                    </p>
-                </div>
-                
-                <h3 class="text-2xl font-bold text-gray-900 mt-12 mb-6" data-lang-key="beliefsTitle">Our Core Beliefs</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md transition transform hover:scale-105 duration-300">
-                        <h4 class="text-xl font-bold text-indigo-600 mb-2" data-lang-key="aboutCard1Title">Biblical Authority</h4>
-                        <p class="text-gray-700" data-lang-key="aboutCard1Text">
-                            We believe the Bible is our sole guide for faith and practice, with "no creed but Christ."
-                        </p>
-                    </div>
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md transition transform hover:scale-105 duration-300">
-                        <h4 class="text-xl font-bold text-indigo-600 mb-2" data-lang-key="aboutCard2Title">A Cappella Worship</h4>
-                        <p class="text-gray-700" data-lang-key="aboutCard2Text">
-                            Our worship services feature only vocal music, as we seek to follow the New Testament example.
-                        </p>
-                    </div>
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md transition transform hover:scale-105 duration-300">
-                        <h4 class="text-xl font-bold text-indigo-600 mb-2" data-lang-key="aboutCard3Title">Weekly Communion</h4>
-                        <p class="text-gray-700" data-lang-key="aboutCard3Text">
-                            We observe the Lord's Supper every Sunday, in remembrance of Jesus\' sacrifice.
-                        </p>
-                    </div>
-                </div>
+            <div id="weekly-schedule" class="mt-12 text-center">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4" data-lang-key="weeklyStudyTitle"></h3>
+                <p class="text-lg text-gray-600 mb-2" data-lang-key="wednesdayStudy"></p>
+                <p class="text-lg text-gray-600" data-lang-key="sundayStudy"></p>
             </div>
-        </section>
 
-        <section id="locations" class="py-16 bg-gray-200">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8" data-lang-key="locationsTitle">
-                    Our Locations
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <div class="bg-white p-6 rounded-lg shadow-md text-left">
-                        <h3 class="text-xl font-bold text-indigo-600 mb-2" data-lang-key="locationColombo">Colombo City</h3>
-                        <p class="text-gray-700 mb-2" data-lang-key="colomboAddress">Colombo City, Sri Lanka</p>
-                        <p class="text-gray-700" data-lang-key="colomboWorship">Sunday Worship - 9.30 AM</p>
-                        <p class="text-gray-700 mt-2" data-lang-key="colomboContactInfo">
-                            For more information: <a href="tel:0773029098" class="text-indigo-600 hover:underline">0773029098</a> / <a href="tel:0112580488" class="text-indigo-600 hover:underline">0112580488</a>
-                        </p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md text-left">
-                        <h3 class="text-xl font-bold text-indigo-600 mb-2" data-lang-key="locationWennappuwa">Wennappuwa</h3>
-                        <p class="text-gray-700 mb-2" data-lang-key="wennappuwaAddress">45A, Main Street, Wennappuwa, Sri Lanka</p>
-                        <p class="text-gray-700" data-lang-key="wennappuwaWorship">Sunday Worship - 9.30 AM</p>
-                        <a href="#contact" class="text-indigo-600 hover:underline mt-2 inline-block" data-lang-key="learnMore">Learn More</a>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md text-left">
-                        <h3 class="text-xl font-bold text-indigo-600 mb-2" data-lang-key="locationTrincomalee">Trincomalee</h3>
-                        <p class="text-gray-700 mb-2" data-lang-key="trincoAddress">Trincomalee, Sri Lanka</p>
-                        <p class="text-gray-700" data-lang-key="trincoWorship">Sunday Worship - 10.00 AM</p>
-                        <a href="#contact" class="text-indigo-600 hover:underline mt-2 inline-block" data-lang-key="learnMore">Learn More</a>
-                    </div>
-                     <div class="bg-white p-6 rounded-lg shadow-md text-left">
-                        <h3 class="text-xl font-bold text-indigo-600 mb-2" data-lang-key="locationBambalapitiya">Bambalapitiya</h3>
-                        <p class="text-gray-700 mb-2" data-lang-key="bambalapitiyaAddress">Bambalapitiya, Colombo 4, Sri Lanka</p>
-                        <p class="text-gray-700" data-lang-key="bambalapitiyaWorship">Sunday Worship - 9.00 AM</p>
-                        <a href="#contact" class="text-indigo-600 hover:underline mt-2 inline-block" data-lang-key="learnMore">Learn More</a>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md text-left">
-                        <h3 class="text-xl font-bold text-indigo-600 mb-2" data-lang-key="locationDehiwala">Dehiwala</h3>
-                        <p class="text-gray-700 mb-2" data-lang-key="dehiwalaAddress">Dehiwala, Sri Lanka</p>
-                        <p class="text-gray-700" data-lang-key="dehiwalaWorship">Sunday Worship - 11.00 AM</p>
-                        <a href="#contact" class="text-indigo-600 hover:underline mt-2 inline-block" data-lang-key="learnMore">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-16 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8" data-lang-key="contactTitle">
-                    General Contact & Information
-                </h2>
-                <div class="max-w-xl mx-auto bg-gray-50 p-8 rounded-lg shadow-md border-t-4 border-indigo-600">
-                    <p class="text-gray-700 mb-6" data-lang-key="contactText">
-                        For general inquiries about the Church of Christ in Sri Lanka, please use the contact details below. You can also send us a message using the form.
-                    </p>
-                    <div class="mb-6 text-gray-700 text-left">
-                        <p class="mb-2 text-lg font-semibold" data-lang-key="generalContact">
-                            General Inquiries:
-                        </p>
-                        <p class="mb-1" data-lang-key="contactPhone1">
-                            📞 <a href="tel:0773029098" class="text-indigo-600 hover:underline">0773029098</a>
-                        </p>
-                        <p class="mb-4" data-lang-key="contactPhone2">
-                            📞 <a href="tel:0112580488" class="text-indigo-600 hover:underline">0112580488</a>
-                        </p>
-                        <p class="mb-4 text-lg font-semibold" data-lang-key="sundayWorshipGeneral">
-                            Sunday Worship: 9.30 AM
-                        </p>
-                        <p class="mb-4 text-lg font-semibold" data-lang-key="allAreWelcome">
-                            ALL ARE WELCOME
-                        </p>
-                    </div>
-                    <form>
-                        <div class="mb-4 text-left">
-                            <label for="name" class="block text-gray-700 font-bold mb-2" data-lang-key="formName">Your Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" data-lang-key="formNamePlaceholder" placeholder="Your Name">
-                        </div>
-                        <div class="mb-4 text-left">
-                            <label for="email" class="block text-gray-700 font-bold mb-2" data-lang-key="formEmail">Your Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus-within:ring-indigo-600" data-lang-key="formEmailPlaceholder" placeholder="Your Email">
-                        </div>
-                        <div class="mb-6 text-left">
-                            <label for="message" class="block text-gray-700 font-bold mb-2" data-lang-key="formMessage">Your Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" data-lang-key="formMessagePlaceholder" placeholder="Your Message"></textarea>
-                        </div>
-                        <button type="submit" class="w-full px-4 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition duration-300" data-lang-key="formSubmit">
-                            Send Message
+            <div id="study1-content" class="study-content mt-8 hidden">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h4 class="text-2xl font-bold mb-4" data-lang-key="study1Title"></h4>
+                    <p>Lesson content for the Parable of the Sower goes here.</p>
+                    <img src="Screenshot 2025-09-15 at 2.22.52 AM.jpg" alt="Parable of the Sower Study" class="mt-4 w-full rounded-lg">
+                    <div class="mt-4 text-right">
+                        <button onclick="toggleStudy('study1')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
+                            Close
                         </button>
-                    </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="study2-content" class="study-content mt-8 hidden">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h4 class="text-2xl font-bold mb-4" data-lang-key="study2Title"></h4>
+                    <p>Lesson content for the Good Samaritan goes here.</p>
+                    <img src="Screenshot 2025-09-15 at 2.22.52 AM.jpg" alt="Good Samaritan Study" class="mt-4 w-full rounded-lg">
+                    <div class="mt-4 text-right">
+                        <button onclick="toggleStudy('study2')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        
+            <div id="study3-content" class="study-content mt-8 hidden">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h4 class="text-2xl font-bold mb-4" data-lang-key="study3Title"></h4>
+                    <p>Lesson content for the Prodigal Son goes here.</p>
+                    <img src="Screenshot 2025-09-15 at 2.22.52 AM.jpg" alt="Prodigal Son Study" class="mt-4 w-full rounded-lg">
+                    <div class="mt-4 text-right">
+                        <button onclick="toggleStudy('study3')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        
+        <section id="locations" class="container mx-auto px-6 py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="locationsTitle"></h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold mb-2">Location 1</h3>
+                    <p class="text-gray-600">Address, City, Country</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold mb-2">Location 2</h3>
+                    <p class="text-gray-600">Address, City, Country</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold mb-2">Location 3</h3>
+                    <p class="text-gray-600">Address, City, Country</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <p data-lang-key="footerCopyright">&copy; 2024 Church of Christ. All rights reserved.</p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300" data-lang-key="footerPrivacy">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300" data-lang-key="footerTerms">Terms of Service</a>
-                </div>
-            </div>
+    <footer class="bg-gray-900 text-white py-8 text-center">
+        <p>&copy; 2024 Church of Christ. All rights reserved.</p>
+        <div class="flex justify-center space-x-4 mt-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Facebook</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
         </div>
     </footer>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
