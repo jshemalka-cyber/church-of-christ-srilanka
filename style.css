@@ -1,0 +1,22 @@
+/* Custom CSS for fonts and other specific needs */
+
+/* Apply specific fonts for different languages */
+html[lang="si"] body {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-size: 16px; /* Larger font size for better readability */
+}
+
+html[lang="ta"] body {
+    font-family: 'Noto Sans Tamil', sans-serif;
+    font-size: 16px; /* Larger font size for better readability */
+}
+
+/* Base font for English and other default content */
+html[lang="en"] body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Specific class to override and ensure a consistent font for the church name across all languages */
+.font-custom {
+    font-family: 'Open Sans', sans-serif !important;
+}
