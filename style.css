@@ -75,4 +75,9 @@ body.custom-background { position: relative; }
 /* gallery controls above images */
 .navBtn { z-index: 30; }
 .slider-nav { z-index: 25; }
+.custom-bg-overlay { z-index: -1; pointer-events: none; }
+#lang-menu { z-index: 60; }
+.navBtn { z-index: 30; }
+.slider-nav { z-index: 25; }
+
 
