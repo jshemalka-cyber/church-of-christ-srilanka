@@ -1,4 +1,4 @@
-// ===== Utilities =====
+/***** Utils *****/
 function toast(text,type){
   const old=document.querySelector('.status-message'); if(old) old.remove();
   const el=document.createElement('div'); el.className='status-message';
@@ -10,13 +10,140 @@ function toast(text,type){
   setTimeout(()=>{el.style.opacity='0'; setTimeout(()=>el.remove(),300)},2200);
 }
 
-// ===== Language strings =====
-const translations={en:{churchName:"Church of Christ",heroTitle:"Welcome to the Church of Christ",heroSubtitle:"Seeking God's truth and sharing His love.",heroCta:"Find a Location Near You",bibleVerse:"The churches of Christ salute you.",bibleReference:"— Romans 16:16",aboutTitle:"Our Vision & Mission",missionStatement:"We strive to follow the New Testament pattern of worship and Christian living.",aboutCard1Title:"Bible Study",aboutCard1Text:"We believe in studying God's word together to grow in faith and understanding.",aboutCard2Title:"Fellowship",aboutCard2Text:"Building strong relationships within our Christian community.",aboutCard3Title:"Service",aboutCard3Text:"Serving our community and sharing Christ's love through action.",bibleStudiesTitle:"Bible Studies",bibleStudiesSubtitle:"Explore God's word through our interactive study materials",study1Title:"The Parable of the Sower",study1Desc:"Understanding how God's word takes root in different hearts.",study2Title:"The Good Samaritan",study2Desc:"Learning about love and compassion for our neighbors.",study3Title:"The Prodigal Son",study3Desc:"Discovering God's forgiveness and unconditional love.",downloadStudy:"View Study",locationsTitle:"Our Locations"},
-si:{churchName:"ක්‍රිස්තුගේ සභාව",heroTitle:"ක්‍රිස්තුගේ සභාවට සාදරයෙන් පිළිගනිමු",heroSubtitle:"දෙවියන්ගේ සත්‍යය සොයා ගැනීම සහ ඔහුගේ ප්‍රේමය බෙදා ගැනීම.",heroCta:"ඔබ අසලින් ස්ථානයක් සොයන්න",bibleVerse:"ක්‍රිස්තුගේ සභා ඔබට ආචාර කරති.",bibleReference:"— රෝම 16:16",aboutTitle:"අපගේ දර්ශනය සහ මෙහෙවර",missionStatement:"අපි නව ගිණුමේ නමස්කාර සහ ක්‍රිස්තියානි ජීවන ක්‍රමය අනුගමනය කිරීමට උත්සාහ කරමු.",aboutCard1Title:"බයිබල් අධ්‍යයනය",aboutCard1Text:"විශ්වාසය සහ අවබෝධය වර්ධනය වීම සඳහා දෙවියන්ගේ වචනය එකට අධ්‍යයනය කිරීම.",aboutCard2Title:"සහයෝගිතාව",aboutCard2Text:"අපගේ ක්‍රිස්තියානි ප්‍රජාව තුළ ශක්තිමත් සබඳතා ගොඩනැගීම.",aboutCard3Title:"සේවාව",aboutCard3Text:"අපගේ ප්‍රජාවට සේවය කිරීම සහ ක්‍රිස්තුගේ ප්‍රේමය ක්‍රියාවෙන් බෙදා ගැනීම.",bibleStudiesTitle:"බයිබල් අධ්‍යයන",bibleStudiesSubtitle:"අපගේ අන්තර්ක්‍රියාකාරී අධ්‍යයන ද්‍රව්‍ය හරහා දෙවියන්ගේ වචනය ගවේෂණය කරන්න",study1Title:"වපුරන්නාගේ උපමාව",study1Desc:"දෙවියන්ගේ වචනය විවිධ හදවත්වල මුල් බැස යන ආකාරය.",study2Title:"හොඳ සමරිතානුවා",study2Desc:"අපගේ අසල්වැසියන්ට ඇති ප්‍රේමය සහ දයානුකම්පාව.",study3Title:"නාස්ති පුත්‍රයා",study3Desc:"දෙවියන්ගේ සමාව සහ කොන්දේසි රහිත ප්‍රේමය.",downloadStudy:"අධ්‍යයනය බලන්න",locationsTitle:"අපගේ ස්ථාන"},
-ta:{churchName:"கிறிஸ்துவின் சபை",heroTitle:"கிறிஸ்துவின் சபைக்கு வருக",heroSubtitle:"கடவுளின் சத்தியத்தைத் தேடி அவருடைய அன்பைப் பகிர்ந்துகொள்வது.",heroCta:"உங்களுக்கு அருகிலுள்ள இடத்தைக் கண்டுபிடி",bibleVerse:"கிறிஸ்துவின் சபைகள் உங்களை வாழ்த்துகின்றன.",bibleReference:"— ரோமர் 16:16",aboutTitle:"எங்கள் தரிசனம் மற்றும் நோக்கம்",missionStatement:"புதிய ஏற்பாட்டின் வழிபாட்டு முறை மற்றும் கிறிஸ்தவ வாழ்க்கையைப் பின்பற்ற நாங்கள் முயற்சி செய்கிறோம்.",aboutCard1Title:"வேதாகம ஆய்வு",aboutCard1Text:"நம்பிக்கை மற்றும் புரிதலில் வளர கடவுளின் வார்த்தையை ஒன்றாக ஆய்வு செய்வதில் நாங்கள் நம்புகிறோம்.",aboutCard2Title:"கூட்டுறவு",aboutCard2Text:"எங்கள் கிறிஸ்தவ சமுதாயத்தில் வலுவான உறவுகளை உருவாக்குதல்.",aboutCard3Title:"சேவை",aboutCard3Text:"எங்கள் சமுதாயத்திற்கு சேவை செய்தல் மற்றும் கிறிஸ்துவின் அன்பை செயலால் பகிர்ந்துகொள்ளுதல்.",bibleStudiesTitle:"வேதாகம ஆய்வுகள்",bibleStudiesSubtitle:"எங்கள் ஊடாடும் ஆய்வுப் பொருட்கள் மூலம் கடவுளின் வார்த்தையை ஆராயுங்கள்",study1Title:"விதைப்பவனின் உவமை",study1Desc:"கடவுளின் வார்த்தை வெவ்வேறு இதயங்களில் எவ்வாறு வேரூன்றுகிறது.",study2Title:"நல்ல சமாரியன்",study2Desc:"அண்டை வீட்டாரிடம் அன்பும் இரக்கமும்.",study3Title:"வீணடித்த மகன்",study3Desc:"மன்னிப்பும் நிபந்தனையற்ற அன்பும்.",downloadStudy:"ஆய்வைப் பார்க்கவும்",locationsTitle:"எங்கள் இடங்கள்"}};
+/***** Translations *****/
+const translations={
+  en:{
+    churchName:"Church of Christ",
+    heroTitle:"Welcome to the Church of Christ",
+    heroSubtitle:"Seeking God's truth and sharing His love.",
+    heroCta:"Find a Location Near You",
+    bibleVerse:"The churches of Christ salute you.",
+    bibleReference:"— Romans 16:16",
+    aboutTitle:"Our Vision & Mission",
+    missionStatement:"We strive to follow the New Testament pattern of worship and Christian living.",
+    aboutCard1Title:"Bible Study",
+    aboutCard1Text:"We believe in studying God's word together to grow in faith and understanding.",
+    aboutCard2Title:"Fellowship",
+    aboutCard2Text:"Building strong relationships within our Christian community.",
+    aboutCard3Title:"Service",
+    aboutCard3Text:"Serving our community and sharing Christ's love through action.",
+    bibleStudiesTitle:"Bible Studies",
+    bibleStudiesSubtitle:"Explore God's word through our interactive study materials",
+    study1Title:"The Parable of the Sower",
+    study1Desc:"Understanding how God's word takes root in different hearts.",
+    study2Title:"The Good Samaritan",
+    study2Desc:"Learning about love and compassion for our neighbors.",
+    study3Title:"The Prodigal Son",
+    study3Desc:"Discovering God's forgiveness and unconditional love.",
+    downloadStudy:"View Study",
+    locationsTitle:"Our Locations",
+
+    /* Locations lines */
+    sundayWorship930:"Sunday Worship: 9:30 AM",
+    sunday930:"Sunday: 9:30 AM",
+
+    /* Activity UI */
+    activitySectionHeading:"Interactive Activity: 5-Minute Gospel",
+    activityTitle:"5-Minute Bible Study: Gospel",
+    activitySubtitle:"Fill-in-the-blank (answers are not case-sensitive).",
+    timeLeft:"TIME LEFT",
+    questionLabel:"Question",
+    reveal:"Reveal Answers",
+    hide:"Hide Answers",
+    reset:"Reset",
+    score:"Score",
+
+    /* Gallery */
+    galleryEmpty:"No images found in gallary/."
+  },
+
+  si:{
+    churchName:"ක්‍රිස්තුගේ සභාව",
+    heroTitle:"ක්‍රිස්තුගේ සභාවට සාදරයෙන් පිළිගනිමු",
+    heroSubtitle:"දෙවියන්ගේ සත්‍යය සෙවීම සහ ඔහුගේ ප්‍රේමය බෙදාගනිමු.",
+    heroCta:"ඔබ අසලින් ස්ථානයක් සොයන්න",
+    bibleVerse:"ක්‍රිස්තුගේ සභා ඔබට ආචාර කරති.",
+    bibleReference:"— රෝම 16:16",
+    aboutTitle:"අපගේ දැක්ම සහ මෙහෙවර",
+    missionStatement:"අපි නව ගිවිසුමේ ආදර්ශය අනුව නමස්කාරයත් ක්‍රිස්තියානි ජීවිතයත් අනුගමනය කිරීමට උත්සාහ කරමු.",
+    aboutCard1Title:"බයිබල් අධ්‍යයනය",
+    aboutCard1Text:"විශ්වාසය හා අවබෝධය වර්ධනය සඳහා දෙවියන්ගේ වචනය එකට අධ්‍යයනය කරමු.",
+    aboutCard2Title:"සහයෝගිතාව",
+    aboutCard2Text:"අපගේ ක්‍රිස්තියානි ප්‍රජාවේ ශක්තිමත් සබඳතා ගොඩනඟමු.",
+    aboutCard3Title:"සේවාව",
+    aboutCard3Text:"ප්‍රජාවට සේවය කරමින් ක්‍රිස්තුගේ ප්‍රේමය ක්‍රියාවෙන් බෙදාගනිමු.",
+    bibleStudiesTitle:"බයිබල් අධ්‍යයන",
+    bibleStudiesSubtitle:"අන්තර්ක්‍රියාකාරී අධ්‍යයන දෙයක් හරහා දෙවියන්ගේ වචනය ගවේෂණය කරන්න",
+    study1Title:"වපුරන්නාගේ උපමාව",
+    study1Desc:"දෙවියන්ගේ වචනය විවිධ හදවතුන් තුළ මුල්බැසීම.",
+    study2Title:"හොඳ සමරිතානුවා",
+    study2Desc:"අසල්වැසියන්ට ඇති ප්‍රේමය හා කරුණාව.",
+    study3Title:"නාස්ති පුත්‍රයා",
+    study3Desc:"දෙවියන්ගේ සමාව හා කොන්දේසි රහිත ප්‍රේමය.",
+    downloadStudy:"අධ්‍යයනය බලන්න",
+    locationsTitle:"අපගේ ස්ථාන",
+
+    sundayWorship930:"ඉරිදා නමස්කාරය: පෙ.ව. 9:30",
+    sunday930:"ඉරිදා: පෙ.ව. 9:30",
+
+    activitySectionHeading:"අන්තර්ක්‍රියාකාරී ක්‍රියාකාරකම: මිනිත්තු 5 ක සුභාරංචිය",
+    activityTitle:"මිනිත්තු 5 — බයිබල් අධ්‍යයනය: සුභාරංචිය",
+    activitySubtitle:"හිස්තැන් පුරවන්න (අක්ෂර විශේෂය ගණන් නොගනී).",
+    timeLeft:"ඉතිරි වෙලාව",
+    questionLabel:"ප්‍රශ්නය",
+    reveal:"පිළිතුරු පෙන්වන්න",
+    hide:"පිළිතුරු සඟවන්න",
+    reset:"යළි සකසන්න",
+    score:"ලකුණු",
+
+    galleryEmpty:"gallary/ තුළ පින්තූර නැත."
+  },
+
+  ta:{
+    churchName:"கிறிஸ்துவின் சபை",
+    heroTitle:"கிறிஸ்துவின் சபைக்கு வருக",
+    heroSubtitle:"கடவுளின் சத்தியத்தைத் தேடி அவருடைய அன்பைப் பகிர்ந்து கொள்வோம்.",
+    heroCta:"உங்களுக்கு அருகிலுள்ள இடத்தைக் கண்டுபிடிக்க",
+    bibleVerse:"கிறிஸ்துவின் சபைகள் உங்களை வாழ்த்துகின்றன.",
+    bibleReference:"— ரோமர் 16:16",
+    aboutTitle:"எங்கள் தரிசனம் & பணி",
+    missionStatement:"புதிய ஏற்பாட்டின் வழிபாட்டு முறை மற்றும் கிறிஸ்தவ வாழ்க்கையைப் பின்பற்ற முயல்கிறோம்.",
+    aboutCard1Title:"வேதாகம ஆய்வு",
+    aboutCard1Text:"நம்பிக்கையிலும் புரிதலிலும் வளர ஒன்றாகவே கடவுளின் வார்த்தையை ஆய்வு செய்கிறோம்.",
+    aboutCard2Title:"கூட்டுறவு",
+    aboutCard2Text:"எங்கள் கிறிஸ்தவ சமூகத்தில் வலுவான உறவுகளை உருவாக்குதல்.",
+    aboutCard3Title:"சேவை",
+    aboutCard3Text:"சமூகத்திற்கு சேவை செய்து கிறிஸ்துவின் அன்பை செயலால் பகிருதல்.",
+    bibleStudiesTitle:"வேதாகம ஆய்வுகள்",
+    bibleStudiesSubtitle:"எங்கள் ஊடாடும் ஆய்வுப் பொருள்கள் மூலம் தேவவார்த்தையை ஆராயுங்கள்",
+    study1Title:"விதைப்பவனின் உவமை",
+    study1Desc:"தேவவார்த்தை வெவ்வேறு இதயங்களில் எவ்வாறு வேரூன்றுகிறது.",
+    study2Title:"நல்ல சமாரியன்",
+    study2Desc:"அண்டை வீட்டாரிடம் அன்பும் இரக்கமும்.",
+    study3Title:"வீணடித்த மகன்",
+    study3Desc:"மன்னிப்பும் நிபந்தனையற்ற அன்பும்.",
+    downloadStudy:"ஆய்வைப் பார்க்க",
+    locationsTitle:"எங்கள் இடங்கள்",
+
+    sundayWorship930:"ஞாயிறு ஆராதனை: காலை 9:30",
+    sunday930:"ஞாயிறு: காலை 9:30",
+
+    activitySectionHeading:"இணையச் செயல்: 5 நிமிட நற்செய்தி",
+    activityTitle:"5 நிமிட வேதாகம ஆய்வு: நற்செய்தி",
+    activitySubtitle:"காலியிடங்களை நிரப்பவும் (எழுத்தளவு பொருட்படுத்தப் படாது).",
+    timeLeft:"மீதமுள்ள நேரம்",
+    questionLabel:"கேள்வி",
+    reveal:"பதில்களை காண்பி",
+    hide:"பதில்களை மறை",
+    reset:"மீட்டமை",
+    score:"மதிப்பெண்",
+
+    galleryEmpty:"gallary/ இல் படங்கள் இல்லை."
+  }
+};
 let currentLanguage='en';
 
-// Language dropdown
+/***** Language dropdown *****/
 document.getElementById('lang-btn').addEventListener('click',e=>{
   e.preventDefault();
   const m=document.getElementById('lang-menu');
@@ -32,6 +159,7 @@ document.addEventListener('click',e=>{
   const b=document.getElementById('lang-btn'); const m=document.getElementById('lang-menu');
   if(!b.contains(e.target)&&!m.contains(e.target)){ m.classList.add('hidden'); m.classList.remove('show'); }
 });
+
 function switchLanguage(lang){
   currentLanguage=lang;
   document.querySelectorAll('[data-lang-key]').forEach(el=>{
@@ -42,10 +170,10 @@ function switchLanguage(lang){
   if(lang==='si') document.body.classList.add('font-sinhala');
   if(lang==='ta') document.body.classList.add('font-tamil');
   const names={en:'English',si:'සිංහල',ta:'தமிழ்'};
-  const svg=document.querySelector('#lang-btn svg'); svg.previousSibling.textContent=names[lang]+' ';
+  const svg=document.querySelector('#lang-btn svg'); if(svg) svg.previousSibling.textContent=names[lang]+' ';
 }
 
-// Study toggles
+/***** Study toggles *****/
 function toggleStudy(id){
   const c=document.getElementById(id+'-content');
   document.querySelectorAll('.study-content').forEach(s=>{ if(s!==c) s.classList.add('hidden'); });
@@ -54,9 +182,10 @@ function toggleStudy(id){
 }
 window.toggleStudy=toggleStudy;
 
-// Background (local only)
+/***** Background (local) *****/
 const imageInput=document.getElementById('imageInput');
 const customBgOverlay=document.getElementById('customBgOverlay');
+
 window.addEventListener('load',()=>{
   const saved=localStorage.getItem('churchCustomBackground'); if(saved) applyCustomBackground(saved);
   switchLanguage('en');
@@ -84,8 +213,9 @@ function resetBackground(){
 }
 window.resetBackground=resetBackground;
 
-// Gospel Activity
+/***** Gospel Activity (uses translations) *****/
 (function(){
+  const t=translations[currentLanguage];
   const DATA=[
     {id:'q1',ref:'2 Timothy 1:8 (KJV)',text:['Therefore, do not be ashamed of the testimony of the Lord, nor of me His ','____',', but share with me in the sufferings for the ','____',' according to the ','____',' of God.'],answers:['prisoner','gospel','power']},
     {id:'q2',ref:'Hebrews 4:2 (KJV)',text:['For indeed the gospel was ','____',' to us as well as to them; but the word which they heard did not ','____',' them, not being mixed with ','____',' in those who heard it.'],answers:['preached','profit','faith']},
@@ -99,9 +229,10 @@ window.resetBackground=resetBackground;
   const root=document.getElementById('activity-root');
 
   const head=document.createElement('div'); head.className='flex items-start justify-between mb-4';
-  head.innerHTML=`<div><h4 class="text-2xl font-bold">5-Minute Bible Study: Gospel</h4><p class="text-gray-600 text-sm">Fill-in-the-blank (answers are not case-sensitive).</p></div>
+  head.innerHTML=`<div><h4 class="text-2xl font-bold" data-lang-key="activityTitle">${translations[currentLanguage].activityTitle}</h4>
+  <p class="text-gray-600 text-sm" data-lang-key="activitySubtitle">${translations[currentLanguage].activitySubtitle}</p></div>
   <div class="shrink-0 text-center bg-gray-100 rounded-2xl px-4 py-2 shadow">
-    <div class="text-xs uppercase tracking-wide text-gray-500">Time Left</div>
+    <div class="text-xs uppercase tracking-wide text-gray-500" data-lang-key="timeLeft">${translations[currentLanguage].timeLeft}</div>
     <div id="timer" class="text-2xl font-bold tabular-nums">05:00</div>
   </div>`;
   root.appendChild(head);
@@ -113,7 +244,7 @@ window.resetBackground=resetBackground;
     let bi=0;
     const card=document.createElement('div'); card.className='rounded-2xl border border-gray-200 p-4 md:p-5';
     const top=document.createElement('div'); top.className='flex items-baseline justify-between';
-    top.innerHTML=`<h5 class="font-semibold">Question ${qi+1}</h5><span class="text-xs text-gray-500">${q.ref}</span>`;
+    top.innerHTML=`<h5 class="font-semibold"><span data-lang-key="questionLabel">${translations[currentLanguage].questionLabel}</span> ${qi+1}</h5><span class="text-xs text-gray-500">${q.ref}</span>`;
     const p=document.createElement('p'); p.className='mt-3 leading-8';
 
     q.text.forEach(chunk=>{
@@ -150,16 +281,17 @@ window.resetBackground=resetBackground;
   });
 
   const footer=document.createElement('div'); footer.className='mt-4 flex flex-wrap items-center gap-3';
-  footer.innerHTML=`<button id="revealBtn" class="px-4 py-2 rounded-2xl bg-gray-900 text-white hover:opacity-90">Reveal Answers</button>
-  <button id="resetBtn" class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-900 hover:bg-gray-200">Reset</button>
-  <div class="ml-auto text-sm text-gray-700">Score: <span id="scoreCorrect" class="font-semibold">0</span> / <span id="scoreTotal">${DATA.reduce((a,q)=>a+q.answers.length,0)}</span></div>`;
+  footer.innerHTML=`<button id="revealBtn" class="px-4 py-2 rounded-2xl bg-gray-900 text-white hover:opacity-90" data-lang-key="reveal">${translations[currentLanguage].reveal}</button>
+  <button id="resetBtn" class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-900 hover:bg-gray-200" data-lang-key="reset">${translations[currentLanguage].reset}</button>
+  <div class="ml-auto text-sm text-gray-700"><span data-lang-key="score">${translations[currentLanguage].score}</span>: <span id="scoreCorrect" class="font-semibold">0</span> / <span id="scoreTotal">${DATA.reduce((a,q)=>a+q.answers.length,0)}</span></div>`;
   root.appendChild(footer);
 
   function setAnswersVisible(show){
     list.querySelectorAll('.rounded-2xl').forEach(card=>{
       const ans=card.children[2]; ans.style.display=show?'block':'none';
     });
-    document.getElementById('revealBtn').textContent=show?'Hide Answers':'Reveal Answers';
+    const r=document.getElementById('revealBtn');
+    r.textContent=show?translations[currentLanguage].hide:translations[currentLanguage].reveal;
   }
   document.getElementById('revealBtn').addEventListener('click',()=>{
     const anyShown = !!list.querySelector('.rounded-2xl div[style*="display: block"]');
@@ -180,14 +312,23 @@ window.resetBackground=resetBackground;
   setInterval(()=>{ if(timeLeft<=0) return; timeLeft--; const m=String(Math.floor(timeLeft/60)).padStart(2,'0'); const s=String(timeLeft%60).padStart(2,'0'); timerEl.textContent=`${m}:${s}`; },1000);
 })();
 
-// ===== Static Gallery for GitHub Pages =====
-// List your image files inside the repo folder "gallary/"
-const STATIC_SLIDES = [
-  'gallary/cb.jpeg',
-  'gallary/c.jpeg',
-  'gallary/ca.jpeg',
-  'gallary/cc.jpeg'
-];
+/***** Static Gallery via GitHub API (auto-loads all images in gallary/) *****/
+const GH_OWNER='jshemalka-cyber';
+const GH_REPO='church-of-christ-srilanka';
+const GH_PATH='gallary'; // your folder name (keep the spelling you used)
+
+async function listGitHubImages(){
+  const url=`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${encodeURIComponent(GH_PATH)}`;
+  const res=await fetch(url,{headers:{'Accept':'application/vnd.github.v3+json'}});
+  if(!res.ok) throw new Error('GitHub API error');
+  const arr=await res.json();
+  return arr
+    .filter(it=>it.type==='file' && /\.(png|jpe?g|gif|webp|bmp)$/i.test(it.name))
+    .map(it=>it.download_url); // raw.githubusercontent.com URLs
+}
+
+// fallback list (optional)
+const STATIC_SLIDES=['gallary/cb.jpeg','gallary/c.jpeg','gallary/ca.jpeg','gallary/cc.jpeg'];
 
 function testImage(url, timeout=8000){
   return new Promise(resolve=>{
@@ -225,17 +366,23 @@ slider.addEventListener('mouseenter',stop); slider.addEventListener('mouseleave'
 let sx=0; slider.addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX);
 slider.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){dx<0?next():prev()}});
 
-async function loadGalleryStatic(){
-  const ok = (await Promise.all(STATIC_SLIDES.map(testImage))).filter(Boolean);
+async function loadGallery(){
+  let urls=[];
+  try{
+    urls = await listGitHubImages();
+  }catch(e){
+    // fall back to the hard-coded list if API fails
+    urls = (await Promise.all(STATIC_SLIDES.map(testImage))).filter(Boolean);
+  }
 
   // slider
   slider.querySelectorAll('.slide').forEach(n=>n.remove()); slidesEls=[]; dotsWrap.innerHTML=''; current=0; stop();
-  if(!ok.length){
+  if(!urls.length){
     const empty=document.createElement('div'); empty.className='slide active';
-    empty.innerHTML='<div class="w-full h-full flex items-center justify-center text-white/80">No images found in <code>gallary/</code>.</div>';
+    empty.innerHTML=`<div class="w-full h-full flex items-center justify-center text-white/80" data-lang-key="galleryEmpty">${translations[currentLanguage].galleryEmpty}</div>`;
     slider.appendChild(empty); slidesEls=[empty];
   }else{
-    ok.forEach((u,i)=>{
+    urls.forEach((u,i)=>{
       slidesEls.push(buildSlide(u, i===0));
       const d=document.createElement('button'); d.className='dot'+(i===0?' active':''); d.addEventListener('click',()=>go(i)); dotsWrap.appendChild(d);
     });
@@ -244,10 +391,11 @@ async function loadGalleryStatic(){
 
   // grid
   grid.innerHTML='';
-  ok.forEach(u=>{
+  urls.forEach(u=>{
     const card=document.createElement('div'); card.className='gal-card';
-    const img=document.createElement('img'); img.src=u; img.className='gal-thumb'; card.appendChild(img);
-    grid.appendChild(card);
+    const img=document.createElement('img'); img.src=u; img.className='gal-thumb'; img.alt='Gallery image';
+    card.appendChild(img); grid.appendChild(card);
   });
 }
-loadGalleryStatic();
+
+loadGallery();
