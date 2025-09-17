@@ -315,7 +315,8 @@ window.resetBackground=resetBackground;
 /***** Static Gallery via GitHub API (auto-loads all images in gallary/) *****/
 const GH_OWNER='jshemalka-cyber';
 const GH_REPO='church-of-christ-srilanka';
-const GH_PATH='gallary'; // your folder name (keep the spelling you used)
+const const GH_PATH='gallary';
+; // your folder name (keep the spelling you used)
 
 async function listGitHubImages(){
   const url=`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${encodeURIComponent(GH_PATH)}`;
