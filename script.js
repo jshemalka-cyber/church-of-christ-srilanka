@@ -148,4 +148,92 @@ function applyTranslations(){
   let timeLeft=300; const timerEl=document.getElementById('timer');
   setInterval(()=>{ if(timeLeft<=0) return; timeLeft--; const m=String(Math.floor(timeLeft/60)).padStart(2,'0'); const s=String(timeLeft%60).padStart(2,'0'); timerEl.textContent=`${m}:${s}`; },1000);
 })();
+/* ===== Gallery (reads gallary/list.json) ===== */
+/* ===== Gallery (reads gallary/list.json) ===== */
+const slider = document.getElementById('slider');
+const dotsWrap = document.getElementById('dots');
+const grid = document.getElementById('galleryGrid');
+let slidesEls = [], current = 0, timer = null;
+
+function buildSlide(url, active=false){
+  const s = document.createElement('div'); s.className = 'slide' + (active?' active':'');
+  const img = document.createElement('img'); img.src = url; img.alt = 'Gallery image';
+  s.appendChild(img); slider.appendChild(s); return s;
+}
+function go(i){
+  const n = slidesEls.length; if(n<1) return;
+  slidesEls[current]?.classList.remove('active');
+  dotsWrap.children[current]?.classList.remove('active');
+  current = (i+n)%n;
+  slidesEls[current].classList.add('active');
+  dotsWrap.children[current].classList.add('active');
+  start();
+}
+function next(){ go(current+1) } function prev(){ go(current-1) }
+function start(){ if(timer) clearInterval(timer); if(slidesEls.length>1) timer = setInterval(next, 5000) }
+
+document.getElementById('nextBtn')?.addEventListener('click', next);
+document.getElementById('prevBtn')?.addEventListener('click', prev);
+
+async function listFromJson(){
+  try{
+    const r = await fetch('gallary/list.json?ts=' + Date.now(), { cache: 'no-store' });
+    if(!r.ok) return [];
+    const names = await r.json();
+    return names.map(n => `gallary/${encodeURIComponent(n)}`);
+  }catch{ return []; }
+}
+function testImage(url, timeout=6000){
+  return new Promise(res=>{
+    const img = new Image(); let done=false;
+    const finish = ok => { if(!done){ done=true; res(ok?url:null); } };
+    const t = setTimeout(()=>finish(false), timeout);
+    img.onload = ()=>{ clearTimeout(t); finish(true); };
+    img.onerror = ()=>{ clearTimeout(t); finish(false); };
+    img.src = url + '?v=' + Date.now();
+  });
+}
+const STATIC = ['gallary/c.jpeg','gallary/ca.jpeg','gallary/cb.jpeg','gallary/cc.jpeg'];
+
+async function loadGallery(){
+  try{
+    let urls = await listFromJson();
+
+    // fallback to static names that actually exist
+    if(!urls.length){
+      urls = (await Promise.all(STATIC.map(testImage))).filter(Boolean);
+    }
+
+    // render
+    slider.querySelectorAll('.slide').forEach(n=>n.remove());
+    dotsWrap.innerHTML = '';
+    slidesEls = []; current = 0; if(timer) clearInterval(timer);
+
+    if(!urls.length){
+      const empty = document.createElement('div');
+      empty.className = 'slide active';
+      empty.innerHTML = '<div class="w-full h-full flex items-center justify-center text-white/80">No images found in <code>gallary/</code>.</div>';
+      slider.appendChild(empty); slidesEls = [empty];
+    }else{
+      urls.forEach((u,i)=>{
+        slidesEls.push(buildSlide(u, i===0));
+        const d = document.createElement('button'); d.className = 'dot' + (i===0?' active':'');
+        d.addEventListener('click', ()=>go(i)); dotsWrap.appendChild(d);
+      });
+      start();
+    }
+
+    // grid thumbs
+    grid.innerHTML = '';
+    urls.forEach(u=>{
+      const card = document.createElement('div'); card.className = 'gal-card';
+      const img = document.createElement('img'); img.src = u; img.className = 'gal-thumb'; img.alt='Gallery image';
+      card.appendChild(img); grid.appendChild(card);
+    });
+  }catch(err){
+    console.error('Gallery error:', err);
+  }
+}
+loadGallery();
+
 
