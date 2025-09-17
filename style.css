@@ -66,3 +66,13 @@ body.custom-background { position: relative; }
 
 .gal-thumb { aspect-ratio: 1/1; object-fit: cover; width: 100%; height: 100%; border-radius: 12px; }
 .gal-card { position: relative; overflow: hidden; border-radius: 14px; background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+/* keep overlays from blocking clicks */
+.custom-bg-overlay { z-index: -1; pointer-events: none; }
+
+/* language menu above header */
+#lang-menu { z-index: 60; }
+
+/* gallery controls above images */
+.navBtn { z-index: 30; }
+.slider-nav { z-index: 25; }
+
