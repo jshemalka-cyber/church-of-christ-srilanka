@@ -222,7 +222,7 @@ async function loadGallery(){
       });
       start();
     }
-
+  
     // grid thumbs
     grid.innerHTML = '';
     urls.forEach(u=>{
