@@ -1,557 +1,585 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Church of Christ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Noto+Sans+Sinhala:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* CSS Styles */
-        .font-custom {
-            font-family: 'Open Sans', sans-serif;
-        }
-        
-        .font-sinhala {
-            font-family: 'Noto Sans Sinhala', sans-serif;
-        }
-        
-        .font-tamil {
-            font-family: 'Noto Sans Tamil', sans-serif;
-        }
-        
-        .study-content {
-            transition: all 0.3s ease-in-out;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Custom button hover effects */
-        .btn-primary {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
-        
-        /* Card hover effects */
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Language dropdown animation */
-        #lang-menu {
-            transform: translateY(-10px);
-            opacity: 0;
-            transition: all 0.2s ease;
-        }
-        
-        #lang-menu.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Church of Christ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Noto+Sans+Sinhala:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet"/>
 
-        /* Hero section background */
-        #hero {
-            background: linear-gradient(135deg, #1e40af, #3730a3);
-        }
-
-        /* Bible verse section */
-        #bible-verse {
-            background: linear-gradient(135deg, #1e3a8a, #312e81);
-        }
-    </style>
+  <style>
+    .font-custom{font-family:'Open Sans',sans-serif}
+    .font-sinhala{font-family:'Noto Sans Sinhala',sans-serif}
+    .font-tamil{font-family:'Noto Sans Tamil',sans-serif}
+    .study-content{transition:all .3s}
+    html{scroll-behavior:smooth}
+    .btn-primary{background:linear-gradient(135deg,#3b82f6,#1d4ed8);transition:all .3s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(59,130,246,.3)}
+    .card-hover{transition:all .3s}
+    .card-hover:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,.1)}
+    #lang-menu{transform:translateY(-10px);opacity:0;transition:all .2s}
+    #lang-menu.show{transform:translateY(0);opacity:1}
+    #hero{background:linear-gradient(135deg,#1e40af,#3730a3)}
+    #bible-verse{background:linear-gradient(135deg,#1e3a8a,#312e81)}
+    /* floating background uploader */
+    .upload-controls{position:fixed;bottom:20px;right:20px;z-index:1000;background:rgba(255,255,255,.95);padding:12px;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3)}
+    .upload-btn{background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;padding:8px 12px;border:none;border-radius:6px;cursor:pointer;font-size:12px;margin-bottom:8px;display:block;width:100%;transition:all .3s;text-align:center}
+    .upload-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(59,130,246,.4)}
+    #imageInput{display:none}
+    .reset-btn{background:#ef4444;color:#fff;padding:6px 10px;border:none;border-radius:6px;cursor:pointer;font-size:11px;width:100%;transition:all .3s}
+    .reset-btn:hover{background:#dc2626;transform:translateY(-1px)}
+    body.custom-background{position:relative}
+    .custom-bg-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;background-attachment:fixed;z-index:-1;opacity:.3}
+    /* slideshow + grid */
+    .slider{position:relative;overflow:hidden;border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.08);background:#000}
+    .slide{position:absolute;inset:0;opacity:0;transition:opacity .6s}
+    .slide.active{opacity:1}
+    .slide img{width:100%;height:100%;object-fit:cover}
+    .slider-nav{position:absolute;inset:auto 0 12px 0;display:flex;justify-content:center;gap:8px}
+    .dot{width:10px;height:10px;border-radius:9999px;background:rgba(255,255,255,.5);border:1px solid rgba(0,0,0,.3);cursor:pointer}
+    .dot.active{background:#fff}
+    .navBtn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;border-radius:9999px;width:40px;height:40px;font-size:18px;cursor:pointer}
+    .navPrev{left:10px}.navNext{right:10px}
+    .gal-thumb{aspect-ratio:1/1;object-fit:cover;width:100%;height:100%;border-radius:12px}
+    .gal-card{position:relative;overflow:hidden;border-radius:14px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+    .gal-del{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:10px;padding:6px 10px;font-size:12px;cursor:pointer}
+  </style>
 </head>
+
 <body class="bg-gray-100 text-gray-800 font-sans">
-    
-    <header class="bg-white shadow-lg sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-                <div class="h-12 w-12 bg-blue-600 rounded-full flex items-center justify-center">
-                    <span class="text-white font-bold text-xl">✝</span>
-                </div>
-                <span class="text-2xl font-bold text-gray-900 font-custom" data-lang-key="churchName">Church of Christ</span>
-            </div>
-            
-            <div class="flex items-center space-x-6">
-                <div class="relative inline-block text-left">
-                    <button id="lang-btn" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
-                        Language
-                        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                    <div id="lang-menu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden z-10">
-                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="lang-btn">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="en">English</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="si">සිංහල</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="ta">தமிழ்</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+  <!-- site-wide background controls -->
+  <div class="upload-controls">
+    <label for="imageInput" class="upload-btn">📷 Upload Background</label>
+    <input type="file" id="imageInput" accept="image/*"/>
+    <button class="reset-btn" onclick="resetBackground()">Reset</button>
+  </div>
+  <div id="customBgOverlay" class="custom-bg-overlay" style="display:none;"></div>
 
-    <main>
-        <section id="hero" class="text-white py-20 text-center">
-            <h1 class="text-5xl font-bold mb-4" data-lang-key="heroTitle">Welcome to the Church of Christ</h1>
-            <p class="text-xl mb-6" data-lang-key="heroSubtitle">Seeking God's truth and sharing His love.</p>
-            <a href="#locations" class="btn-primary bg-white text-blue-800 px-6 py-3 rounded-lg font-bold hover:bg-gray-200 transition-colors" data-lang-key="heroCta">Find a Location Near You</a>
-        </section>
-
-        <section id="bible-verse" class="text-white py-12 text-center">
-            <p class="text-3xl font-serif italic mb-2" data-lang-key="bibleVerse">The churches of Christ salute you.</p>
-            <p class="text-xl font-bold" data-lang-key="bibleReference">— Romans 16:16</p>
-        </section>
-
-        <section id="about" class="container mx-auto px-6 py-12">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="aboutTitle">Our Vision & Mission</h2>
-                <p class="text-lg text-gray-600" data-lang-key="missionStatement">We strive to follow the New Testament pattern of worship and Christian living.</p>
+  <!-- header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <div class="h-12 w-12 bg-blue-600 rounded-full flex items-center justify-center"><span class="text-white font-bold text-xl">✝</span></div>
+        <span class="text-2xl font-bold text-gray-900 font-custom" data-lang-key="churchName">Church of Christ</span>
+      </div>
+      <div class="flex items-center space-x-6">
+        <div class="relative inline-block text-left">
+          <button id="lang-btn" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
+            Language
+            <svg class="-mr-1 ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+          <div id="lang-menu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden z-10">
+            <div class="py-1">
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="en">English</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="si">සිංහල</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ta">தமிழ்</a>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
-                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">📖</div>
-                    <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard1Title">Bible Study</h3>
-                    <p class="text-gray-600" data-lang-key="aboutCard1Text">We believe in studying God's word together to grow in faith and understanding.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">🤝</div>
-                    <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard2Title">Fellowship</h3>
-                    <p class="text-gray-600" data-lang-key="aboutCard2Text">Building strong relationships within our Christian community.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">❤️</div>
-                    <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard3Title">Service</h3>
-                    <p class="text-gray-600" data-lang-key="aboutCard3Text">Serving our community and sharing Christ's love through action.</p>
-                </div>
-            </div>
-            <div class="text-center">
-                <p class="text-sm font-bold text-gray-700" data-lang-key="beliefsTitle">Our Beliefs</p>
-                <p class="text-md text-gray-600" data-lang-key="missionVerse1">We believe in following the Bible as our only guide for faith and practice.</p>
-                <p class="text-md text-gray-600" data-lang-key="missionVerse2">We seek to restore New Testament Christianity in all aspects of worship and life.</p>
-            </div>
-        </section>
-
-        <section id="bible-studies" class="container mx-auto px-6 py-12">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="bibleStudiesTitle">Bible Studies</h2>
-                <p class="text-lg text-gray-600" data-lang-key="bibleStudiesSubtitle">Explore God's word through our interactive study materials</p>
-            </div>
-        
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-                    <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-white text-6xl">🌱</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2" data-lang-key="study1Title">The Parable of the Sower</h3>
-                    <p class="text-gray-600 mb-4" data-lang-key="study1Desc">Understanding how God's word takes root in different hearts.</p>
-                    <button onclick="toggleStudy('study1')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                        <span data-lang-key="downloadStudy">View Study</span>
-                    </button>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-white text-6xl">🤝</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2" data-lang-key="study2Title">The Good Samaritan</h3>
-                    <p class="text-gray-600 mb-4" data-lang-key="study2Desc">Learning about love and compassion for our neighbors.</p>
-                    <button onclick="toggleStudy('study2')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                        <span data-lang-key="downloadStudy">View Study</span>
-                    </button>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-                    <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-white text-6xl">🏠</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2" data-lang-key="study3Title">The Prodigal Son</h3>
-                    <p class="text-gray-600 mb-4" data-lang-key="study3Desc">Discovering God's forgiveness and unconditional love.</p>
-                    <button onclick="toggleStudy('study3')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                        <span data-lang-key="downloadStudy">View Study</span>
-                    </button>
-                </div>
-            </div>
-
-            <div id="weekly-schedule" class="mt-12 text-center">
-                <h3 class="text-3xl font-bold text-gray-900 mb-4" data-lang-key="weeklyStudyTitle">Weekly Bible Studies</h3>
-                <p class="text-lg text-gray-600 mb-2" data-lang-key="wednesdayStudy">Wednesday Evening Bible Study - 7:00 PM</p>
-                <p class="text-lg text-gray-600" data-lang-key="sundayStudy">Sunday Morning Bible Class - 9:00 AM</p>
-            </div>
-
-            <div id="study1-content" class="study-content mt-8 hidden">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h4 class="text-2xl font-bold mb-4" data-lang-key="study1Title">The Parable of the Sower</h4>
-                    <div class="prose max-w-none mb-6">
-                        <p class="text-gray-700 mb-4">This parable teaches us about different responses to God's word:</p>
-                        <ul class="list-disc pl-6 text-gray-700">
-                            <li><strong>The Path:</strong> Hearts hardened to God's word</li>
-                            <li><strong>Rocky Ground:</strong> Shallow faith that withers under pressure</li>
-                            <li><strong>Thorns:</strong> Hearts choked by worldly concerns</li>
-                            <li><strong>Good Soil:</strong> Hearts that receive and act on God's word</li>
-                        </ul>
-                    </div>
-                    <div class="h-64 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-8xl">🌱</span>
-                    </div>
-                    <div class="mt-4 text-right">
-                        <button onclick="toggleStudy('study1')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
-                            Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="study2-content" class="study-content mt-8 hidden">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h4 class="text-2xl font-bold mb-4" data-lang-key="study2Title">The Good Samaritan</h4>
-                    <div class="prose max-w-none mb-6">
-                        <p class="text-gray-700 mb-4">Jesus teaches us about true neighborly love:</p>
-                        <ul class="list-disc pl-6 text-gray-700">
-                            <li><strong>Compassion:</strong> Seeing others' needs and being moved to help</li>
-                            <li><strong>Action:</strong> Not just feeling sorry, but doing something</li>
-                            <li><strong>Sacrifice:</strong> Giving of our time, money, and energy</li>
-                            <li><strong>Universality:</strong> Love knows no boundaries of race or status</li>
-                        </ul>
-                    </div>
-                    <div class="h-64 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-8xl">🤝</span>
-                    </div>
-                    <div class="mt-4 text-right">
-                        <button onclick="toggleStudy('study2')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
-                            Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        
-            <div id="study3-content" class="study-content mt-8 hidden">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h4 class="text-2xl font-bold mb-4" data-lang-key="study3Title">The Prodigal Son</h4>
-                    <div class="prose max-w-none mb-6">
-                        <p class="text-gray-700 mb-4">A powerful story of forgiveness and redemption:</p>
-                        <ul class="list-disc pl-6 text-gray-700">
-                            <li><strong>Rebellion:</strong> The younger son's journey away from his father</li>
-                            <li><strong>Consequences:</strong> The results of turning away from what's right</li>
-                            <li><strong>Repentance:</strong> Coming to our senses and returning to God</li>
-                            <li><strong>Grace:</strong> God's unconditional love and forgiveness</li>
-                        </ul>
-                    </div>
-                    <div class="h-64 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-8xl">🏠</span>
-                    </div>
-                    <div class="mt-4 text-right">
-                        <button onclick="toggleStudy('study3')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
-                            Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        
-        <section id="locations" class="container mx-auto px-6 py-12">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="locationsTitle">Our Locations</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">📍</div>
-                    <h3 class="text-2xl font-bold mb-2">Colombo Central</h3>
-                    <p class="text-gray-600 mb-2">123 Main Street</p>
-                    <p class="text-gray-600 mb-2">Colombo 01, Sri Lanka</p>
-                    <p class="text-blue-600 font-semibold">Sunday: 9:00 AM & 6:00 PM</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">📍</div>
-                    <h3 class="text-2xl font-bold mb-2">Kandy</h3>
-                    <p class="text-gray-600 mb-2">456 Temple Road</p>
-                    <p class="text-gray-600 mb-2">Kandy, Sri Lanka</p>
-                    <p class="text-blue-600 font-semibold">Sunday: 9:30 AM & 6:30 PM</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">📍</div>
-                    <h3 class="text-2xl font-bold mb-2">Jaffna</h3>
-                    <p class="text-gray-600 mb-2">789 Church Lane</p>
-                    <p class="text-gray-600 mb-2">Jaffna, Sri Lanka</p>
-                    <p class="text-blue-600 font-semibold">Sunday: 9:00 AM & 6:00 PM</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-gray-900 text-white py-8 text-center">
-        <p>&copy; 2024 Church of Christ. All rights reserved.</p>
-        <div class="flex justify-center space-x-4 mt-4">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">Facebook</a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
+          </div>
         </div>
-    </footer>
-    
-    <script>
-        // Language translations
-        const translations = {
-            en: {
-                churchName: "Church of Christ",
-                heroTitle: "Welcome to the Church of Christ",
-                heroSubtitle: "Seeking God's truth and sharing His love.",
-                heroCta: "Find a Location Near You",
-                bibleVerse: "The churches of Christ salute you.",
-                bibleReference: "— Romans 16:16",
-                aboutTitle: "Our Vision & Mission",
-                missionStatement: "We strive to follow the New Testament pattern of worship and Christian living.",
-                aboutCard1Title: "Bible Study",
-                aboutCard1Text: "We believe in studying God's word together to grow in faith and understanding.",
-                aboutCard2Title: "Fellowship",
-                aboutCard2Text: "Building strong relationships within our Christian community.",
-                aboutCard3Title: "Service",
-                aboutCard3Text: "Serving our community and sharing Christ's love through action.",
-                beliefsTitle: "Our Beliefs",
-                missionVerse1: "We believe in following the Bible as our only guide for faith and practice.",
-                missionVerse2: "We seek to restore New Testament Christianity in all aspects of worship and life.",
-                bibleStudiesTitle: "Bible Studies",
-                bibleStudiesSubtitle: "Explore God's word through our interactive study materials",
-                study1Title: "The Parable of the Sower",
-                study1Desc: "Understanding how God's word takes root in different hearts.",
-                study2Title: "The Good Samaritan",
-                study2Desc: "Learning about love and compassion for our neighbors.",
-                study3Title: "The Prodigal Son",
-                study3Desc: "Discovering God's forgiveness and unconditional love.",
-                downloadStudy: "View Study",
-                weeklyStudyTitle: "Weekly Bible Studies",
-                wednesdayStudy: "Wednesday Evening Bible Study - 7:00 PM",
-                sundayStudy: "Sunday Morning Bible Class - 9:00 AM",
-                locationsTitle: "Our Locations"
-            },
-            si: {
-                churchName: "ක්‍රිස්තුගේ සභාව",
-                heroTitle: "ක්‍රිස්තුගේ සභාවට සාදරයෙන් පිළිගනිමු",
-                heroSubtitle: "දෙවියන්ගේ සත්‍යය සොයා ගැනීම සහ ඔහුගේ ප්‍රේමය බෙදා ගැනීම.",
-                heroCta: "ඔබ අසලින් ස්ථානයක් සොයන්න",
-                bibleVerse: "ක්‍රිස්තුගේ සභා ඔබට ආචාර කරති.",
-                bibleReference: "— රෝම 16:16",
-                aboutTitle: "අපගේ දර්ශනය සහ මෙහෙවර",
-                missionStatement: "අපි නව ගිණුමේ නමස්කාර සහ ක්‍රිස්තියානි ජීවන ක්‍රමය අනුගමනය කිරීමට උත්සාහ කරමු.",
-                aboutCard1Title: "බයිබල් අධ්‍යයනය",
-                aboutCard1Text: "විශ්වාසය සහ අවබෝධය වර්ධනය වීම සඳහා දෙවියන්ගේ වචනය එකට අධ්‍යයනය කිරීම.",
-                aboutCard2Title: "සහයෝගිතාව",
-                aboutCard2Text: "අපගේ ක්‍රිස්තියානි ප්‍රජාව තුළ ශක්තිමත් සබඳතා ගොඩනැගීම.",
-                aboutCard3Title: "සේවාව",
-                aboutCard3Text: "අපගේ ප්‍රජාවට සේවය කිරීම සහ ක්‍රිස්තුගේ ප්‍රේමය ක්‍රියාවෙන් බෙදා ගැනීම.",
-                beliefsTitle: "අපගේ විශ්වාස",
-                missionVerse1: "අපි බයිබලය අපගේ එකම මග පෙන්වන්නා ලෙස අනුගමනය කිරීම පිළිබඳ විශ්වාස කරමු.",
-                missionVerse2: "අපි නමස්කාරයේ සහ ජීවිතයේ සියලු අංශවල නව ගිණුම් ක්‍රිස්තියානි ධර්මය ප්‍රතිස්ථාපනය කිරීමට උත්සාහ කරමු.",
-                bibleStudiesTitle: "බයිබල් අධ්‍යයන",
-                bibleStudiesSubtitle: "අපගේ අන්තර්ක්‍රියාකාරී අධ්‍යයන ද්‍රව්‍ය හරහා දෙවියන්ගේ වචනය ගවේෂණය කරන්න",
-                study1Title: "වපුරන්නාගේ උපමාව",
-                study1Desc: "දෙවියන්ගේ වචනය විවිධ හදවත්වල මුල් බැස යන ආකාරය අවබෝධ කර ගැනීම.",
-                study2Title: "හොඳ සමරිතානුවා",
-                study2Desc: "අපගේ අසල්වැසියන්ට ඇති ප්‍රේමය සහ දයානුකම්පාව ගැන ඉගෙන ගැනීම.",
-                study3Title: "නාස්ති පුත්‍රයා",
-                study3Desc: "දෙවියන්ගේ සමාව සහ කොන්දේසි රහිත ප්‍රේමය සොයා ගැනීම.",
-                downloadStudy: "අධ්‍යයනය බලන්න",
-                weeklyStudyTitle: "සතිපතා බයිබල් අධ්‍යයන",
-                wednesdayStudy: "බදාදා සන්ධ්‍යා බයිබල් අධ්‍යයනය - සවස 7:00",
-                sundayStudy: "ඉරිදා උදෑසන බයිබල් පන්ති - උදෑසන 9:00",
-                locationsTitle: "අපගේ ස්ථාන"
-            },
-            ta: {
-                churchName: "கிறிஸ்துவின் சபை",
-                heroTitle: "கிறிஸ்துவின் சபைக்கு வருக",
-                heroSubtitle: "கடவுளின் சத்தியத்தைத் தேடி அவருடைய அன்பைப் பகிர்ந்துகொள்வது.",
-                heroCta: "உங்களுக்கு அருகிலுள்ள இடத்தைக் கண்டுபிடி",
-                bibleVerse: "கிறிஸ்துவின் சபைகள் உங்களை வாழ்த்துகின்றன.",
-                bibleReference: "— ரோமர் 16:16",
-                aboutTitle: "எங்கள் தரிசனம் மற்றும் நோக்கம்",
-                missionStatement: "புதிய ஏற்பாட்டின் வழிபாட்டு முறை மற்றும் கிறிஸ்தவ வாழ்க்கையைப் பின்பற்ற நாங்கள் முயற்சி செய்கிறோம்.",
-                aboutCard1Title: "வேதாகம ஆய்வு",
-                aboutCard1Text: "நம்பிக்கை மற்றும் புரிதலில் வளர கடவுளின் வார்த்தையை ஒன்றாக ஆய்வு செய்வதில் நாங்கள் நம்புகிறோம்.",
-                aboutCard2Title: "கூட்டுறவு",
-                aboutCard2Text: "எங்கள் கிறிஸ்தவ சமுதாயத்தில் வலுவான உறவுகளை உருவாக்குதல்.",
-                aboutCard3Title: "சேவை",
-                aboutCard3Text: "எங்கள் சமுதாயத்திற்கு சேவை செய்தல் மற்றும் கிறிஸ்துவின் அன்பை செயலால் பகிர்ந்துகொள்ளுதல்.",
-                beliefsTitle: "எங்கள் நம்பிக்கைகள்",
-                missionVerse1: "நம்பிக்கை மற்றும் நடைமுறைக்கான எங்கள் ஒரே வழிகாட்டியாக வேதாகமத்தைப் பின்பற்றுவதில் நாங்கள் நம்புகிறோம்.",
-                missionVerse2: "வழிபாடு மற்றும் வாழ்க்கையின் அனைத்து அம்சங்களிலும் புதிய ஏற்பாட்டு கிறிஸ்தவத்தை மீட்டெடுக்க நாங்கள் முயல்கிறோம்.",
-                bibleStudiesTitle: "வேதாகம ஆய்வுகள்",
-                bibleStudiesSubtitle: "எங்கள் ஊடாடும் ஆய்வுப் பொருட்கள் மூலம் கடவுளின் வார்த்தையை ஆராயுங்கள்",
-                study1Title: "விதைப்பவனின் உவமை",
-                study1Desc: "கடவுளின் வார்த்தை வெவ்வேறு இதயங்களில் எவ்வாறு வேரூன்றுகிறது என்பதைப் புரிந்துகொள்ளுதல்.",
-                study2Title: "நல்ல சமாரியன்",
-                study2Desc: "எங்கள் அண்டை வீட்டாரிடம் அன்பு மற்றும் இரக்கத்தைப் பற்றி கற்றுக்கொள்ளுதல்.",
-                study3Title: "வீணடித்த மகன்",
-                study3Desc: "கடவுளின் மன்னிப்பு மற்றும் நிபந்தனையற்ற அன்பைக் கண்டுபிடித்தல்.",
-                downloadStudy: "ஆய்வைப் பார்க்கவும்",
-                weeklyStudyTitle: "வாராந்திர வேதாகம ஆய்வுகள்",
-                wednesdayStudy: "புதன்கிழமை மாலை வேதாகம ஆய்வு - மாலை 7:00",
-                sundayStudy: "ஞாயிறு காலை வேதாகம வகுப்பு - காலை 9:00",
-                locationsTitle: "எங்கள் இடங்கள்"
-            }
-        };
+      </div>
+    </nav>
+  </header>
 
-        let currentLanguage = 'en';
+  <main>
+    <!-- hero -->
+    <section id="hero" class="text-white py-20 text-center">
+      <h1 class="text-5xl font-bold mb-4" data-lang-key="heroTitle">Welcome to the Church of Christ</h1>
+      <p class="text-xl mb-6" data-lang-key="heroSubtitle">Seeking God's truth and sharing His love.</p>
+      <a href="#locations" class="btn-primary bg-white text-blue-800 px-6 py-3 rounded-lg font-bold hover:bg-gray-200 transition-colors" data-lang-key="heroCta">Find a Location Near You</a>
+    </section>
 
-        // Language switching functionality
-        function switchLanguage(lang) {
-            currentLanguage = lang;
-            const elements = document.querySelectorAll('[data-lang-key]');
-            
-            elements.forEach(element => {
-                const key = element.getAttribute('data-lang-key');
-                if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
+    <!-- verse -->
+    <section id="bible-verse" class="text-white py-12 text-center">
+      <p class="text-3xl font-serif italic mb-2" data-lang-key="bibleVerse">The churches of Christ salute you.</p>
+      <p class="text-xl font-bold" data-lang-key="bibleReference">— Romans 16:16</p>
+    </section>
+
+    <!-- about -->
+    <section id="about" class="container mx-auto px-6 py-12">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="aboutTitle">Our Vision & Mission</h2>
+        <p class="text-lg text-gray-600" data-lang-key="missionStatement">We strive to follow the New Testament pattern of worship and Christian living.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover"><div class="text-blue-600 text-4xl mb-4">📖</div><h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard1Title">Bible Study</h3><p class="text-gray-600" data-lang-key="aboutCard1Text">We believe in studying God's word together to grow in faith and understanding.</p></div>
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover"><div class="text-blue-600 text-4xl mb-4">🤝</div><h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard2Title">Fellowship</h3><p class="text-gray-600" data-lang-key="aboutCard2Text">Building strong relationships within our Christian community.</p></div>
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover"><div class="text-blue-600 text-4xl mb-4">❤️</div><h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard3Title">Service</h3><p class="text-gray-600" data-lang-key="aboutCard3Text">Serving our community and sharing Christ's love through action.</p></div>
+      </div>
+
+      <div class="text-center">
+        <p class="text-sm font-bold text-gray-700" data-lang-key="beliefsTitle">Our Beliefs</p>
+        <p class="text-md text-gray-600" data-lang-key="missionVerse1">We believe in following the Bible as our only guide for faith and practice.</p>
+        <p class="text-md text-gray-600" data-lang-key="missionVerse2">We seek to restore New Testament Christianity in all aspects of worship and life.</p>
+      </div>
+    </section>
+
+    <!-- studies + activity tile -->
+    <section id="bible-studies" class="container mx-auto px-6 py-12">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="bibleStudiesTitle">Bible Studies</h2>
+        <p class="text-lg text-gray-600" data-lang-key="bibleStudiesSubtitle">Explore God's word through our interactive study materials</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+          <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 rounded-lg mb-4 flex items-center justify-center"><span class="text-white text-6xl">🌱</span></div>
+          <h3 class="text-2xl font-bold mb-2" data-lang-key="study1Title">The Parable of the Sower</h3>
+          <p class="text-gray-600 mb-4" data-lang-key="study1Desc">Understanding how God's word takes root in different hearts.</p>
+          <button onclick="toggleStudy('study1')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"><span data-lang-key="downloadStudy">View Study</span></button>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+          <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg mb-4 flex items-center justify-center"><span class="text-white text-6xl">🤝</span></div>
+          <h3 class="text-2xl font-bold mb-2" data-lang-key="study2Title">The Good Samaritan</h3>
+          <p class="text-gray-600 mb-4" data-lang-key="study2Desc">Learning about love and compassion for our neighbors.</p>
+          <button onclick="toggleStudy('study2')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"><span data-lang-key="downloadStudy">View Study</span></button>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+          <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg mb-4 flex items-center justify-center"><span class="text-white text-6xl">🏠</span></div>
+          <h3 class="text-2xl font-bold mb-2" data-lang-key="study3Title">The Prodigal Son</h3>
+          <p class="text-gray-600 mb-4" data-lang-key="study3Desc">Discovering God's forgiveness and unconditional love.</p>
+          <button onclick="toggleStudy('study3')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"><span data-lang-key="downloadStudy">View Study</span></button>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+          <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg mb-4 flex items-center justify-center"><span class="text-white text-6xl">📜</span></div>
+          <h3 class="text-2xl font-bold mb-2">5-Minute Gospel Activity</h3>
+          <p class="text-gray-600 mb-4">Fill-in-the-blank quiz with timer and scoring.</p>
+          <a href="#gospel-activity" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">Start Activity</a>
+        </div>
+      </div>
+
+      <!-- study panels -->
+      <div id="study1-content" class="study-content mt-8 hidden">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h4 class="text-2xl font-bold mb-4" data-lang-key="study1Title">The Parable of the Sower</h4>
+          <div class="prose max-w-none mb-6">
+            <p class="text-gray-700 mb-4">This parable teaches us about different responses to God's word:</p>
+            <ul class="list-disc pl-6 text-gray-700">
+              <li><strong>The Path:</strong> Hearts hardened to God's word</li>
+              <li><strong>Rocky Ground:</strong> Shallow faith that withers under pressure</li>
+              <li><strong>Thorns:</strong> Hearts choked by worldly concerns</li>
+              <li><strong>Good Soil:</strong> Hearts that receive and act on God's word</li>
+            </ul>
+          </div>
+          <div class="h-64 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center mb-4"><span class="text-white text-8xl">🌱</span></div>
+          <div class="mt-4 text-right"><button onclick="toggleStudy('study1')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">Close</button></div>
+        </div>
+      </div>
+
+      <div id="study2-content" class="study-content mt-8 hidden">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h4 class="text-2xl font-bold mb-4" data-lang-key="study2Title">The Good Samaritan</h4>
+          <div class="prose max-w-none mb-6">
+            <p class="text-gray-700 mb-4">Jesus teaches us about true neighborly love:</p>
+            <ul class="list-disc pl-6 text-gray-700">
+              <li><strong>Compassion:</strong> Seeing others' needs and being moved to help</li>
+              <li><strong>Action:</strong> Not just feeling sorry, but doing something</li>
+              <li><strong>Sacrifice:</strong> Giving of our time, money, and energy</li>
+              <li><strong>Universality:</strong> Love knows no boundaries of race or status</li>
+            </ul>
+          </div>
+          <div class="h-64 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mb-4"><span class="text-white text-8xl">🤝</span></div>
+          <div class="mt-4 text-right"><button onclick="toggleStudy('study2')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">Close</button></div>
+        </div>
+      </div>
+
+      <div id="study3-content" class="study-content mt-8 hidden">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h4 class="text-2xl font-bold mb-4" data-lang-key="study3Title">The Prodigal Son</h4>
+          <div class="prose max-w-none mb-6">
+            <p class="text-gray-700 mb-4">A powerful story of forgiveness and redemption:</p>
+            <ul class="list-disc pl-6 text-gray-700">
+              <li><strong>Rebellion:</strong> The younger son's journey away from his father</li>
+              <li><strong>Consequences:</strong> The results of turning away from what's right</li>
+              <li><strong>Repentance:</strong> Coming to our senses and returning to God</li>
+              <li><strong>Grace:</strong> God's unconditional love and forgiveness</li>
+            </ul>
+          </div>
+          <div class="h-64 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center mb-4"><span class="text-white text-8xl">🏠</span></div>
+          <div class="mt-4 text-right"><button onclick="toggleStudy('study3')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">Close</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- inline activity (pure JS) -->
+    <section id="gospel-activity" class="container mx-auto px-6 py-12">
+      <h3 class="text-3xl font-bold text-gray-900 mb-4">Interactive Activity: 5-Minute Gospel</h3>
+      <div id="activity-root" class="bg-white rounded-2xl shadow p-4 md:p-6"></div>
+    </section>
+
+    <!-- gallery (server-backed with admin login) -->
+    <section id="gallery" class="container mx-auto px-6 py-12">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-3xl font-bold text-gray-900">Gallery</h2>
+
+        <div id="adminToolbar" class="flex items-center gap-2 hidden">
+          <label class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer">
+            Upload Images
+            <input id="galleryInput" type="file" accept="image/*" multiple class="hidden"/>
+          </label>
+          <button id="logoutBtn" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Logout</button>
+        </div>
+
+        <button id="openLogin" class="px-4 py-2 bg-gray-900 text-white rounded-lg hover:opacity-90">Admin</button>
+      </div>
+
+      <div class="slider aspect-[16/9] mb-6" id="slider">
+        <button class="navBtn navPrev" id="prevBtn" aria-label="Previous">‹</button>
+        <button class="navBtn navNext" id="nextBtn" aria-label="Next">›</button>
+        <div class="slider-nav" id="dots"></div>
+      </div>
+
+      <p class="text-gray-600 mb-4">Images are stored on the server. Uploads & deletions are admin-only.</p>
+      <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+    </section>
+
+    <!-- locations -->
+    <section id="locations" class="container mx-auto px-6 py-12">
+      <div class="text-center mb-12"><h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="locationsTitle">Our Locations</h2></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover"><div class="text-blue-600 text-4xl mb-4">📍</div><h3 class="text-2xl font-bold mb-2">Bambalapitiya</h3><p class="text-blue-600 font-semibold mb-1">📱 0773029098</p><p class="text-blue-600 font-semibold mb-2">📞 011 2580488</p><p class="text-blue-600 font-semibold">Sunday Worship: 9:30 AM</p></div>
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover"><div class="text-blue-600 text-4xl mb-4">📍</div><h3 class="text-2xl font-bold mb-2">Wennappuwa</h3><p class="text-blue-600 font-semibold mb-1">📱 0718252828</p><p class="text-blue-600 font-semibold mb-2">✉️ curchofchristwennappuwa@mail.com</p><p class="text-blue-600 font-semibold">Sunday: 9:30 AM</p></div>
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover"><div class="text-blue-600 text-4xl mb-4">🎓</div><h3 class="text-2xl font-bold mb-2">Batticaloa</h3><p class="text-gray-600 mb-2">7A, Kumaraththan Kovil Road</p><p class="text-gray-600 mb-2">Urani, Batticaloa, Sri Lanka</p><p class="text-blue-600 font-semibold mb-1">📱 0717060112</p><p class="text-blue-600 font-semibold">✉️ cocinsrilanka@gmail.com</p></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer class="bg-gray-900 text-white py-8 text-center">
+    <p>&copy; 2024 Church of Christ. All rights reserved.</p>
+    <div class="flex justify-center space-x-4 mt-4">
+      <a href="#" class="text-gray-400 hover:text-white transition-colors">Facebook</a>
+      <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
+      <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
+    </div>
+  </footer>
+
+  <!-- Admin Login Modal -->
+  <div id="loginModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl">
+      <h3 class="text-xl font-bold mb-3">Admin Login</h3>
+      <div class="space-y-3">
+        <input id="userField" type="text" placeholder="Username" class="w-full border rounded-lg px-3 py-2">
+        <input id="passField" type="password" placeholder="Password" class="w-full border rounded-lg px-3 py-2">
+        <button id="loginBtn" class="w-full bg-blue-600 text-white rounded-lg py-2 hover:bg-blue-700">Login</button>
+        <button id="closeLogin" class="w-full bg-gray-100 rounded-lg py-2 hover:bg-gray-200">Cancel</button>
+      </div>
+      <p id="loginError" class="text-red-600 text-sm mt-3 hidden">Invalid credentials.</p>
+    </div>
+  </div>
+
+  <!-- PAGE SCRIPTS -->
+  <script>
+    /* ===== language strings ===== */
+    const translations={en:{churchName:"Church of Christ",heroTitle:"Welcome to the Church of Christ",heroSubtitle:"Seeking God's truth and sharing His love.",heroCta:"Find a Location Near You",bibleVerse:"The churches of Christ salute you.",bibleReference:"— Romans 16:16",aboutTitle:"Our Vision & Mission",missionStatement:"We strive to follow the New Testament pattern of worship and Christian living.",aboutCard1Title:"Bible Study",aboutCard1Text:"We believe in studying God's word together to grow in faith and understanding.",aboutCard2Title:"Fellowship",aboutCard2Text:"Building strong relationships within our Christian community.",aboutCard3Title:"Service",aboutCard3Text:"Serving our community and sharing Christ's love through action.",beliefsTitle:"Our Beliefs",missionVerse1:"We believe in following the Bible as our only guide for faith and practice.",missionVerse2:"We seek to restore New Testament Christianity in all aspects of worship and life.",bibleStudiesTitle:"Bible Studies",bibleStudiesSubtitle:"Explore God's word through our interactive study materials",study1Title:"The Parable of the Sower",study1Desc:"Understanding how God's word takes root in different hearts.",study2Title:"The Good Samaritan",study2Desc:"Learning about love and compassion for our neighbors.",study3Title:"The Prodigal Son",study3Desc:"Discovering God's forgiveness and unconditional love.",downloadStudy:"View Study",weeklyStudyTitle:"Weekly Bible Studies",wednesdayStudy:"Wednesday Evening Bible Study - 7:00 PM",sundayStudy:"Sunday Morning Bible Class - 9:00 AM",locationsTitle:"Our Locations"},si:{churchName:"ක්‍රිස්තුගේ සභාව",heroTitle:"ක්‍රිස්තුගේ සභාවට සාදරයෙන් පිළිගනිමු",heroSubtitle:"දෙවියන්ගේ සත්‍යය සොයා ගැනීම සහ ඔහුගේ ප්‍රේමය බෙදා ගැනීම.",heroCta:"ඔබ අසලින් ස්ථානයක් සොයන්න",bibleVerse:"ක්‍රිස්තුගේ සභා ඔබට ආචාර කරති.",bibleReference:"— රෝම 16:16",aboutTitle:"අපගේ දර්ශනය සහ මෙහෙවර",missionStatement:"අපි නව ගිණුමේ නමස්කාර සහ ක්‍රිස්තියානි ජීවන ක්‍රමය අනුගමනය කිරීමට උත්සාහ කරමු.",aboutCard1Title:"බයිබල් අධ්‍යයනය",aboutCard1Text:"විශ්වාසය සහ අවබෝධය වර්ධනය වීම සඳහා දෙවියන්ගේ වචනය එකට අධ්‍යයනය කිරීම.",aboutCard2Title:"සහයෝගිතාව",aboutCard2Text:"අපගේ ක්‍රිස්තියානි ප්‍රජාව තුළ ශක්තිමත් සබඳතා ගොඩනැගීම.",aboutCard3Title:"සේවාව",aboutCard3Text:"අපගේ ප්‍රජාවට සේවය කිරීම සහ ක්‍රිස්තුගේ ප්‍රේමය ක්‍රියාවෙන් බෙදා ගැනීම.",beliefsTitle:"අපගේ විශ්වාස",missionVerse1:"අපි බයිබලය අපගේ එකම මග පෙන්වන්නා ලෙස අනුගමනය කිරීම පිළිබඳ විශ්වාස කරමු.",missionVerse2:"අපි නමස්කාරයේ සහ ජීවිතයේ සියලු අංශවල නව ගිණුම් ක්‍රිස්තියානි ධර්මය ප්‍රතිස්ථාපනය කිරීමට උත්සාහ කරමු.",bibleStudiesTitle:"බයිබල් අධ්‍යයන",bibleStudiesSubtitle:"අපගේ අන්තර්ක්‍රියාකාරී අධ්‍යයන ද්‍රව්‍ය හරහා දෙවියන්ගේ වචනය ගවේෂණය කරන්න",study1Title:"වපුරන්නාගේ උපමාව",study1Desc:"දෙවියන්ගේ වචනය විවිධ හදවත්වල මුල් බැස යන ආකාරය.",study2Title:"හොඳ සමරිතානුවා",study2Desc:"අපගේ අසල්වැසියන්ට ඇති ප්‍රේමය සහ දයානුකම්පාව.",study3Title:"නාස්ති පුත්‍රයා",study3Desc:"දෙවියන්ගේ සමාව සහ කොන්දේසි රහිත ප්‍රේමය.",downloadStudy:"අධ්‍යයනය බලන්න",weeklyStudyTitle:"සතිපතා බයිබල් අධ්‍යයන",wednesdayStudy:"බදාදා සන්ධ්‍යා බයිබල් අධ්‍යයනය - සවස 7:00",sundayStudy:"ඉරිදා උදෑසන බයිබල් පන්ති - උදෑසන 9:00",locationsTitle:"අපගේ ස්ථාන"},ta:{churchName:"கிறிஸ்துவின் சபை",heroTitle:"கிறிஸ்துவின் சபைக்கு வருக",heroSubtitle:"கடவுளின் சத்தியத்தைத் தேடி அவருடைய அன்பைப் பகிர்ந்துகொள்வது.",heroCta:"உங்களுக்கு அருகிலுள்ள இடத்தைக் கண்டுபிடி",bibleVerse:"கிறிஸ்துவின் சபைகள் உங்களை வாழ்த்துகின்றன.",bibleReference:"— ரோமர் 16:16",aboutTitle:"எங்கள் தரிசனம் மற்றும் நோக்கம்",missionStatement:"புதிய ஏற்பாட்டின் வழிபாட்டு முறை மற்றும் கிறிஸ்தவ வாழ்க்கையைப் பின்பற்ற நாங்கள் முயற்சி செய்கிறோம்.",aboutCard1Title:"வேதாகம ஆய்வு",aboutCard1Text:"நம்பிக்கை மற்றும் புரிதலில் வளர கடவுளின் வார்த்தையை ஒன்றாக ஆய்வு செய்வதில் நாங்கள் நம்புகிறோம்.",aboutCard2Title:"கூட்டுறவு",aboutCard2Text:"எங்கள் கிறிஸ்தவ சமுதாயத்தில் வலுவான உறவுகளை உருவாக்குதல்.",aboutCard3Title:"சேவை",aboutCard3Text:"எங்கள் சமுதாயத்திற்கு சேவை செய்தல் மற்றும் கிறிஸ்துவின் அன்பை செயலால் பகிர்ந்துகொள்ளுதல்.",beliefsTitle:"எங்கள் நம்பிக்கைகள்",missionVerse1:"நம்பிக்கை மற்றும் நடைமுறைக்கான எங்கள் ஒரே வழிகாட்டியாக வேதாகமத்தைப் பின்பற்றுவதில் நாங்கள் நம்புகிறோம்.",missionVerse2:"வாழ்க்கையின் அனைத்து அம்சங்களிலும் புதிய ஏற்பாட்டு கிறிஸ்தவத்தை மீட்டெடுக்க நாங்கள் முயற்சி செய்கிறோம்.",bibleStudiesTitle:"வேதாகம ஆய்வுகள்",bibleStudiesSubtitle:"எங்கள் ஊடாடும் ஆய்வுப் பொருட்கள் மூலம் கடவுளின் வார்த்தையை ஆராயுங்கள்",study1Title:"விதைப்பவனின் உவமை",study1Desc:"கடவுளின் வார்த்தை வெவ்வேறு இதயங்களில் எவ்வாறு வேரூன்றுகிறது.",study2Title:"நல்ல சமாரியன்",study2Desc:"அண்டை வீட்டாரிடம் அன்பும் இரக்கமும்.",study3Title:"வீணடித்த மகன்",study3Desc:"மன்னிப்பும் நிபந்தனையற்ற அன்பும்.",downloadStudy:"ஆய்வைப் பார்க்கவும்",weeklyStudyTitle:"வாராந்திர வேதாகம ஆய்வுகள்",wednesdayStudy:"புதன்கிழமை மாலை 7:00",sundayStudy:"ஞாயிறு காலை 9:00",locationsTitle:"எங்கள் இடங்கள்"}};
+    let currentLanguage='en';
+
+    /* language dropdown */
+    document.getElementById('lang-btn').addEventListener('click',e=>{e.preventDefault();const m=document.getElementById('lang-menu');m.classList.toggle('hidden');m.classList.toggle('show')});
+    document.querySelectorAll('[data-lang]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();switchLanguage(a.dataset.lang);const m=document.getElementById('lang-menu');m.classList.add('hidden');m.classList.remove('show')}));
+    document.addEventListener('click',e=>{const b=document.getElementById('lang-btn');const m=document.getElementById('lang-menu');if(!b.contains(e.target)&&!m.contains(e.target)){m.classList.add('hidden');m.classList.remove('show')}});
+
+    function switchLanguage(lang){
+      currentLanguage=lang;
+      document.querySelectorAll('[data-lang-key]').forEach(el=>{
+        const k=el.getAttribute('data-lang-key');
+        if(translations[lang]&&translations[lang][k]) el.textContent=translations[lang][k];
+      });
+      document.body.classList.remove('font-sinhala','font-tamil');
+      if(lang==='si')document.body.classList.add('font-sinhala');
+      if(lang==='ta')document.body.classList.add('font-tamil');
+      const names={en:'English',si:'සිංහල',ta:'தமிழ்'};
+      const svg=document.querySelector('#lang-btn svg'); svg.previousSibling.textContent=names[lang]+' ';
+    }
+
+    /* study toggles */
+    function toggleStudy(id){
+      const c=document.getElementById(id+'-content');
+      document.querySelectorAll('.study-content').forEach(s=>{if(s!==c)s.classList.add('hidden')});
+      c.classList.toggle('hidden');
+      if(!c.classList.contains('hidden')) setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'start'}),80);
+    }
+    window.toggleStudy=toggleStudy;
+
+    /* page fade-in + background image */
+    const imageInput=document.getElementById('imageInput');const customBgOverlay=document.getElementById('customBgOverlay');
+    window.addEventListener('load',()=>{const saved=localStorage.getItem('churchCustomBackground');if(saved)applyCustomBackground(saved);switchLanguage('en');document.body.style.opacity='0';setTimeout(()=>{document.body.style.transition='opacity .5s ease';document.body.style.opacity='1'},100)});
+    imageInput.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;if(!f.type.startsWith('image/'))return toast('Please select an image file.','bad');if(f.size>5*1024*1024)return toast('Image too large (max 5MB).','bad');const r=new FileReader();r.onload=ev=>{const url=ev.target.result;applyCustomBackground(url);localStorage.setItem('churchCustomBackground',url);toast('Background updated!')};r.readAsDataURL(f)});
+    function applyCustomBackground(url){customBgOverlay.style.backgroundImage=`url('${url}')`;customBgOverlay.style.display='block';document.body.classList.add('custom-background')}
+    function resetBackground(){customBgOverlay.style.display='none';document.body.classList.remove('custom-background');localStorage.removeItem('churchCustomBackground');imageInput.value='';toast('Background reset.')}
+    window.resetBackground=resetBackground;
+    function toast(text,type){const old=document.querySelector('.status-message');if(old)old.remove();const el=document.createElement('div');el.className='status-message';el.style.cssText=`position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:${type==='bad'?'#ef4444':'#10b981'};color:#fff;padding:15px 25px;border-radius:8px;z-index:10000;font-weight:600;box-shadow:0 10px 25px rgba(0,0,0,.3);backdrop-filter:blur(10px);font-size:14px;max-width:320px;text-align:center;`;el.textContent=text;document.body.appendChild(el);setTimeout(()=>{el.style.opacity='0';setTimeout(()=>el.remove(),300)},2200)}
+  </script>
+
+  <script>
+    /* ===== Gospel Activity (vanilla JS) ===== */
+    (function(){
+      const DATA=[
+        {id:'q1',ref:'2 Timothy 1:8 (KJV)',text:['Therefore, do not be ashamed of the testimony of the Lord, nor of me His ','____',', but share with me in the sufferings for the ','____',' according to the ','____',' of God.'],answers:['prisoner','gospel','power']},
+        {id:'q2',ref:'Hebrews 4:2 (KJV)',text:['For indeed the gospel was ','____',' to us as well as to them; but the word which they heard did not ','____',' them, not being mixed with ','____',' in those who heard it.'],answers:['preached','profit','faith']},
+        {id:'q3',ref:'2 Corinthians 2:12 (KJV)',text:['Furthermore, when I came to ','____',' to preach ','____',' gospel, and a door was opened to me by the ','____','.'],answers:['troas','christs','lord']},
+        {id:'q4',ref:'Romans 1:16 (KJV)',text:['For I am not ','____',' of the ','____',' of Christ, for it is the ','____',' of God to salvation for everyone who believes, for the Jew first and also for the Greek.'],answers:['ashamed','gospel','power']},
+        {id:'q5',ref:'Romans 15:19 (KJV)',text:['In mighty signs and wonders, by the power of the Spirit of God, so that from ','____',', and round about to ','____',', I have fully preached the ','____',' of Christ.'],answers:['jerusalem','illyricum','gospel']},
+        {id:'q6',ref:'Philippians 4:15 (KJV)',text:['Now you Philippians know also that in the ','____',' of the gospel, when I departed from Macedonia, no ','____',' shared with me concerning giving and receiving but you only.'],answers:['beginning','church']},
+        {id:'q7',ref:'1 Thessalonians 3:2 (KJV)',text:['And sent Timothy, our brother and ','____',' of God, and our fellow laborer in the ','____',' of Christ, to establish you and encourage you concerning your faith.'],answers:['minister','gospel']},
+      ];
+      const norm=s=>s.toLowerCase().normalize('NFKD').replace(/[’'`]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+      const root=document.getElementById('activity-root');
+
+      const head=document.createElement('div');head.className='flex items-start justify-between mb-4';
+      head.innerHTML=`<div><h4 class="text-2xl font-bold">5-Minute Bible Study: Gospel</h4><p class="text-gray-600 text-sm">Fill-in-the-blank (answers are not case-sensitive).</p></div>
+      <div class="shrink-0 text-center bg-gray-100 rounded-2xl px-4 py-2 shadow"><div class="text-xs uppercase tracking-wide text-gray-500">Time Left</div><div id="timer" class="text-2xl font-bold tabular-nums">05:00</div></div>`;
+      root.appendChild(head);
+
+      const list=document.createElement('div');list.className='space-y-6';root.appendChild(list);
+      const inputs={};
+
+      DATA.forEach((q,qi)=>{
+        let bi=0;
+        const card=document.createElement('div');card.className='rounded-2xl border border-gray-200 p-4 md:p-5';
+        const top=document.createElement('div');top.className='flex items-baseline justify-between';
+        top.innerHTML=`<h5 class="font-semibold">Question ${qi+1}</h5><span class="text-xs text-gray-500">${q.ref}</span>`;
+        const p=document.createElement('p');p.className='mt-3 leading-8';
+        q.text.forEach((chunk,i)=>{
+          if(chunk==='____'){
+            const key=`${q.id}_${bi}`; const inp=document.createElement('input');
+            inp.className='mx-1 inline-block rounded-xl border px-2 py-1 text-sm md:text-base focus:outline-none focus:ring-2 transition shadow-sm min-w-[6rem] border-gray-300 focus:ring-indigo-300';
+            inp.addEventListener('input',e=>{
+              inputs[key]=e.target.value;
+              validate(inp, q.answers[bi]);
+              updateScore();
             });
+            p.appendChild(inp); bi++;
+          }else{
+            const span=document.createElement('span'); span.textContent=chunk; p.appendChild(span);
+          }
+        });
+        card.appendChild(top); card.appendChild(p);
 
-            // Update font classes based on language
-            const body = document.body;
-            body.classList.remove('font-sinhala', 'font-tamil');
-            
-            if (lang === 'si') {
-                body.classList.add('font-sinhala');
-            } else if (lang === 'ta') {
-                body.classList.add('font-tamil');
-            }
+        const ans=document.createElement('div'); ans.className='mt-2 text-sm text-gray-600'; ans.style.display='none';
+        ans.innerHTML='<strong>Answer:</strong> ' + q.answers.map(a=>`<code class="mx-1 bg-gray-100 rounded px-1.5 py-0.5">${a}</code>`).join('');
+        card.appendChild(ans);
+        list.appendChild(card);
 
-            // Update language button text
-            const langBtn = document.getElementById('lang-btn');
-            const langNames = { en: 'English', si: 'සිංහල', ta: 'தமிழ்' };
-            langBtn.querySelector('svg').previousSibling.textContent = langNames[lang] + ' ';
+        function validate(input,answer){
+          const good=norm(input.value)===norm(answer);
+          input.classList.toggle('border-green-400',good);
+          input.classList.toggle('bg-green-50',good);
+          input.classList.toggle('focus:ring-green-300',good);
+          const touched=input.value.length>0 && !good;
+          input.classList.toggle('border-rose-300',touched);
+          input.classList.toggle('bg-rose-50',touched);
+          input.classList.toggle('focus:ring-rose-300',touched);
+        }
+      });
+
+      const footer=document.createElement('div');footer.className='mt-4 flex flex-wrap items-center gap-3';
+      footer.innerHTML=`<button id="revealBtn" class="px-4 py-2 rounded-2xl bg-gray-900 text-white hover:opacity-90">Reveal Answers</button>
+      <button id="resetBtn" class="px-4 py-2 rounded-2xl bg-gray-100 text-gray-900 hover:bg-gray-200">Reset</button>
+      <div class="ml-auto text-sm text-gray-700">Score: <span id="scoreCorrect" class="font-semibold">0</span> / <span id="scoreTotal">${DATA.reduce((a,q)=>a+q.answers.length,0)}</span></div>`;
+      root.appendChild(footer);
+
+      function setAnswersVisible(show){
+        list.querySelectorAll('.rounded-2xl').forEach(card=>{
+          const ans=card.children[2]; ans.style.display=show?'block':'none';
+        });
+        document.getElementById('revealBtn').textContent=show?'Hide Answers':'Reveal Answers';
+      }
+      document.getElementById('revealBtn').addEventListener('click',()=>{
+        const anyShown = !!list.querySelector('.rounded-2xl div[style*="display: block"]');
+        setAnswersVisible(!anyShown);
+      });
+      document.getElementById('resetBtn').addEventListener('click',()=>{ location.reload() });
+
+      function updateScore(){
+        let correct=0;
+        DATA.forEach(q=>q.answers.forEach((a,i)=>{const k=`${q.id}_${i}`; if(norm(inputs[k]||'')===norm(a)) correct++}));
+        document.getElementById('scoreCorrect').textContent=String(correct);
+      }
+      // timer
+      let timeLeft=300; const timerEl=document.getElementById('timer');
+      setInterval(()=>{ if(timeLeft<=0) return; timeLeft--; const m=String(Math.floor(timeLeft/60)).padStart(2,'0'); const s=String(timeLeft%60).padStart(2,'0'); timerEl.textContent=`${m}:${s}`; },1000);
+    })();
+  </script>
+
+  <script>
+    /* ======== Admin + Server-backed Gallery ======== */
+    const API = {
+      login: '/api/login',
+      me: '/api/me',
+      list: '/api/gallery',
+      upload: '/api/upload',
+      del: (name) => `/api/image/${encodeURIComponent(name)}`
+    };
+    let token = localStorage.getItem('authToken') || '';
+
+    const el = (id) => document.getElementById(id);
+    const galleryInput = el('galleryInput');
+    const galleryGrid  = el('galleryGrid');
+    const slider       = el('slider');
+    const dotsWrap     = el('dots');
+    const loginModal   = el('loginModal');
+    const openLoginBtn = el('openLogin');
+    const closeLogin   = el('closeLogin');
+    const loginBtn     = el('loginBtn');
+    const userField    = el('userField');
+    const passField    = el('passField');
+    const loginError   = el('loginError');
+    const adminToolbar = el('adminToolbar');
+    const logoutBtn    = el('logoutBtn');
+
+    function setAdminUI(isAdmin){
+      if(isAdmin){
+        adminToolbar.classList.remove('hidden');
+        openLoginBtn.classList.add('hidden');
+      }else{
+        adminToolbar.classList.add('hidden');
+        openLoginBtn.classList.remove('hidden');
+      }
+      // toggle delete buttons in grid
+      document.querySelectorAll('.gal-del').forEach(b=> b.classList.toggle('hidden', !isAdmin));
+    }
+
+    async function checkAuth(){
+      try{
+        const res = await fetch(API.me, { headers: token?{Authorization:`Bearer ${token}`}:{}} );
+        const js  = await res.json();
+        setAdminUI(js.ok && js.user && js.user.role==='admin');
+        return js.ok && js.user;
+      }catch{ setAdminUI(false); return false; }
+    }
+
+    openLoginBtn.addEventListener('click', ()=>{
+      loginModal.classList.remove('hidden'); loginModal.classList.add('flex'); userField.focus();
+    });
+    closeLogin.addEventListener('click', ()=>{
+      loginModal.classList.add('hidden'); loginModal.classList.remove('flex'); loginError.classList.add('hidden');
+    });
+    loginBtn.addEventListener('click', async ()=>{
+      loginError.classList.add('hidden');
+      const payload = { username: userField.value.trim(), password: passField.value.trim() };
+      try{
+        const res = await fetch(API.login,{ method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        const js = await res.json();
+        if(js.ok && js.token){
+          token = js.token; localStorage.setItem('authToken', token);
+          loginModal.classList.add('hidden'); loginModal.classList.remove('flex');
+          setAdminUI(true);
+          loadGallery();
+        }else{ loginError.classList.remove('hidden'); }
+      }catch{ loginError.classList.remove('hidden'); }
+    });
+
+    logoutBtn.addEventListener('click', ()=>{
+      token=''; localStorage.removeItem('authToken'); setAdminUI(false);
+    });
+
+    galleryInput?.addEventListener('change', async (e)=>{
+      const files = [...(e.target.files||[])];
+      if(!files.length) return;
+      const fd = new FormData(); files.forEach(f=>fd.append('images', f));
+      try{
+        const res = await fetch(API.upload, { method:'POST', headers:{ Authorization:`Bearer ${token}` }, body: fd });
+        if(!res.ok){ alert('Upload failed. Are you logged in?'); return; }
+        await loadGallery();
+      }catch{ alert('Upload failed.'); }
+      e.target.value='';
+    });
+
+    /* --------- Slideshow + Grid --------- */
+    let current=0, timer=null, slidesEls=[];
+    function buildSlide(url, active=false){
+      const s=document.createElement('div'); s.className='slide'+(active?' active':'');
+      const img=document.createElement('img'); img.src=url; img.alt='Gallery image';
+      s.appendChild(img); slider.appendChild(s); return s;
+    }
+    function go(i){
+      const n=slidesEls.length; if(n<1) return;
+      slidesEls[current]?.classList.remove('active'); dotsWrap.children[current]?.classList.remove('active');
+      current=(i+n)%n; slidesEls[current].classList.add('active'); dotsWrap.children[current].classList.add('active'); resetTimer();
+    }
+    function next(){ go(current+1) } function prev(){ go(current-1) }
+    function start(){ stop(); if(slidesEls.length>1) timer=setInterval(next,5000) } function stop(){ if(timer) clearInterval(timer) } function resetTimer(){ start() }
+
+    document.getElementById('nextBtn').addEventListener('click',next);
+    document.getElementById('prevBtn').addEventListener('click',prev);
+    slider.addEventListener('mouseenter',stop); slider.addEventListener('mouseleave',start);
+    let sx=0; slider.addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX); slider.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){dx<0?next():prev()}});
+
+    // try load url to confirm existence
+    function testImage(url, timeout=8000){
+      return new Promise(resolve=>{
+        const img=new Image(); let done=false;
+        const finish=(ok)=>{ if(!done){done=true; resolve(ok?url:null)} };
+        const t=setTimeout(()=>finish(false), timeout);
+        img.onload=()=>{ clearTimeout(t); finish(true) };
+        img.onerror=()=>{ clearTimeout(t); finish(false) };
+        img.src=url+'?v='+(Date.now());
+      });
+    }
+
+    // Optional fallback filenames if API returns empty
+    const FALLBACK_DEFAULTS=['/gallery/cb.jpeg','/gallery/c.jpeg','/gallery/ca.jpeg','/gallery/cc.jpeg'];
+
+    async function loadGallery(){
+      try{
+        const res = await fetch(API.list);
+        const js  = await res.json();
+        let items = js.ok ? js.images : [];
+
+        if((!items || !items.length) && FALLBACK_DEFAULTS.length){
+          const ok = (await Promise.all(FALLBACK_DEFAULTS.map(u=>testImage(u)))).filter(Boolean);
+          items = ok.map(u=>({name:u.split('/').pop(), url:u}));
         }
 
-        // Language dropdown functionality
-        document.getElementById('lang-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            const menu = document.getElementById('lang-menu');
-            menu.classList.toggle('hidden');
-            if (!menu.classList.contains('hidden')) {
-                menu.classList.add('show');
-            } else {
-                menu.classList.remove('show');
-            }
-        });
-
-        // Language selection
-        document.querySelectorAll('[data-lang]').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                const lang = this.getAttribute('data-lang');
-                switchLanguage(lang);
-                document.getElementById('lang-menu').classList.add('hidden');
-                document.getElementById('lang-menu').classList.remove('show');
-            });
-        });
-
-        // Close language menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const langBtn = document.getElementById('lang-btn');
-            const langMenu = document.getElementById('lang-menu');
-            
-            if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
-                langMenu.classList.add('hidden');
-                langMenu.classList.remove('show');
-            }
-        });
-
-        // Bible study toggle functionality
-        function toggleStudy(studyId) {
-            const content = document.getElementById(studyId + '-content');
-            const allStudies = document.querySelectorAll('.study-content');
-            
-            // Hide all other studies
-            allStudies.forEach(study => {
-                if (study.id !== studyId + '-content') {
-                    study.classList.add('hidden');
-                }
-            });
-            
-            // Toggle current study
-            content.classList.toggle('hidden');
-            
-            // Scroll to study content if opening
-            if (!content.classList.contains('hidden')) {
-                setTimeout(() => {
-                    content.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-            }
+        // rebuild slider
+        slider.querySelectorAll('.slide').forEach(n=>n.remove()); slidesEls=[]; dotsWrap.innerHTML=''; current=0; stop();
+        if(!items.length){
+          const empty=document.createElement('div'); empty.className='slide active';
+          empty.innerHTML='<div class="w-full h-full flex items-center justify-center text-white/80">No images yet.</div>';
+          slider.appendChild(empty); slidesEls=[empty];
+        }else{
+          items.forEach((it,i)=>{
+            slidesEls.push(buildSlide(it.url, i===0));
+            const d=document.createElement('button'); d.className='dot'+(i===0?' active':''); d.addEventListener('click',()=>go(i)); dotsWrap.appendChild(d);
+          });
+          start();
         }
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        // grid
+        galleryGrid.innerHTML='';
+        items.forEach(it=>{
+          const card=document.createElement('div'); card.className='gal-card';
+          const img=document.createElement('img'); img.src=it.url; img.className='gal-thumb'; card.appendChild(img);
+          const del=document.createElement('button'); del.textContent='Delete'; del.className='gal-del hidden';
+          del.addEventListener('click', async ()=>{
+            if(!confirm('Delete this image?')) return;
+            const res = await fetch(API.del(it.name), { method:'DELETE', headers:{ Authorization:`Bearer ${token}` } });
+            if(res.ok) loadGallery(); else alert('Delete failed (login?)');
+          });
+          card.appendChild(del);
+          galleryGrid.appendChild(card);
         });
 
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // show delete buttons if admin
+        const isAdmin = !adminToolbar.classList.contains('hidden');
+        document.querySelectorAll('.gal-del').forEach(b=> b.classList.toggle('hidden', !isAdmin));
+      }catch(e){
+        galleryGrid.innerHTML='<div class="col-span-full text-center text-red-600">Gallery API not reachable. Start the server.</div>';
+      }
+    }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+    // animate-in sections
+    const observer=new IntersectionObserver((ents)=>{ents.forEach(en=>{if(en.isIntersecting){en.target.style.opacity='1';en.target.style.transform='translateY(0)'}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+    document.querySelectorAll('.card-hover, section').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .6s, transform .6s';observer.observe(el)});
 
-        // Observe all cards and sections
-        document.querySelectorAll('.card-hover, section').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial language
-            switchLanguage('en');
-            
-            // Add loading animation
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                document.body.style.transition = 'opacity 0.5s ease';
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-
-        // Error handling for missing images
-        document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('error', function() {
-                // Replace broken images with placeholder
-                this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZSBOb3QgRm91bmQ8L3RleHQ+PC9zdmc+';
-            });
-        });
-    </script>
+    // boot
+    checkAuth().then(loadGallery);
+  </script>
 </body>
 </html>
