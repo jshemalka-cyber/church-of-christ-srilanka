@@ -1,20 +1,17 @@
 /* =========================================================
    Church of Christ — Sri Lanka (GitHub Pages safe)
-   Single, idempotent app script. Paste as FULL script.js.
+   Full app script (clean)
    ========================================================= */
-
 (function(){
-  // Avoid running twice if the script is accidentally included twice.
   if (window.__churchSriLankaBooted) return;
   window.__churchSriLankaBooted = true;
 
-  /* ------------------ Utilities ------------------ */
   const $ = (sel, root=document) => root.querySelector(sel);
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
   const on = (el, ev, fn) => el && el.addEventListener(ev, fn);
 
-  // i18n keys used on the page
-  const translations = window.translations || {
+  /* ------------ Translations ------------ */
+  const translations = {
     en: {
       languageLabel: "Language",
       churchName: "Church of Christ",
@@ -34,7 +31,14 @@
       bibleStudiesTitle: "Bible Studies",
       bibleStudiesSubtitle: "Explore God's word through our interactive study materials",
       activitySectionHeading: "Interactive Activity: 5-Minute Gospel",
+      study1Title: "The Parable of the Sower",
       study1Desc: "Understanding how God's word takes root in different hearts.",
+      study2Title: "The Good Samaritan",
+      study2Desc: "Learning about love and compassion for our neighbors.",
+      study3Title: "The Prodigal Son",
+      study3Desc: "Discovering God's forgiveness and unconditional love.",
+      activityCardTitle: "5-Minute Gospel Activity",
+      activityCardDesc: "Fill-in-the-blank quiz with timer and scoring.",
       downloadStudy: "View Study",
       locationsTitle: "Our Locations",
       sundayWorship930: "Sunday Worship: 9:30 AM",
@@ -48,16 +52,7 @@
       score: "Score",
       questionLabel: "Question",
       galleryEmpty: "No images found in gallary/."
-       // Add to EN (if not present)
-study1Title: "The Parable of the Sower",
-study2Title: "The Good Samaritan",
-study2Desc: "Learning about love and compassion for our neighbors.",
-study3Title: "The Prodigal Son",
-study3Desc: "Discovering God's forgiveness and unconditional love.",
-activityCardTitle: "5-Minute Gospel Activity",
-activityCardDesc: "Fill-in-the-blank quiz with timer and scoring.",
-   
-   },
+    },
     si: {
       languageLabel: "භාෂාව",
       churchName: "ක්‍රිස්තුස්වහන්සේගේ සභාව",
@@ -77,30 +72,28 @@ activityCardDesc: "Fill-in-the-blank quiz with timer and scoring.",
       bibleStudiesTitle: "බයිබල් අධ්‍යයන",
       bibleStudiesSubtitle: "අන්තර්ක්‍රියාකාරී අධ්‍යයන ද්‍රව්‍ය හරහා දෙවියන් වචනය අධ්‍යයනය කරන්න",
       activitySectionHeading: "අන්තර්ක්‍රියාකාරී ක්‍රියාකාරකම: මිනිත්තු 5 එළිදරව්ව",
+      study1Title: "බීජ වපුරුසගේ උපමාව",
       study1Desc: "දෙවියන් වචනය වෙනස් හෘදයන් තුල වර්ධනය වන ආකාරය.",
+      study2Title: "සුභ සමාරියානියා",
+      study2Desc: "අපගේ අසල්වැසියන්ට ප්‍රේමය හා කරුණාව පෙන්වීම ගැන ඉගෙනගන්නා ලදි.",
+      study3Title: "වැනරපු පුතියා",
+      study3Desc: "දෙවියන්වහන්සේගේ සමාව සහ නිර්කොන්දේසි ප්‍රේමය සොයාගැනීම.",
+      activityCardTitle: "මිනිත්තු 5 සුවිශේෂ ක්‍රියාකාරකම",
+      activityCardDesc: "කාලය මැනුම සහ ලකුණු කිරීම සහිත හිස්තැන් පුරවීම.",
       downloadStudy: "අධ්‍යයනය බලන්න",
       locationsTitle: "අපගේ ස්ථාන",
       sundayWorship930: "ඉරිදා නමස්කාරය: පෙ.ව. 9:30",
       sunday930: "ඉරිදා: පෙ.ව. 9:30",
       activityTitle: "මිනිත්තු 5 බයිබල් අධ්‍යයනය: සුවිශේෂය",
-      activitySubtitle: "හිස් තැන් පුරවන්න (ආකාරය–අකුරු සංවේදී නොවේ).",
+      activitySubtitle: "හිස් තැන් පුරවන්න (අක්‍ෂර ප්‍රමාණය නොසලකා).",
       timeLeft: "අවශේෂ කාලය",
       reveal: "පිළිතුරු පෙන්වන්න",
       hideAnswers: "පිළිතුරු සඟවන්න",
       reset: "යළි පිහිටුවන්න",
       score: "ලකුණු",
       questionLabel: "ප්‍රශ්නය",
-      galleryEmpty: "gallary/ හි සවිස්තර රූප නොමැත."
-// Add to SI (Sinhala)
-study1Title: "බීජ වපුරුසගේ උපමාව",
-study2Title: "සුභ සමාරියානියා",
-study2Desc: "අපගේ අසල්වැසියන්ට ප්‍රේමය හා කරුණාව පෙන්වීම ගැන ඉගෙනගන්නා ලදි.",
-study3Title: "වැනරපු පුතියා",
-study3Desc: "දෙවියන්වහන්සේගේ සමාව සහ නිර්කොන්දේසි ප්‍රේමය සොයාගැනීම.",
-activityCardTitle: "මිනිත්තු 5 සුවිශේෂ ක්‍රියාකාරකම",
-activityCardDesc: "කාලය මැනුම සහ ලකුණු කිරීම සහිත හිස්තැන් පුරවීම.",
-
-   },
+      galleryEmpty: "gallary/ හි රූප නොමැත."
+    },
     ta: {
       languageLabel: "மொழி",
       churchName: "கிறிஸ்துவின் சபை",
@@ -120,13 +113,20 @@ activityCardDesc: "කාලය මැනුම සහ ලකුණු කිර
       bibleStudiesTitle: "வேதாகம ஆய்வுகள்",
       bibleStudiesSubtitle: "உரையாடும் படிப்புப் பொருள்கள் மூலம் தேவ வார்த்தை",
       activitySectionHeading: "இணைய செயல்: 5 நிமிட சுவிசேஷம்",
+      study1Title: "விதைப்பவர் உவமை",
       study1Desc: "விதவிதமான இதயங்களில் தேவ வார்த்தை வேரூன்றுவது.",
+      study2Title: "நல்ல சமாரியர்",
+      study2Desc: "அண்டைவர்களுக்கான அன்பும் கருணையும் பற்றி கற்பது.",
+      study3Title: "தீராத மகன் (தவறிச் சென்ற மகன்)",
+      study3Desc: "இறைவன் மன்னிப்பும் நிபந்தனையற்ற அன்பும் கண்டறிதல்.",
+      activityCardTitle: "5 நிமிட சுவிசேஷச் செயல்",
+      activityCardDesc: "நேரக் கணக்குடன்/மதிப்பெண்களுடன் காலியிடங்களை நிரப்பும் வினா.",
       downloadStudy: "ஆய்வைப் பார்க்க",
       locationsTitle: "எங்கள் இடங்கள்",
       sundayWorship930: "ஞாயிறு ஆராதனை: காலை 9:30",
       sunday930: "ஞாயிறு: காலை 9:30",
       activityTitle: "5 நிமிட வேதாகம ஆய்வு: சுவிசேஷம்",
-      activitySubtitle: "காலியான இடங்களை நிரப்புக (அகராதி பெரிய/சிறியப் பிரிவு பொருட்டல்ல).",
+      activitySubtitle: "காலியான இடங்களை நிரப்புக (உயிர்மெய் பெரிய/சிறிய பொருட்டல்ல).",
       timeLeft: "மீதமுள்ள நேரம்",
       reveal: "பதில் காண்பிக்க",
       hideAnswers: "பதில்களை மறைக்க",
@@ -134,24 +134,15 @@ activityCardDesc: "කාලය මැනුම සහ ලකුණු කිර
       score: "மதிப்பெண்",
       questionLabel: "கேள்வி",
       galleryEmpty: "gallary/ இல் படங்கள் இல்லை."
-   // Add to TA (Tamil)
-study1Title: "விதைப்பவர் உவமை",
-study2Title: " நல்ல சமாரியர்",
-study2Desc: "அண்டைவர்களுக்கான அன்பும் கருணையும் பற்றி கற்பது.",
-study3Title: "தீராத மகன் (தவறிச் சென்ற மகன்)",
-study3Desc: "இறைவன் மன்னிப்பும் நிபந்தனையற்ற அன்பும் கண்டறிதல்.",
-activityCardTitle: "5 நிமிட சுவிசேஷச் செயல்",
-activityCardDesc: "நேரக் கணக்குடன்/மதிப்பெண்களுடன் காலியிடங்களை நிரப்பும் வினா.",
-
-   }
+    }
   };
 
-  /* ------------------ Language ------------------ */
+  /* ------------ Language ------------ */
   const LANG_STORAGE_KEY = 'coc_lang';
   let currentLanguage = localStorage.getItem(LANG_STORAGE_KEY) || 'en';
 
-  function applyTranslations() {
-    $$('[data-lang-key]').forEach(el => {
+  function applyTranslations(){
+    $$('[data-lang-key]').forEach(el=>{
       const key = el.getAttribute('data-lang-key');
       const txt = translations[currentLanguage] && translations[currentLanguage][key];
       if (txt) el.textContent = txt;
@@ -159,155 +150,116 @@ activityCardDesc: "நேரக் கணக்குடன்/மதிப்�
     document.body.classList.remove('font-sinhala','font-tamil');
     if (currentLanguage === 'si') document.body.classList.add('font-sinhala');
     if (currentLanguage === 'ta') document.body.classList.add('font-tamil');
-    const lbl = $('#lang-label'); if (lbl) lbl.textContent = translations[currentLanguage]?.languageLabel || 'Language';
+
+    const sel = $('#lang-select'); if (sel) sel.value = currentLanguage;
   }
 
- function initLanguage(){
-  // 1) Native <select> support (preferred & simplest)
-  const sel = document.getElementById('lang-select');
-  if (sel) {
-    // initialize
-    sel.value = currentLanguage;
-    sel.addEventListener('change', (e)=>{
-      currentLanguage = e.target.value || 'en';
-      localStorage.setItem(LANG_STORAGE_KEY, currentLanguage);
-      applyTranslations();
-    });
+  function initLanguage(){
+    const sel = $('#lang-select');
+    if (sel) {
+      sel.value = currentLanguage;
+      on(sel, 'change', e=>{
+        currentLanguage = e.target.value || 'en';
+        localStorage.setItem(LANG_STORAGE_KEY, currentLanguage);
+        applyTranslations();
+      });
+    }
+    applyTranslations();
   }
 
-  // 2) (Optional) legacy dropdown support — only runs if present in HTML
-  const btn  = document.getElementById('lang-btn');
-  const menu = document.getElementById('lang-menu');
-  if (btn && menu) {
-    btn.addEventListener('click', (e)=>{
-      e.preventDefault();
-      const open = menu.classList.toggle('hidden') === false;
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+  /* ------------ Year ------------ */
+  function initYear(){ const y=$('#year'); if (y) y.textContent=new Date().getFullYear(); }
 
-    // Event delegation inside menu
-    menu.addEventListener('click', (e)=>{
-      const item = e.target.closest('.lang-item');
-      if (!item) return;
-      e.preventDefault();
-      const lang = item.dataset.lang || 'en';
-      currentLanguage = lang;
-      localStorage.setItem(LANG_STORAGE_KEY, lang);
-      applyTranslations();
-      menu.classList.add('hidden');
-      btn.setAttribute('aria-expanded','false');
-
-      // keep <select> in sync if it exists
-      if (sel) sel.value = lang;
-    });
-
-    document.addEventListener('click', (e)=>{
-      if (!btn.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.add('hidden');
-        btn.setAttribute('aria-expanded','false');
-      }
-    });
-  }
-
-  applyTranslations();
-}
-
-  /* ------------------ Year ------------------ */
-  function initYear(){ const y = $('#year'); if (y) y.textContent = new Date().getFullYear(); }
-
-  /* ------------------ Background (local, per visitor) ------------------ */
+  /* ------------ Background (local) ------------ */
   const BG_KEY = 'coc_custom_bg';
   function applyBackground(url){
     const ov = $('#customBgOverlay'); if (!ov) return;
-    if (url) { ov.style.backgroundImage = `url("${url}")`; ov.style.display = 'block'; }
-    else { ov.style.backgroundImage = ''; ov.style.display = 'none'; }
+    if (url) { ov.style.backgroundImage = `url("${url}")`; ov.style.display='block'; }
+    else { ov.style.backgroundImage=''; ov.style.display='none'; }
   }
   function initBackground(){
     const saved = localStorage.getItem(BG_KEY);
     if (saved) applyBackground(saved);
     const input = $('#imageInput');
-    on(input, 'change', (e)=>{
-      const file = e.target.files?.[0]; if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => { const data = reader.result; localStorage.setItem(BG_KEY, data); applyBackground(data); };
-      reader.readAsDataURL(file);
+    on(input,'change',e=>{
+      const f = e.target.files?.[0]; if (!f) return;
+      const r = new FileReader();
+      r.onload = ()=>{ const data=r.result; localStorage.setItem(BG_KEY,data); applyBackground(data); };
+      r.readAsDataURL(f);
     });
-    // expose reset for the button in HTML
     window.resetBackground = function(){ localStorage.removeItem(BG_KEY); applyBackground(null); };
   }
 
-  /* ------------------ Studies open/close ------------------ */
+  /* ------------ Studies open/close ------------ */
   window.toggleStudy = function(id){
-    const panel = document.getElementById(`${id}-content`);
-    if (!panel) return;
-    panel.classList.toggle('hidden');
-    panel.scrollIntoView({behavior:'smooth', block:'start'});
+    const p = document.getElementById(`${id}-content`);
+    if (!p) return;
+    p.classList.toggle('hidden');
+    p.scrollIntoView({behavior:'smooth', block:'start'});
   };
 
-  /* ------------------ Gallery (list.json + fallbacks) ------------------ */
+  /* ------------ Gallery (list.json + fallback) ------------ */
   async function initGallery(){
     const slider = $('#slider'), dots = $('#dots'), grid = $('#galleryGrid');
     if (!slider || !dots || !grid) return;
 
     const build = (urls)=>{
-      slider.innerHTML = ''; dots.innerHTML=''; grid.innerHTML='';
+      slider.innerHTML=''; dots.innerHTML=''; grid.innerHTML='';
       if (!urls.length) {
-        const empty = document.createElement('div');
-        empty.className = 'slide active';
-        empty.innerHTML = `<div class="w-full h-full flex items-center justify-center text-white/80">${translations[currentLanguage]?.galleryEmpty || 'No images found in gallary/.'}</div>`;
+        const empty=document.createElement('div');
+        empty.className='slide active';
+        empty.innerHTML=`<div class="w-full h-full flex items-center justify-center text-white/80">${translations[currentLanguage]?.galleryEmpty || 'No images found in gallary/.'}</div>`;
         slider.appendChild(empty);
         return;
       }
-
       const slides=[]; let cur=0; let timer=null;
 
       urls.forEach((u,i)=>{
-        const s = document.createElement('div'); s.className = 'slide' + (i===0?' active':'');
-        const img = document.createElement('img'); img.src = u + '?v=' + Date.now(); img.alt='Gallery';
+        const s=document.createElement('div'); s.className='slide' + (i===0?' active':'');
+        const img=document.createElement('img'); img.src=u+'?v='+Date.now(); img.alt='Gallery';
         s.appendChild(img); slider.appendChild(s); slides.push(s);
 
-        const d = document.createElement('button'); d.className = 'dot' + (i===0?' active':'');
+        const d=document.createElement('button'); d.className='dot' + (i===0?' active':'');
         on(d,'click',()=>go(i)); dots.appendChild(d);
 
-        const card = document.createElement('div'); card.className='gal-card';
-        const t = document.createElement('img'); t.className='gal-thumb'; t.src = u; t.alt='Gallery';
+        const card=document.createElement('div'); card.className='gal-card';
+        const t=document.createElement('img'); t.className='gal-thumb'; t.src=u; t.alt='Gallery';
         card.appendChild(t); grid.appendChild(card);
       });
 
       function go(i){
         slides[cur].classList.remove('active'); dots.children[cur].classList.remove('active');
-        cur = (i + slides.length) % slides.length;
+        cur=(i+slides.length)%slides.length;
         slides[cur].classList.add('active'); dots.children[cur].classList.add('active');
         restart();
       }
       function next(){ go(cur+1) } function prev(){ go(cur-1) }
-      const nextBtn = $('#nextBtn'), prevBtn = $('#prevBtn');
-      if (nextBtn) nextBtn.onclick = next;
-      if (prevBtn) prevBtn.onclick = prev;
+      const nextBtn=$('#nextBtn'), prevBtn=$('#prevBtn');
+      if (nextBtn) nextBtn.onclick=next;
+      if (prevBtn) prevBtn.onclick=prev;
 
-      function restart(){ if (timer) clearInterval(timer); if (slides.length>1) timer = setInterval(next, 5000); }
+      function restart(){ if (timer) clearInterval(timer); if (slides.length>1) timer=setInterval(next,5000); }
       restart();
     };
 
-    // 1) Try gallary/list.json
     try{
       const r = await fetch('gallary/list.json?ts='+Date.now(), {cache:'no-store'});
       if (!r.ok) throw new Error('no list.json');
-      const names = await r.json(); // ["c.jpeg", ...]
-      const urls = names.map(n => `gallary/${n}`);
-      if (urls.length) { build(urls); return; }
-      throw new Error('empty list.json');
+      const names = await r.json();
+      const urls = names.map(n=>`gallary/${n}`);
+      if (urls.length) return build(urls);
+      throw new Error('empty list');
     }catch(_){}
-    // 2) Fallback: probe known files
-    const candidates = ['gallary/c.jpeg','gallary/ca.jpeg','gallary/cb.jpeg','gallary/cc.jpeg'];
-    const urls = [];
-    for (const u of candidates) {
-      try { const head = await fetch(u, {method:'HEAD', cache:'no-store'}); if (head.ok) urls.push(u); } catch {}
+
+    const candidates=['gallary/c.jpeg','gallary/ca.jpeg','gallary/cb.jpeg','gallary/cc.jpeg'];
+    const urls=[];
+    for (const u of candidates){
+      try{ const head=await fetch(u,{method:'HEAD',cache:'no-store'}); if(head.ok) urls.push(u); }catch{}
     }
     build(urls);
   }
 
-  /* ------------------ Gospel Activity ------------------ */
+  /* ------------ Gospel Activity ------------ */
   function initActivity(){
     const root = $('#activity-root'); if (!root) return;
 
@@ -399,28 +351,29 @@ activityCardDesc: "நேரக் கணக்குடன்/மதிப்�
       DATA.forEach(q=>q.answers.forEach((a,i)=>{
         const k=`${q.id}_${i}`; if (norm(inputs[k]||'')===norm(a)) correct++;
       }));
-      const sc = $('#scoreCorrect'); if (sc) sc.textContent = String(correct);
+      const sc=$('#scoreCorrect'); if (sc) sc.textContent=String(correct);
     }
 
     // timer 5:00
-    let timeLeft = 300;
-    const timerEl = $('#timer');
+    let timeLeft=300; const timerEl=$('#timer');
     setInterval(()=>{
-      if (timeLeft <= 0) return;
+      if (timeLeft<=0) return;
       timeLeft--;
-      const m = String(Math.floor(timeLeft/60)).padStart(2,'0');
-      const s = String(timeLeft%60).padStart(2,'0');
-      if (timerEl) timerEl.textContent = `${m}:${s}`;
+      const m=String(Math.floor(timeLeft/60)).padStart(2,'0');
+      const s=String(timeLeft%60).padStart(2,'0');
+      if (timerEl) timerEl.textContent=`${m}:${s}`;
     },1000);
   }
 
-  /* ------------------ Boot ------------------ */
-  document.addEventListener('DOMContentLoaded', () => {
+  /* ------------ Boot ------------ */
+  function boot(){
     initLanguage();
     initYear();
     initBackground();
     initGallery();
     initActivity();
-  });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 
 })();
