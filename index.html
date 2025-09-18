@@ -27,32 +27,30 @@
   <div id="customBgOverlay" class="custom-bg-overlay" style="display:none;"></div>
 
   <!-- header -->
-<!-- header -->
-<header class="bg-white shadow-lg sticky top-0 z-50">
-  <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-    <!-- left: logo + title -->
-    <div class="flex items-center space-x-4">
-      <div class="h-12 w-12 bg-blue-600 rounded-full flex items-center justify-center">
-        <span class="text-white font-bold text-xl">✝</span>
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- left: logo + title -->
+      <div class="flex items-center space-x-4">
+        <div class="h-12 w-12 bg-blue-600 rounded-full flex items-center justify-center">
+          <span class="text-white font-bold text-xl">✝</span>
+        </div>
+        <span class="text-2xl font-bold text-gray-900 font-custom" data-lang-key="churchName">
+          Church of Christ
+        </span>
       </div>
-      <span class="text-2xl font-bold text-gray-900 font-custom" data-lang-key="churchName">
-        Church of Christ
-      </span>
-    </div>
 
-    <!-- right: language -->
-<div class="flex items-center space-x-6">
-  <!-- Simple native selector: no menu JS needed -->
-  <label for="lang-select" class="sr-only">Language</label>
-  <select id="lang-select"
-          class="rounded-md border border-gray-300 px-3 py-2 bg-white text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300">
-    <option value="en">English</option>
-    <option value="si">සිංහල</option>
-    <option value="ta">தமிழ்</option>
-  </select>
-</div>
-
-</header>
+      <!-- right: language (simple, reliable) -->
+      <div class="flex items-center space-x-6">
+        <label for="lang-select" class="sr-only">Language</label>
+        <select id="lang-select"
+                class="rounded-md border border-gray-300 px-3 py-2 bg-white text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300">
+          <option value="en">English</option>
+          <option value="si">සිංහල</option>
+          <option value="ta">தமிழ்</option>
+        </select>
+      </div>
+    </nav>
+  </header>
 
   <main>
     <!-- hero -->
@@ -110,10 +108,7 @@
           <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 rounded-lg mb-4 flex items-center justify-center">
             <span class="text-white text-6xl">🌱</span>
           </div>
-        <h3 class="text-3xl font-bold text-gray-900 mb-4" data-lang-key="activitySectionHeading">
-  Interactive Activity: 5-Minute Gospel
-</h3>
-
+          <h3 class="text-3xl font-bold text-gray-900 mb-4" data-lang-key="activitySectionHeading">Interactive Activity: 5-Minute Gospel</h3>
           <p class="text-gray-600 mb-4" data-lang-key="study1Desc">Understanding how God's word takes root in different hearts.</p>
           <button onclick="toggleStudy('study1')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
             <span data-lang-key="downloadStudy">View Study</span>
@@ -146,11 +141,8 @@
           <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg mb-4 flex items-center justify-center">
             <span class="text-white text-6xl">📜</span>
           </div>
-         <h3 class="text-2xl font-bold mb-2" data-lang-key="activityCardTitle">5-Minute Gospel Activity</h3>
-<p class="text-gray-600 mb-4" data-lang-key="activityCardDesc">
-  Fill-in-the-blank quiz with timer and scoring.
-</p>
-
+          <h3 class="text-2xl font-bold mb-2" data-lang-key="activityCardTitle">5-Minute Gospel Activity</h3>
+          <p class="text-gray-600 mb-4" data-lang-key="activityCardDesc">Fill-in-the-blank quiz with timer and scoring.</p>
           <a href="#gospel-activity" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">Start Activity</a>
         </div>
       </div>
@@ -204,7 +196,7 @@
 
     <!-- inline activity -->
     <section id="gospel-activity" class="container mx-auto px-6 py-12">
-      <h3 class="text-3xl font-bold text-gray-900 mb-4">Interactive Activity: 5-Minute Gospel</h3>
+      <h3 class="text-3xl font-bold text-gray-900 mb-4" data-lang-key="activitySectionHeading">Interactive Activity: 5-Minute Gospel</h3>
       <div id="activity-root" class="bg-white rounded-2xl shadow p-4 md:p-6"></div>
     </section>
 
@@ -226,8 +218,6 @@
 
     <!-- locations -->
     <section id="locations" class="container mx-auto px-6 py-12">
-      <p class="text-blue-600 font-semibold" data-lang-key="sunday930">Sunday: 9:30 AM</p>
-
       <div class="text-center mb-12">
         <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="locationsTitle">Our Locations</h2>
       </div>
@@ -265,10 +255,9 @@
       <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
       <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
     </div>
-  </footer>  
-  
+  </footer>
+
   <!-- Your app code -->
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
