@@ -48,7 +48,16 @@
       score: "Score",
       questionLabel: "Question",
       galleryEmpty: "No images found in gallary/."
-    },
+       // Add to EN (if not present)
+study1Title: "The Parable of the Sower",
+study2Title: "The Good Samaritan",
+study2Desc: "Learning about love and compassion for our neighbors.",
+study3Title: "The Prodigal Son",
+study3Desc: "Discovering God's forgiveness and unconditional love.",
+activityCardTitle: "5-Minute Gospel Activity",
+activityCardDesc: "Fill-in-the-blank quiz with timer and scoring.",
+   
+   },
     si: {
       languageLabel: "භාෂාව",
       churchName: "ක්‍රිස්තුස්වහන්සේගේ සභාව",
@@ -82,7 +91,16 @@
       score: "ලකුණු",
       questionLabel: "ප්‍රශ්නය",
       galleryEmpty: "gallary/ හි සවිස්තර රූප නොමැත."
-    },
+// Add to SI (Sinhala)
+study1Title: "බීජ වපුරුසගේ උපමාව",
+study2Title: "සුභ සමාරියානියා",
+study2Desc: "අපගේ අසල්වැසියන්ට ප්‍රේමය හා කරුණාව පෙන්වීම ගැන ඉගෙනගන්නා ලදි.",
+study3Title: "වැනරපු පුතියා",
+study3Desc: "දෙවියන්වහන්සේගේ සමාව සහ නිර්කොන්දේසි ප්‍රේමය සොයාගැනීම.",
+activityCardTitle: "මිනිත්තු 5 සුවිශේෂ ක්‍රියාකාරකම",
+activityCardDesc: "කාලය මැනුම සහ ලකුණු කිරීම සහිත හිස්තැන් පුරවීම.",
+
+   },
     ta: {
       languageLabel: "மொழி",
       churchName: "கிறிஸ்துவின் சபை",
@@ -116,7 +134,16 @@
       score: "மதிப்பெண்",
       questionLabel: "கேள்வி",
       galleryEmpty: "gallary/ இல் படங்கள் இல்லை."
-    }
+   // Add to TA (Tamil)
+study1Title: "விதைப்பவர் உவமை",
+study2Title: " நல்ல சமாரியர்",
+study2Desc: "அண்டைவர்களுக்கான அன்பும் கருணையும் பற்றி கற்பது.",
+study3Title: "தீராத மகன் (தவறிச் சென்ற மகன்)",
+study3Desc: "இறைவன் மன்னிப்பும் நிபந்தனையற்ற அன்பும் கண்டறிதல்.",
+activityCardTitle: "5 நிமிட சுவிசேஷச் செயல்",
+activityCardDesc: "நேரக் கணக்குடன்/மதிப்பெண்களுடன் காலியிடங்களை நிரப்பும் வினா.",
+
+   }
   };
 
   /* ------------------ Language ------------------ */
