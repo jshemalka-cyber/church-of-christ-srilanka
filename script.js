@@ -135,35 +135,55 @@
     const lbl = $('#lang-label'); if (lbl) lbl.textContent = translations[currentLanguage]?.languageLabel || 'Language';
   }
 
-  function initLanguage() {
-    const btn = $('#lang-btn'), menu = $('#lang-menu');
-    if (!btn || !menu) return;
+ function initLanguage(){
+  // 1) Native <select> support (preferred & simplest)
+  const sel = document.getElementById('lang-select');
+  if (sel) {
+    // initialize
+    sel.value = currentLanguage;
+    sel.addEventListener('change', (e)=>{
+      currentLanguage = e.target.value || 'en';
+      localStorage.setItem(LANG_STORAGE_KEY, currentLanguage);
+      applyTranslations();
+    });
+  }
 
-    on(btn, 'click', (e)=>{
+  // 2) (Optional) legacy dropdown support — only runs if present in HTML
+  const btn  = document.getElementById('lang-btn');
+  const menu = document.getElementById('lang-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', (e)=>{
       e.preventDefault();
       const open = menu.classList.toggle('hidden') === false;
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    $$('.lang-item').forEach(it=>{
-      on(it, 'click', (e)=>{
-        e.preventDefault();
-        const lang = it.dataset.lang || 'en';
-        currentLanguage = lang;
-        localStorage.setItem(LANG_STORAGE_KEY, lang);
-        applyTranslations();
-        menu.classList.add('hidden');
-        btn.setAttribute('aria-expanded','false');
-      });
+
+    // Event delegation inside menu
+    menu.addEventListener('click', (e)=>{
+      const item = e.target.closest('.lang-item');
+      if (!item) return;
+      e.preventDefault();
+      const lang = item.dataset.lang || 'en';
+      currentLanguage = lang;
+      localStorage.setItem(LANG_STORAGE_KEY, lang);
+      applyTranslations();
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded','false');
+
+      // keep <select> in sync if it exists
+      if (sel) sel.value = lang;
     });
-    on(document, 'click', (e)=>{
+
+    document.addEventListener('click', (e)=>{
       if (!btn.contains(e.target) && !menu.contains(e.target)) {
         menu.classList.add('hidden');
         btn.setAttribute('aria-expanded','false');
       }
     });
-
-    applyTranslations();
   }
+
+  applyTranslations();
+}
 
   /* ------------------ Year ------------------ */
   function initYear(){ const y = $('#year'); if (y) y.textContent = new Date().getFullYear(); }
