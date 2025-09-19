@@ -254,6 +254,20 @@
       <a href="#" class="text-gray-400 hover:text-white transition-colors">Facebook</a>
       <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
       <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
+
+/* Improve hero readability over any background */
+.hero-bg { position: relative; }
+.hero-bg::before{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.25));
+  pointer-events:none;
+}
+.hero-bg h1, .hero-bg p, .hero-bg a {
+  position: relative;  /* stay above overlay */
+  text-shadow: 0 2px 8px rgba(0,0,0,.35);
+}
+
     </div>
   </footer>
 
