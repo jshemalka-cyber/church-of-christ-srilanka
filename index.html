@@ -1,234 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title data-lang-key="churchName">Church of Christ — Sri Lanka</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Noto+Sans+Sinhala:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Church of Christ - Sri Lanka</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
 </head>
-
 <body class="bg-gray-100 text-gray-800 font-sans">
-  <div class="upload-controls">
-    <label for="imageInput" class="upload-btn" data-lang-key="uploadBgLabel">📷 Upload Background</label>
-    <input type="file" id="imageInput" accept="image/*"/>
-    <button class="reset-btn" onclick="resetBackground()" data-lang-key="resetBgBtn">Reset</button>
-  </div>
-  <div id="customBgOverlay" class="custom-bg-overlay" style="display:none;"></div>
-
-  <header class="bg-white shadow-lg sticky top-0 z-50">
-    <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center space-x-4">
-        <div class="h-12 w-12 bg-blue-600 rounded-full flex items-center justify-center">
-          <span class="text-white font-bold text-xl">✝</span>
-        </div>
-        <span class="text-2xl font-bold text-gray-900 font-custom" data-lang-key="churchName">
-          Church of Christ
-        </span>
+  <header class="bg-white shadow-lg sticky top-0 z-50 py-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="flex items-center">
+        <img src="logo.png" alt="Church of Christ Logo" class="h-8 mr-4">
+        <h1 class="text-xl font-bold">Church of Christ</h1>
       </div>
-      <div class="flex items-center space-x-6">
-        <label for="lang-select" class="sr-only" data-lang-key="languageLabel">Language</label>
-        <select id="lang-select"
-                class="rounded-md border border-gray-300 px-3 py-2 bg-white text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300">
-          <option value="en" data-lang-key="langOptEn">English</option>
-          <option value="si" data-lang-key="langOptSi">සිංහල</option>
-          <option value="ta" data-lang-key="langOptTa">தமிழ்</option>
-        </select>
-      </div>
-    </nav>
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="#" class="text-gray-600 hover:text-gray-800">English</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-gray-800">සිංහල</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-gray-800">தமிழ்</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section id="hero" class="text-white py-20 text-center hero-bg">
-      <h1 class="text-5xl font-bold mb-4" data-lang-key="heroTitle">Welcome to the Church of Christ</h1>
-      <p class="text-xl mb-6" data-lang-key="heroSubtitle">Seeking God's truth and sharing His love.</p>
-      <a href="#locations" class="btn-primary bg-white text-blue-800 px-6 py-3 rounded-lg font-bold hover:bg-gray-200 transition-colors" data-lang-key="heroCta">
-        Find a Location Near You
-      </a>
-    </section>
-
-    <section id="bible-verse" class="text-white py-12 text-center verse-bg">
-      <p class="text-3xl font-serif italic mb-2" data-lang-key="bibleVerse">The churches of Christ salute you.</p>
-      <p class="text-xl font-bold" data-lang-key="bibleReference">— Romans 16:16</p>
-    </section>
-
-    <section id="about" class="container mx-auto px-6 py-12">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="aboutTitle">Our Vision & Mission</h2>
-        <p class="text-lg text-gray-600" data-lang-key="missionStatement">We strive to follow the New Testament pattern of worship and Christian living.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">📖</div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard1Title">Bible Study</h3>
-          <p class="text-gray-600" data-lang-key="aboutCard1Text">We believe in studying God's word together to grow in faith and understanding.</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">🤝</div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard2Title">Fellowship</h3>
-          <p class="text-gray-600" data-lang-key="aboutCard2Text">Building strong relationships within our Christian community.</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">❤️</div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard3Title">Service</h3>
-          <p class="text-gray-600" data-lang-key="aboutCard3Text">Serving our community and sharing Christ's love through action.</p>
-        </div>
+    <section class="bg-blue-500 text-white py-20">
+      <div class="container mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-4">Welcome to the Church of Christ</h2>
+        <p class="text-xl mb-8">Seeking God's truth and sharing His love.</p>
+        <a href="#locations" class="bg-white text-blue-500 px-6 py-3 rounded-md hover:bg-blue-200">Find a Location</a>
       </div>
     </section>
 
-    <section id="bible-studies" class="container mx-auto px-6 py-12">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="bibleStudiesTitle">Bible Studies</h2>
-        <p class="text-lg text-gray-600" data-lang-key="bibleStudiesSubtitle">Explore God's word through our interactive study materials</p>
+    <section class="py-12">
+      <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-4">The churches of Christ salute you.</h2>
+        <p class="text-gray-600 mb-8">- Romans 16:16</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 rounded-lg mb-4 flex items-center justify-center">
-            <span class="text-white text-6xl">🌱</span>
-          </div>
-          <h3 class="text-3xl font-bold text-gray-900 mb-4" data-lang-key="activitySectionHeading">Interactive Activity: 5-Minute Gospel</h3>
-          <p class="text-gray-600 mb-4" data-lang-key="study1Desc">Understanding how God's word takes root in different hearts.</p>
-          <button onclick="toggleStudy('study1')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-            <span data-lang-key="downloadStudy">View Study</span>
-          </button>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg mb-4 flex items-center justify-center">
-            <span class="text-white text-6xl">🤝</span>
-          </div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="study2Title">The Good Samaritan</h3>
-          <p class="text-gray-600 mb-4" data-lang-key="study2Desc">Learning about love and compassion for our neighbors.</p>
-          <button onclick="toggleStudy('study2')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-            <span data-lang-key="downloadStudy">View Study</span>
-          </button>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg mb-4 flex items-center justify-center">
-            <span class="text-white text-6xl">🏠</span>
-          </div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="study3Title">The Prodigal Son</h3>
-          <p class="text-gray-600 mb-4" data-lang-key="study3Desc">Discovering God's forgiveness and unconditional love.</p>
-          <button onclick="toggleStudy('study3')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-            <span data-lang-key="downloadStudy">View Study</span>
-          </button>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg mb-4 flex items-center justify-center">
-            <span class="text-white text-6xl">📜</span>
-          </div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="activityCardTitle">5-Minute Gospel Activity</h3>
-          <p class="text-gray-600 mb-4" data-lang-key="activityCardDesc">Fill-in-the-blank quiz with timer and scoring.</p>
-          <a href="#gospel-activity" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-lang-key="startActivity">
-            Start Activity
-          </a>
-        </div>
-      </div>
+    </section>
 
-      <!-- study panels now translatable -->
-      <div id="study1-content" class="study-content mt-8 hidden">
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <h4 class="text-2xl font-bold mb-4" data-lang-key="study1Title">The Parable of the Sower</h4>
-          <ul class="list-disc pl-6 text-gray-700">
-            <li data-lang-key="study1Path">The Path: Hearts hardened to God's word</li>
-            <li data-lang-key="study1Rocky">Rocky Ground: Shallow faith that withers under pressure</li>
-            <li data-lang-key="study1Thorns">Thorns: Hearts choked by worldly concerns</li>
-            <li data-lang-key="study1Good">Good Soil: Hearts that receive and act on God's word</li>
-          </ul>
-          <div class="mt-4 text-right">
-            <button onclick="toggleStudy('study1')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700" data-lang-key="closeBtn">Close</button>
+    <section class="bg-white py-12">
+      <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-4">Our Vision & Mission</h2>
+        <p class="text-gray-600 mb-8">We strive to follow the New Testament pattern of worship and Christian living.</p>
+        <div class="grid grid-cols-3 gap-8">
+          <div class="bg-gray-100 p-6 rounded-md shadow-md">
+            <img src="bible.png" alt="Bible Study" class="h-16 mb-4">
+            <h3 class="text-xl font-bold mb-2">Bible Study</h3>
+            <p class="text-gray-600">We believe in studying God's word together to grow in faith and understanding.</p>
           </div>
-        </div>
-      </div>
-      <div id="study2-content" class="study-content mt-8 hidden">
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <h4 class="text-2xl font-bold mb-4" data-lang-key="study2Title">The Good Samaritan</h4>
-          <ul class="list-disc pl-6 text-gray-700">
-            <li data-lang-key="study2Compassion">Compassion: Seeing others' needs and being moved to help</li>
-            <li data-lang-key="study2Action">Action: Not just feeling sorry, but doing something</li>
-            <li data-lang-key="study2Sacrifice">Sacrifice: Giving of our time, money, and energy</li>
-            <li data-lang-key="study2Universality">Universality: Love knows no boundaries</li>
-          </ul>
-          <div class="mt-4 text-right">
-            <button onclick="toggleStudy('study2')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700" data-lang-key="closeBtn">Close</button>
+          <div class="bg-gray-100 p-6 rounded-md shadow-md">
+            <img src="fellowship.png" alt="Fellowship" class="h-16 mb-4">
+            <h3 class="text-xl font-bold mb-2">Fellowship</h3>
+            <p class="text-gray-600">We gather together to build relationships and support one another in Christ.</p>
           </div>
-        </div>
-      </div>
-      <div id="study3-content" class="study-content mt-8 hidden">
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <h4 class="text-2xl font-bold mb-4" data-lang-key="study3Title">The Prodigal Son</h4>
-          <ul class="list-disc pl-6 text-gray-700">
-            <li data-lang-key="study3Rebellion">Rebellion</li>
-            <li data-lang-key="study3Consequences">Consequences</li>
-            <li data-lang-key="study3Repentance">Repentance</li>
-            <li data-lang-key="study3Grace">Grace</li>
-          </ul>
-          <div class="mt-4 text-right">
-            <button onclick="toggleStudy('study3')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700" data-lang-key="closeBtn">Close</button>
+          <div class="bg-gray-100 p-6 rounded-md shadow-md">
+            <img src="service.png" alt="Service" class="h-16 mb-4">
+            <h3 class="text-xl font-bold mb-2">Service</h3>
+            <p class="text-gray-600">We strive to serve our community and share the love of Christ with others.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="gospel-activity" class="container mx-auto px-6 py-12">
-      <h3 class="text-3xl font-bold text-gray-900 mb-4" data-lang-key="activitySectionHeading">Interactive Activity: 5-Minute Gospel</h3>
-      <div id="activity-root" class="bg-white rounded-2xl shadow p-4 md:p-6"></div>
+    <section class="py-12">
+      <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-4">5-Minute Gospel Activity</h2>
+        <p class="text-gray-600 mb-8">Fill-in-the-blank quiz with timer and scoring.</p>
+        <button class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600">Start Activity</button>
+      </div>
     </section>
 
-    <section id="gallery" class="container mx-auto px-6 py-12">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-3xl font-bold text-gray-900" data-lang-key="galleryTitle">Gallery</h2>
-        <span class="text-sm text-gray-500" data-lang-key="gallerySubtitle">Add images by committing them to <code>gallary/</code></span>
+    <section class="bg-white py-12" id="gallery">
+      <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-4">Gallery</h2>
+        <p class="text-gray-600 mb-8">Add images by committing them to the "gallery/" directory.</p>
+        <div class="grid grid-cols-3 gap-4">
+          <!-- Add image gallery here -->
+        </div>
       </div>
-      <div class="slider aspect-[16/9] mb-6" id="slider">
-        <button class="navBtn navPrev" id="prevBtn" aria-label="Previous" data-lang-key="galleryPrev">‹</button>
-        <button class="navBtn navNext" id="nextBtn" aria-label="Next" data-lang-key="galleryNext">›</button>
-        <div class="slider-nav" id="dots"></div>
-      </div>
-      <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
     </section>
 
-    <section id="locations" class="container mx-auto px-6 py-12">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="locationsTitle">Our Locations</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">📍</div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="locationBambalapitiya">Bambalapitiya</h3>
-          <p class="text-blue-600 font-semibold mb-1" data-lang-key="locationBambPhone1">📱 0773029098</p>
-          <p class="text-blue-600 font-semibold mb-2" data-lang-key="locationBambPhone2">📞 011 2580488</p>
-          <p class="text-blue-600 font-semibold" data-lang-key="sundayWorship930">Sunday Worship: 9:30 AM</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">📍</div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="locationWennappuwa">Wennappuwa</h3>
-          <p class="text-blue-600 font-semibold mb-1" data-lang-key="locationWennPhone1">📱 0718252828</p>
-          <p class="text-blue-600 font-semibold mb-2" data-lang-key="locationWennEmail">✉️ curchofchristwennappuwa@mail.com</p>
-          <p class="text-blue-600 font-semibold" data-lang-key="sundayWorship930">Sunday Worship: 9:30 AM</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">🎓</div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="locationBatticaloa">Batticaloa</h3>
-          <p class="text-gray-600 mb-2" data-lang-key="locationBattAddress1">7A, Kumaraththan Kovil Road</p>
-          <p class="text-gray-600 mb-2" data-lang-key="locationBattAddress2">Urani, Batticaloa, Sri Lanka</p>
-          <p class="text-blue-600 font-semibold mb-1" data-lang-key="locationBattPhone">📱 0717060112</p>
-          <p class="text-blue-600 font-semibold" data-lang-key="locationBattEmail">✉️ cocinsrilanka@gmail.com</p>
+    <section class="py-12" id="locations">
+      <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-4">Our Locations</h2>
+        <div class="grid grid-cols-2 gap-8">
+          <!-- Add location details here -->
         </div>
       </div>
     </section>
   </main>
 
   <footer class="bg-gray-900 text-white py-8 text-center">
-    <p>&copy; <span id="year"></span> <span data-lang-key="churchName">Church of Christ</span>. All rights reserved.</p>
-    <div class="flex justify-center space-x-4 mt-4">
-      <a href="#" class="text-gray-400 hover:text-white transition-colors" data-lang-key="footerFacebook">Facebook</a>
-      <a href="#" class="text-gray-400 hover:text-white transition-colors" data-lang-key="footerTwitter">Twitter</a>
-      <a href="#" class="text-gray-400 hover:text-white transition-colors" data-lang-key="footerInstagram">Instagram</a>
+    <p>&copy; 2025 Church of Christ. All rights reserved.</p>
+    <div class="mt-4">
+      <a href="#" class="text-gray-400 hover:text-gray-300 mr-4">Facebook</a>
+      <a href="#" class="text-gray-400 hover:text-gray-300 mr-4">Twitter</a>
+      <a href="#" class="text-gray-400 hover:text-gray-300">Instagram</a>
     </div>
   </footer>
-  <script src="script.js"></script>
 </body>
 </html>
