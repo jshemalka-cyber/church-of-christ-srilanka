@@ -4,21 +4,14 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Church of Christ — Sri Lanka</title>
-
-  <!-- Tailwind (CDN, safe for GitHub Pages) -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Noto+Sans+Sinhala:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet"/>
-
-  <!-- Your custom CSS -->
   <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body class="bg-gray-100 text-gray-800 font-sans">
-  <!-- site-wide background controls (local to each visitor) -->
   <div class="upload-controls">
     <label for="imageInput" class="upload-btn">📷 Upload Background</label>
     <input type="file" id="imageInput" accept="image/*"/>
@@ -26,10 +19,8 @@
   </div>
   <div id="customBgOverlay" class="custom-bg-overlay" style="display:none;"></div>
 
-  <!-- header -->
   <header class="bg-white shadow-lg sticky top-0 z-50">
     <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-      <!-- left: logo + title -->
       <div class="flex items-center space-x-4">
         <div class="h-12 w-12 bg-blue-600 rounded-full flex items-center justify-center">
           <span class="text-white font-bold text-xl">✝</span>
@@ -38,8 +29,6 @@
           Church of Christ
         </span>
       </div>
-
-      <!-- right: language (simple, reliable) -->
       <div class="flex items-center space-x-6">
         <label for="lang-select" class="sr-only">Language</label>
         <select id="lang-select"
@@ -53,7 +42,6 @@
   </header>
 
   <main>
-    <!-- hero -->
     <section id="hero" class="text-white py-20 text-center hero-bg">
       <h1 class="text-5xl font-bold mb-4" data-lang-key="heroTitle">Welcome to the Church of Christ</h1>
       <p class="text-xl mb-6" data-lang-key="heroSubtitle">Seeking God's truth and sharing His love.</p>
@@ -62,32 +50,27 @@
       </a>
     </section>
 
-    <!-- verse -->
     <section id="bible-verse" class="text-white py-12 text-center verse-bg">
       <p class="text-3xl font-serif italic mb-2" data-lang-key="bibleVerse">The churches of Christ salute you.</p>
       <p class="text-xl font-bold" data-lang-key="bibleReference">— Romans 16:16</p>
     </section>
 
-    <!-- about -->
     <section id="about" class="container mx-auto px-6 py-12">
       <div class="text-center mb-12">
         <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="aboutTitle">Our Vision & Mission</h2>
         <p class="text-lg text-gray-600" data-lang-key="missionStatement">We strive to follow the New Testament pattern of worship and Christian living.</p>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
         <div class="bg-white rounded-lg shadow-md p-6 card-hover">
           <div class="text-blue-600 text-4xl mb-4">📖</div>
           <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard1Title">Bible Study</h3>
           <p class="text-gray-600" data-lang-key="aboutCard1Text">We believe in studying God's word together to grow in faith and understanding.</p>
         </div>
-
         <div class="bg-white rounded-lg shadow-md p-6 card-hover">
           <div class="text-blue-600 text-4xl mb-4">🤝</div>
           <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard2Title">Fellowship</h3>
           <p class="text-gray-600" data-lang-key="aboutCard2Text">Building strong relationships within our Christian community.</p>
         </div>
-
         <div class="bg-white rounded-lg shadow-md p-6 card-hover">
           <div class="text-blue-600 text-4xl mb-4">❤️</div>
           <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard3Title">Service</h3>
@@ -96,13 +79,11 @@
       </div>
     </section>
 
-    <!-- activities -->
     <section id="bible-studies" class="container mx-auto px-6 py-12">
       <div class="text-center mb-12">
         <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="bibleStudiesTitle">Bible Studies</h2>
         <p class="text-lg text-gray-600" data-lang-key="bibleStudiesSubtitle">Explore God's word through our interactive study materials</p>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="bg-white rounded-lg shadow-md p-6 card-hover">
           <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 rounded-lg mb-4 flex items-center justify-center">
@@ -114,7 +95,6 @@
             <span data-lang-key="downloadStudy">View Study</span>
           </button>
         </div>
-
         <div class="bg-white rounded-lg shadow-md p-6 card-hover">
           <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg mb-4 flex items-center justify-center">
             <span class="text-white text-6xl">🤝</span>
@@ -125,7 +105,6 @@
             <span data-lang-key="downloadStudy">View Study</span>
           </button>
         </div>
-
         <div class="bg-white rounded-lg shadow-md p-6 card-hover">
           <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg mb-4 flex items-center justify-center">
             <span class="text-white text-6xl">🏠</span>
@@ -136,56 +115,59 @@
             <span data-lang-key="downloadStudy">View Study</span>
           </button>
         </div>
-
         <div class="bg-white rounded-lg shadow-md p-6 card-hover">
           <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg mb-4 flex items-center justify-center">
             <span class="text-white text-6xl">📜</span>
           </div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="activityCardTitle">5-Minute Gospel Activity</h3>
-          <p class="text-gray-600 mb-4" data-lang-key="activityCardDesc">Fill-in-the-blank quiz with timer and scoring.</p>
-          <a href="#gospel-activity" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">Start Activity</a>
+          <h3 class="text-2xl font-bold mb-2" data-lang-key="activityCardTitle">
+            5-Minute Gospel Activity
+          </h3>
+          <p class="text-gray-600 mb-4" data-lang-key="activityCardDesc">
+            Fill-in-the-blank quiz with timer and scoring.
+          </p>
+          <a href="#gospel-activity" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-lang-key="startActivity">
+            Start Activity
+          </a>
         </div>
       </div>
 
-      <!-- study panels -->
+      <!-- study panels now translatable -->
       <div id="study1-content" class="study-content mt-8 hidden">
         <div class="bg-white rounded-lg shadow-md p-6">
           <h4 class="text-2xl font-bold mb-4" data-lang-key="study1Title">The Parable of the Sower</h4>
           <ul class="list-disc pl-6 text-gray-700">
-            <li><strong>The Path:</strong> Hearts hardened to God's word</li>
-            <li><strong>Rocky Ground:</strong> Shallow faith that withers under pressure</li>
-            <li><strong>Thorns:</strong> Hearts choked by worldly concerns</li>
-            <li><strong>Good Soil:</strong> Hearts that receive and act on God's word</li>
+            <li data-lang-key="study1Path"></li>
+            <li data-lang-key="study1Rocky"></li>
+            <li data-lang-key="study1Thorns"></li>
+            <li data-lang-key="study1Good"></li>
           </ul>
           <div class="mt-4 text-right">
             <button onclick="toggleStudy('study1')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">Close</button>
           </div>
         </div>
       </div>
-
       <div id="study2-content" class="study-content mt-8 hidden">
         <div class="bg-white rounded-lg shadow-md p-6">
           <h4 class="text-2xl font-bold mb-4" data-lang-key="study2Title">The Good Samaritan</h4>
           <ul class="list-disc pl-6 text-gray-700">
-            <li><strong>Compassion:</strong> Seeing others' needs and being moved to help</li>
-            <li><strong>Action:</strong> Not just feeling sorry, but doing something</li>
-            <li><strong>Sacrifice:</strong> Giving of our time, money, and energy</li>
-            <li><strong>Universality:</strong> Love knows no boundaries</li>
+            <li data-lang-key="study2Compassion"></li>
+            <li data-lang-key="study2Action"></li>
+            <li data-lang-key="study2Sacrifice"></li>
+            <li data-lang-key="study2Universality"></li>
           </ul>
           <div class="mt-4 text-right">
             <button onclick="toggleStudy('study2')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">Close</button>
           </div>
         </div>
       </div>
-
       <div id="study3-content" class="study-content mt-8 hidden">
         <div class="bg-white rounded-lg shadow-md p-6">
           <h4 class="text-2xl font-bold mb-4" data-lang-key="study3Title">The Prodigal Son</h4>
           <ul class="list-disc pl-6 text-gray-700">
-            <li><strong>Rebellion</strong></li>
-            <li><strong>Consequences</strong></li>
-            <li><strong>Repentance</strong></li>
-            <li><strong>Grace</strong></li>
+            <li data-lang-key="study3Rebellion"></li>
+            <li data-lang-key="study3Consequences"></li>
+            <li data-lang-key="study3Repentance"></li>
+            <li data-lang-key="study3Grace"></li>
           </ul>
           <div class="mt-4 text-right">
             <button onclick="toggleStudy('study3')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">Close</button>
@@ -194,29 +176,24 @@
       </div>
     </section>
 
-    <!-- inline activity -->
     <section id="gospel-activity" class="container mx-auto px-6 py-12">
       <h3 class="text-3xl font-bold text-gray-900 mb-4" data-lang-key="activitySectionHeading">Interactive Activity: 5-Minute Gospel</h3>
       <div id="activity-root" class="bg-white rounded-2xl shadow p-4 md:p-6"></div>
     </section>
 
-    <!-- gallery (static for GitHub Pages) -->
     <section id="gallery" class="container mx-auto px-6 py-12">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-3xl font-bold text-gray-900">Gallery</h2>
         <span class="text-sm text-gray-500">Add images by committing them to <code>gallary/</code></span>
       </div>
-
       <div class="slider aspect-[16/9] mb-6" id="slider">
         <button class="navBtn navPrev" id="prevBtn" aria-label="Previous">‹</button>
         <button class="navBtn navNext" id="nextBtn" aria-label="Next">›</button>
         <div class="slider-nav" id="dots"></div>
       </div>
-
       <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
     </section>
 
-    <!-- locations -->
     <section id="locations" class="container mx-auto px-6 py-12">
       <div class="text-center mb-12">
         <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="locationsTitle">Our Locations</h2>
@@ -256,8 +233,6 @@
       <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
     </div>
   </footer>
-
-  <!-- Your app code -->
   <script src="script.js"></script>
 </body>
 </html>
