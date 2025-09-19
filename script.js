@@ -9,83 +9,180 @@
   /* ------------ Translations ------------ */
   const translations = {
     en: {
-      // ... [existing keys unchanged] ...
+      languageLabel: "Language",
+      churchName: "Church of Christ",
+      heroTitle: "Welcome to the Church of Christ",
+      heroSubtitle: "Seeking God's truth and sharing His love.",
+      heroCta: "Find a Location Near You",
+      bibleVerse: "The churches of Christ salute you.",
+      bibleReference: "— Romans 16:16",
+      aboutTitle: "Our Vision & Mission",
+      missionStatement: "We strive to follow the New Testament pattern of worship and Christian living.",
+      aboutCard1Title: "Bible Study",
+      aboutCard1Text: "We believe in studying God's word together to grow in faith and understanding.",
+      aboutCard2Title: "Fellowship",
+      aboutCard2Text: "Building strong relationships within our Christian community.",
+      aboutCard3Title: "Service",
+      aboutCard3Text: "Serving our community and sharing Christ's love through action.",
+      bibleStudiesTitle: "Bible Studies",
+      bibleStudiesSubtitle: "Explore God's word through our interactive study materials",
+      activitySectionHeading: "Interactive Activity: 5-Minute Gospel",
+      study1Title: "The Parable of the Sower",
+      study1Desc: "Understanding how God's word takes root in different hearts.",
+      study2Title: "The Good Samaritan",
+      study2Desc: "Learning about love and compassion for our neighbors.",
+      study3Title: "The Prodigal Son",
+      study3Desc: "Discovering God's forgiveness and unconditional love.",
+      activityCardTitle: "5-Minute Gospel Activity",
+      activityCardDesc: "Fill-in-the-blank quiz with timer and scoring.",
+      downloadStudy: "View Study",
+      locationsTitle: "Our Locations",
+      sundayWorship930: "Sunday Worship: 9:30 AM",
+      sunday930: "Sunday: 9:30 AM",
+      activityTitle: "5-Minute Bible Study: Gospel",
+      activitySubtitle: "Fill-in-the-blank (answers are not case-sensitive).",
+      timeLeft: "TIME LEFT",
+      reveal: "Reveal Answers",
+      hideAnswers: "Hide Answers",
+      reset: "Reset",
+      score: "Score",
+      questionLabel: "Question",
+      galleryEmpty: "No images found in gallary/.",
       startActivity: "Start Activity",
-
       study1Path: "The Path: Hearts hardened to God's word",
       study1Rocky: "Rocky Ground: Shallow faith that withers under pressure",
       study1Thorns: "Thorns: Hearts choked by worldly concerns",
       study1Good: "Good Soil: Hearts that receive and act on God's word",
-
       study2Compassion: "Compassion: Seeing others' needs and being moved to help",
       study2Action: "Action: Not just feeling sorry, but doing something",
       study2Sacrifice: "Sacrifice: Giving of our time, money, and energy",
       study2Universality: "Universality: Love knows no boundaries",
-
       study3Rebellion: "Rebellion",
       study3Consequences: "Consequences",
       study3Repentance: "Repentance",
       study3Grace: "Grace",
-
-      // Quiz translations
       quiz: [
         {id:'q1',ref:'2 Timothy 1:8 (KJV)',text:['Therefore, do not be ashamed of the testimony of the Lord, nor of me His ','____',', but share with me in the sufferings for the ','____',' according to the ','____',' of God.'],answers:['prisoner','gospel','power']},
-        {id:'q2',ref:'Hebrews 4:2 (KJV)',text:['For indeed the gospel was ','____',' to us as well as to them; but the word which they heard did not ','____',' them, not being mixed with ','____',' in those who heard it.'],answers:['preached','profit','faith']},
-        {id:'q3',ref:'2 Corinthians 2:12 (KJV)',text:['Furthermore, when I came to ','____',' to preach ','____',' gospel, and a door was opened to me by the ','____','.'],answers:['troas','christs','lord']},
-        {id:'q4',ref:'Romans 1:16 (KJV)',text:['For I am not ','____',' of the ','____',' of Christ, for it is the ','____',' of God to salvation for everyone who believes, for the Jew first and also for the Greek.'],answers:['ashamed','gospel','power']},
-        {id:'q5',ref:'Romans 15:19 (KJV)',text:['In mighty signs and wonders, by the power of the Spirit of God, so that from ','____',', and round about to ','____',', I have fully preached the ','____',' of Christ.'],answers:['jerusalem','illyricum','gospel']},
-        {id:'q6',ref:'Philippians 4:15 (KJV)',text:['Now you Philippians know also that in the ','____',' of the gospel, when I departed from Macedonia, no ','____',' shared with me concerning giving and receiving but you only.'],answers:['beginning','church']},
-        {id:'q7',ref:'1 Thessalonians 3:2 (KJV)',text:['And sent Timothy, our brother and ','____',' of God, and our fellow laborer in the ','____',' of Christ, to establish you and encourage you concerning your faith.'],answers:['minister','gospel']},
+        {id:'q2',ref:'Hebrews 4:2 (KJV)',text:['For indeed the gospel was ','____',' to us as well as to them; but the word which they heard did not ','____',' them, not being mixed with ','____',' in those who heard it.'],answers:['preached','profit','faith']}
+        // Add more English questions as needed
       ]
     },
     si: {
-      // ... [existing keys unchanged] ...
+      languageLabel: "භාෂාව",
+      churchName: "ක්‍රිස්තුස්වහන්සේගේ සභාව",
+      heroTitle: "ක්‍රිස්තුස්වහන්සේගේ සභාවට සාදරයෙන් පිළිගනිමු",
+      heroSubtitle: "දෙවියන්වහන්සේගේ සත්‍යය සොයමින්, ඊතන සෙනෙහස බෙදා හදමු.",
+      heroCta: "අසළ මණ්ඩපයක් සොයන්න",
+      bibleVerse: "ක්‍රිස්තුස්වහන්සේගේ සභාවන් ඔබට ආයුබෝවන් කියති.",
+      bibleReference: "— රෝමවරුන් 16:16",
+      aboutTitle: "අපගේ දර්ශනය සහ මෙහෙය",
+      missionStatement: "නව ගිවිසුමේ ආදර්ශය අනුව අපගේ සෙවණ දිවියත් විනයත් ගෙන යමු.",
+      aboutCard1Title: "බයිබල් අධ්‍යයනය",
+      aboutCard1Text: "විශ්වාසය හා අවබෝධය වර්ධනය සඳහා එකට දෙවියන් වචනය අධ්‍යයනය කරමු.",
+      aboutCard2Title: "සංග්‍රහය",
+      aboutCard2Text: "කිර්තිස්තු සමාජය තුළ ශක්තිමත් සබඳතා ගොඩනගමු.",
+      aboutCard3Title: "සේවය",
+      aboutCard3Text: "ක්‍රිස්තුස්වහන්සේගේ ප්‍රේමය ක්‍රියාවෙන් පෙන්වමින් සමාජයට සේවය කරමු.",
+      bibleStudiesTitle: "බයිබල් අධ්‍යයන",
+      bibleStudiesSubtitle: "අන්තර්ක්‍රියාකාරී අධ්‍යයන ද්‍රව්‍ය හරහා දෙවියන් වචනය අධ්‍යයනය කරන්න",
+      activitySectionHeading: "අන්තර්ක්‍රියාකාරී ක්‍රියාකාරකම: මිනිත්තු 5 එළිදරව්ව",
+      study1Title: "බීජ වපුරුසගේ උපමාව",
+      study1Desc: "දෙවියන් වචනය වෙනස් හෘදයන් තුල වර්ධනය වන ආකාරය.",
+      study2Title: "සුභ සමාරියානියා",
+      study2Desc: "අපගේ අසල්වැසියන්ට ප්‍රේමය හා කරුණාව පෙන්වීම ගැන ඉගෙනගන්නා ලදි.",
+      study3Title: "වැනරපු පුතියා",
+      study3Desc: "දෙවියන්වහන්සේගේ සමාව සහ නිර්කොන්දේසි ප්‍රේමය සොයාගැනීම.",
+      activityCardTitle: "මිනිත්තු 5 සුවිශේෂ ක්‍රියාකාරකම",
+      activityCardDesc: "කාලය මැනුම සහ ලකුණු කිරීම සහිත හිස්තැන් පුරවීම.",
+      downloadStudy: "අධ්‍යයනය බලන්න",
+      locationsTitle: "අපගේ ස්ථාන",
+      sundayWorship930: "ඉරිදා නමස්කාරය: පෙ.ව. 9:30",
+      sunday930: "ඉරිදා: පෙ.ව. 9:30",
+      activityTitle: "මිනිත්තු 5 බයිබල් අධ්‍යයනය: සුවිශේෂය",
+      activitySubtitle: "හිස් තැන් පුරවන්න (අක්‍ෂර ප්‍රමාණය නොසලකා).",
+      timeLeft: "අවශේෂ කාලය",
+      reveal: "පිළිතුරු පෙන්වන්න",
+      hideAnswers: "පිළිතුරු සඟවන්න",
+      reset: "යළි පිහිටුවන්න",
+      score: "ලකුණු",
+      questionLabel: "ප්‍රශ්නය",
+      galleryEmpty: "gallary/ හි රූප නොමැත.",
       startActivity: "ක්‍රියාකාරකම ආරම්භ කරන්න",
-
       study1Path: "මාර්ගය: දෙවියන් වචනයට හෘදය දැල්වී ඇත",
       study1Rocky: "පැළැවුණු ඉඩම: පීඩනයට යටත් වන මතුපිට විශ්වාසය",
       study1Thorns: "ඉගිළුණු: ලෝක සලකා බැලීමෙන් හෘදයන් ගැටේ",
       study1Good: "හොඳ ඉඩම: දෙවියන් වචනය ලබාගෙන ක්‍රියා කරන හෘදයන්",
-
       study2Compassion: "කරුණාව: අනෙකුත් අවශ්‍යතා දැක උදව් කිරීමට උනන්දු වීම",
       study2Action: "ක්‍රියාව: දුකින් පමණක් නොව, ක්‍රියාවෙන්ද පෙන්වීම",
       study2Sacrifice: "බලපෑම: අපගේ කාලය, මුදල්, ශක්තිය දීමට",
       study2Universality: "සාමාන්‍යතාව: ආදරයට සීමාවක් නැත",
-
       study3Rebellion: "කැරැල්ල",
       study3Consequences: "ප්‍රතිඵල",
       study3Repentance: "පසුතැවිල්ල",
       study3Grace: "කාරුණිකත්වය",
-
       quiz: [
-        {id:'q1',ref:'2 තිමෝති 1:8',text:['එබැවින්, ස්වාමිපුරුෂයාගේ සාක්ෂියෙන් හෝ මම ඔහුගේ ','____',' බවට ලජ්ජාවට පත් නොවන්න. ','____',' සඳහා උත්සාහයෙන් මා සමඟ බෙදාගන්න. දෙවියන්ගේ ','____',' අනුව.'],answers:['බන්ධනාගාර','සුවිශේෂය','බලය']},
-        {id:'q2',ref:'හීබ්‍රෙව් 4:2',text:['සුවිශේෂය ','____',' අපට සහ ඔවුන්ට ද ලබාදී තිබුණි; ඔවුන් අසා තිබූ වචනය ','____',' නොව, ','____',' සමඟ මිශ්‍ර නොවීම නිසා නොලාභ විය.'],answers:['ප්‍රකාශ','ලාභ','විශ්වාසය']},
-        // ...continue for others (fill actual translations as needed)
+        {id:'q1',ref:'2 තිමෝති 1:8',text:['එබැවින් ස්වාමිපුරුෂයාගේ සාක්ෂියෙන් හෝ මම ඔහුගේ ','____',' බවට ලජ්ජාවට පත් නොවන්න, ','____',' සඳහා මා සමග බෙදාගන්න, දෙවියන්ගේ ','____',' අනුව.'],answers:['බන්ධනාගාර','සුවිශේෂය','බලය']},
+        {id:'q2',ref:'හීබ්‍රෙව් 4:2',text:['සුවිශේෂය ','____',' අපට සහ ඔවුන්ට ද ලබාදී තිබුණි; ඔවුන් අසා තිබූ වචනය ','____',' නොව, ','____',' සමඟ මිශ්‍ර නොවීම නිසා නොලාභ විය.'],answers:['ප්‍රකාශ','ලාභ','විශ්වාසය']}
+        // Add more Sinhala questions as needed
       ]
     },
     ta: {
-      // ... [existing keys unchanged] ...
+      languageLabel: "மொழி",
+      churchName: "கிறிஸ்துவின் சபை",
+      heroTitle: "கிறிஸ்துவின் சபைக்கு வரவேற்கிறோம்",
+      heroSubtitle: "இறைவன் சத்தியத்தைத் தேடி, அவர் அன்பைப் பகிர்வோம்.",
+      heroCta: "உங்களுக்கு அருகில் உள்ள இடத்தை காண்க",
+      bibleVerse: "கிறிஸ்துவின் சபைகள் உங்களுக்கு வணக்கம் சொல்லுகின்றன.",
+      bibleReference: "— ரோமர் 16:16",
+      aboutTitle: "எங்கள் நோக்கமும் பணியும்",
+      missionStatement: "புதிய ஏற்பாட்டின் மாதிரியைப் பின்பற்றி ஆராதனைவும் வாழ்வும்.",
+      aboutCard1Title: "வேதாகம ஆய்வு",
+      aboutCard1Text: "ஏகமாய் தேவ வார்த்தையை ஆய்ந்து விசுவாசத்தில் வளர்வோம்.",
+      aboutCard2Title: "சங்கமம்",
+      aboutCard2Text: "கிறிஸ்துவில் வலுவான உறவுகளை கட்டுவோம்.",
+      aboutCard3Title: "சேவை",
+      aboutCard3Text: "செயலில் கிறிஸ்துவின் அன்பை பகிர்வோம்.",
+      bibleStudiesTitle: "வேதாகம ஆய்வுகள்",
+      bibleStudiesSubtitle: "உரையாடும் படிப்புப் பொருள்கள் மூலம் தேவ வார்த்தை",
+      activitySectionHeading: "இணைய செயல்: 5 நிமிட சுவிசேஷம்",
+      study1Title: "விதைப்பவர் உவமை",
+      study1Desc: "விதவிதமான இதயங்களில் தேவ வார்த்தை வேரூன்றுவது.",
+      study2Title: "நல்ல சமாரியர்",
+      study2Desc: "அண்டைவர்களுக்கான அன்பும் கருணையும் பற்றி கற்பது.",
+      study3Title: "தீராத மகன் (தவறிச் சென்ற மகன்)",
+      study3Desc: "இறைவன் மன்னிப்பும் நிபந்தனையற்ற அன்பும் கண்டறிதல்.",
+      activityCardTitle: "5 நிமிட சுவிசேஷச் செயல்",
+      activityCardDesc: "நேரக் கணக்குடன்/மதிப்பெண்களுடன் காலியிடங்களை நிரப்பும் வினா.",
+      downloadStudy: "ஆய்வைப் பார்க்க",
+      locationsTitle: "எங்கள் இடங்கள்",
+      sundayWorship930: "ஞாயிறு ஆராதனை: காலை 9:30",
+      sunday930: "ஞாயிறு: காலை 9:30",
+      activityTitle: "5 நிமிட வேதாகம ஆய்வு: சுவிசேஷம்",
+      activitySubtitle: "காலியான இடங்களை நிரப்புக (உயிர்மெய் பெரிய/சிறிய பொருட்டல்ல).",
+      timeLeft: "மீதமுள்ள நேரம்",
+      reveal: "பதில் காண்பிக்க",
+      hideAnswers: "பதில்களை மறைக்க",
+      reset: "மீட்டமை",
+      score: "மதிப்பெண்",
+      questionLabel: "கேள்வி",
+      galleryEmpty: "gallary/ இல் படங்கள் இல்லை.",
       startActivity: "செயல்பாட்டை தொடங்கு",
-
       study1Path: "பாதை: தேவனுடைய வார்த்தைக்கு மனம் கடினமாகும்",
       study1Rocky: "பாறை நிலம்: அழுத்தத்தில் ஒட்டுமொத்த விசுவாசம் தளர்ச்சி",
       study1Thorns: "முள்ள்கள்: உலகப் பொருள்கள் மனதை ஒட்டிக்கொள்ளும்",
       study1Good: "நல்ல மண்: தேவனுடைய வார்த்தையை ஏற்றுக்கொண்டு செயல்படும் மனங்கள்",
-
       study2Compassion: "இரக்கம்: பிறர் தேவைகளைக் காணும் உணர்வும் உதவ உந்துதல்",
       study2Action: "நடவடிக்கை: பச்சை உணர்வு மட்டும் அல்ல, செயலில் காட்டுதல்",
       study2Sacrifice: "தியாகம்: நேரம், பணம், சக்தி வழங்குதல்",
       study2Universality: "பொதுமை: அன்பிற்கு எல்லை இல்லை",
-
       study3Rebellion: "துரோகம்",
       study3Consequences: "விளைவுகள்",
       study3Repentance: "பரிதாபம்",
       study3Grace: "அருள்",
-
       quiz: [
-        {id:'q1',ref:'2 தீமோதெய் 1:8',text:['ஆகையால், ஆண்டவரின் சாட்சி அல்லது அவருடைய ','____',' என்று வெட்கப்படாதீர். ','____',' க்கு உங்களுடன் இணைந்து பங்குபற்றுங்கள். தேவனுடைய ','____',' படி.'],answers:[' கைதி','சுவிஷேஷம்','சக்தி']},
-        {id:'q2',ref:'எபிரேயர் 4:2',text:['சுவிஷேஷம் ','____',' நமக்கும் அவர்களுக்கும் அறிவிக்கப்பட்டது; அவர்கள் கேட்ட வார்த்தை ','____',' அவர்களுக்கு பயனளிக்கவில்லை, ','____',' உடன் கலந்திருக்கவில்லை.'],answers:['பறைசாற்றப்பட்டது','பயன்','விசுவாசம்']},
-        // ...continue for others (fill actual translations as needed)
+        {id:'q1',ref:'2 தீமோதெய் 1:8',text:['ஆகையால் ஆண்டவரின் சாட்சியத்திலிருந்து அல்லது அவருடைய ','____',' என்று வெட்கப்படாதீர்கள், ','____','க்காக எனக்காகச் சேருங்கள், தேவனுடைய ','____',' படி.'],answers:['கைதி','சுவிசேஷம்','சக்தி']},
+        {id:'q2',ref:'எபிரேயர் 4:2',text:['சுவிசேஷம் ','____',' நமக்கும் அவர்களுக்கும் அறிவிக்கப்பட்டது; அவர்கள் கேட்ட வார்த்தை ','____',' அவர்களுக்கு பயனளிக்கவில்லை, ','____',' உடன் கலந்திருக்கவில்லை.'],answers:['பறைசாற்றப்பட்டது','பயன்','விசுவாசம்']}
+        // Add more Tamil questions as needed
       ]
     }
   };
@@ -119,8 +216,7 @@
         currentLanguage = e.target.value || 'en';
         localStorage.setItem(LANG_STORAGE_KEY, currentLanguage);
         applyTranslations();
-        // Re-initialize dynamic activities if needed
-        initActivity();
+        initActivity(); // Rebuild quiz after language change
       });
     }
     applyTranslations();
