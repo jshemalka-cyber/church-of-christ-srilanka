@@ -86,8 +86,15 @@
       study3Repentance: "Repentance",
       study3Grace: "Grace",
       quiz: [
-        {id:'q1',ref:'2 Timothy 1:8 (KJV)',text:['Therefore, do not be ashamed of the testimony of the Lord, nor of me His ','____',', but share with me in the sufferings for the ','____',' according to the ','____',' of God.'],answers:['prisoner','gospel','power']},
-        {id:'q2',ref:'Hebrews 4:2 (KJV)',text:['For indeed the gospel was ','____',' to us as well as to them; but the word which they heard did not ','____',' them, not being mixed with ','____',' in those who heard it.'],answers:['preached','profit','faith']}
+      quiz: [
+  {id:'q1',ref:'2 Timothy 1:8 (KJV)',text:['Therefore, do not be ashamed of the testimony of the Lord, nor of me His ','____',', but share with me in the sufferings for the ','____',' according to the ','____',' of God.'],answers:['prisoner','gospel','power']},
+  {id:'q2',ref:'Hebrews 4:2 (KJV)',text:['For indeed the gospel was ','____',' to us as well as to them; but the word which they heard did not ','____',' them, not being mixed with ','____',' in those who heard it.'],answers:['preached','profit','faith']},
+  {id:'q3',ref:'2 Corinthians 2:12 (KJV)',text:['Furthermore, when I came to ','____',' to preach ','____',' gospel, and a door was opened to me by the ','____','.'],answers:['troas','christs','lord']},
+  {id:'q4',ref:'Romans 1:16 (KJV)',text:['For I am not ','____',' of the ','____',' of Christ, for it is the ','____',' of God to salvation for everyone who believes, for the Jew first and also for the Greek.'],answers:['ashamed','gospel','power']},
+  {id:'q5',ref:'Romans 15:19 (KJV)',text:['In mighty signs and wonders, by the power of the Spirit of God, so that from ','____',', and round about to ','____',', I have fully preached the ','____',' of Christ.'],answers:['jerusalem','illyricum','gospel']},
+  {id:'q6',ref:'Philippians 4:15 (KJV)',text:['Now you Philippians know also that in the ','____',' of the gospel, when I departed from Macedonia, no ','____',' shared with me concerning giving and receiving but you only.'],answers:['beginning','church']},
+  {id:'q7',ref:'1 Thessalonians 3:2 (KJV)',text:['And sent Timothy, our brother and ','____',' of God, and our fellow laborer in the ','____',' of Christ, to establish you and encourage you concerning your faith.'],answers:['minister','gospel']}
+]
       ]
     },
     si: {
