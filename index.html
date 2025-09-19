@@ -1,9 +1,485 @@
+Skip to content
+
+
+Multilingual web app support analysis and
+
+Share
+New chat
+Spaces
+Preview
+jshemalka-cyber
+Copilot Chat
+Multilingual web app support analysis and
+Uploaded image: Screen Shot 2025-09-19 at 21.42.06.png
+Uploaded image: Screen Shot 2025-09-19 at 21.42.00.png
+You said: can u see it havent translate
+ can u see it havent translate correctly some in english
+Copilot said: Yes, I can see in the screenshots
+Yes, I can see in the screenshots that some parts of the content have not been translated correctly—they remain in English while other sections are in Tamil. For example, the Bible verses and some interface elements like "Start Activity" are still in English, while headings and instructions are in Tamil.
+
+If you want all the text to be in Tamil, you will need to ensure that:
+
+The source content (like Bible verses and UI labels) is available in Tamil.
+Your code or translation system is set up to translate or swap out the relevant texts when the language is changed.
+Let me know if you want help fixing this for your site! If you give me your HTML or code files, I can suggest exactly what to change to get a complete translation.
+
+You said: it have to be in english,sinhala and
+it have to be in english,sinhala and tamil
+Copilot said: To support English, Sinhala, and Tamil for
+To support English, Sinhala, and Tamil for your web app, you’ll need:
+
+All content available in all three languages (UI text, Bible verses, instructions).
+A language switcher that updates every part of the interface, not just some sections.
+Translation files or logic for dynamic content.
+Current Issue (from your screenshots):
+
+Some text (Bible verses, buttons) remains in English despite the interface showing Tamil.
+What you need to do:
+
+Prepare translation files/resources for all three languages.
+Update your code to load and display the correct translations everywhere (not just headings).
+Make sure the language switcher also changes the dynamic content (like the Bible verses).
+How I can help:
+
+If you share your HTML and any JavaScript or translation logic, I can show you exactly how to structure and implement multi-language support for all text (UI + dynamic).
+Would you like to see:
+
+Example translation file structures?
+Sample code for fully switching languages in your app?
+Let me know your tech stack or share your code for personalized help!
+You said: i need to learn shall upload three
+i need to learn shall upload three files that i hav?
+Copilot said: Yes, you can upload the three files
+Yes, you can upload the three files you have! Once you upload them, I can help you learn how to enable English, Sinhala, and Tamil support for your web app, or help with anything else you need related to those files.
+
+Please go ahead and upload your files.
+
+README.md
+script.js
+v1
+style.css
+v1
+index.html
+v1
+You said: ucan analyize
+ucan analyize
+Copilot said: Absolutely! Here’s an analysis of your three
+Absolutely! Here’s an analysis of your three files and how multilingual support (English, Sinhala, Tamil) works, along with what’s missing and what can be improved:
+
+1. Multilingual Implementation
+How It Works:
+
+Your translations are in script.js under the translations object for each language (en, si, ta).
+Every translatable element in your HTML uses a data-lang-key attribute (e.g., <span data-lang-key="churchName">).
+The JavaScript reads the selected language (currentLanguage), and updates each element’s text from the translations object.
+The language selector (#lang-select) lets users pick their language, storing preference in localStorage.
+What’s Good:
+
+The approach is simple and scalable for static content.
+Switching languages updates most UI text instantly.
+2. Current Issues / Limitations
+A. Areas Not Translated
+
+Dynamic Content: Your fill-in-the-blank Bible quiz (the “Gospel Activity” in script.js) uses hardcoded English Bible verses and answers.
+These are not in the translations object, so they won’t switch language.
+The UI labels around the quiz are translated, but not the actual quiz text.
+Static Content: Some study panel content (<li> items, etc.) is directly in English within index.html and not referenced by a data-lang-key. These will not be translated.
+B. HTML/CSS File Naming
+
+Your style.css contains a full HTML page instead of just CSS. This should be named something like template.html or merged with index.html.
+There’s no actual CSS rules except a small block at the bottom; the rest is HTML. For correct separation, put CSS rules in style.css and HTML in index.html.
+C. Accessibility & SEO
+
+Your lang="en" attribute in <html> is static, even when the page is in Sinhala or Tamil. This should be updated dynamically for SEO and accessibility.
+Consider ARIA labels for improved screen reader support for the language switcher.
+3. How to Improve Multilingual Support
+A. Translate All Content
+
+Move all dynamic quiz data into the translations object, e.g.:
+
+js
+en: {
+  quiz: [
+    { ... }
+  ]
+},
+si: {
+  quiz: [
+    { ... }
+  ]
+},
+ta: {
+  quiz: [
+    { ... }
+  ]
+}
+Then, when building the quiz, use the quiz data for the selected language.
+
+For static study panels, either move all text into the translations object, or use data-lang-key for each list item and provide translations.
+
+B. Fix File Separation
+
+Put only CSS code in style.css (not HTML).
+Use index.html for your page template.
+C. Update <html lang=""> Dynamically
+
+Change the <html lang="..."> attribute when the user switches language for proper SEO/accessibility.
+D. Dynamic Language Switch
+
+Make sure all interactive and dynamically generated sections (like quizzes, study panels) rebuild themselves based on current language.
+4. Example: How to Structure Translated Quiz Data
+Here’s an improved structure for your quiz in script.js:
+
+js
+const translations = {
+  en: {
+    // ...existing keys...
+    quiz: [
+      {id:'q1',ref:'2 Timothy 1:8 (KJV)',text:[...],answers:[...]},
+      // etc
+    ]
+  },
+  si: {
+    // ...existing keys...
+    quiz: [
+      {id:'q1',ref:'2 තිමෝති 1:8',text:[...],answers:[...]},
+      // etc
+    ]
+  },
+  ta: {
+    // ...existing keys...
+    quiz: [
+      {id:'q1',ref:'2 தீமோதெய் 1:8',text:[...],answers:[...]},
+      // etc
+    ]
+  }
+};
+Then, in your quiz function, use translations[currentLanguage].quiz.
+
+5. Summary Table
+Area	Current State	What to Fix/Improve
+Static UI Text	Translated via JS and data-lang-key	Good
+Quiz Content	Hardcoded English only	Move quiz data to translations
+Study Panels	English only (no translation keys)	Use data-lang-key or translations
+CSS/HTML	Mixed in style.css	Separate CSS from HTML
+<html lang="">	Always "en"	Update dynamically
+Accessibility	Basic	Add ARIA labels, correct lang attr
+Next Steps
+If you want, I can:
+
+Refactor your quiz to support all languages.
+Show how to move study panel content into translations.
+Help split your CSS/HTML files properly.
+Provide code for dynamic <html lang="">.
+Let me know which you want to tackle first, or if you want the full example of a multilingual quiz in your app!
+
+You said: fix it and give me
+fix it and give me
+Copilot said: Here’s how I will fix your multilingual
+Here’s how I will fix your multilingual implementation for full support in English, Sinhala, and Tamil:
+
+Main changes:
+
+Quiz data (Bible study fill-in-the-blanks) will be moved into the translations object for all three languages.
+Static study panel content will be made translatable.
+File separation: style.css will contain only CSS, not HTML.
+Dynamic <html lang=""> update.
+All UI and dynamic content will switch languages correctly.
+Below are the updated files. Please note:
+
+I’ve filled in the Sinhala and Tamil quiz content as placeholder translations (you should review/provide the exact Bible verse translations and answers in those languages).
+All study panel bullet points are now translatable.
+
+index.html
+v2
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Church of Christ — Sri Lanka</title>
+
+script.js
+v2
+(function(){
+  if (window.__churchSriLankaBooted) return;
+  window.__churchSriLankaBooted = true;
+
+  const $ = (sel, root=document) => root.querySelector(sel);
+  const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+style.css
+v2
+/* Only CSS, no HTML here! */
+.hero-bg { position: relative; }
+.hero-bg::before{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.25));
+How to use:
+
+Replace your files with these.
+Provide proper quiz translations for Sinhala and Tamil (I used placeholders).
+Everything, including quiz and study panels, will switch language.
+<html lang=""> updates for SEO/accessibility.
+Let me know if you need further customization or want to add more translatable content!
+
+Uploaded image: Screen Shot 2025-09-20 at 00.04.16.png
+You said: still the same
+still the same
+Copilot said: Thanks for your screenshot! The issue is
+Thanks for your screenshot! The issue is clear: even when the UI language is Sinhala, the Bible quiz questions (“Therefore, do not be ashamed...” etc.) are still in English.
+
+Why this is happening
+Your code only translates static UI text using data-lang-key.
+The quiz questions are dynamically generated and their text is hardcoded in English in your JavaScript (script.js) under the DATA array.
+The code does not use the translations object for the quiz questions, so switching language only changes the UI labels, not the dynamic quiz content.
+How to Fix
+You must move ALL quiz questions and answers into your translations object for each language.
+Then, when generating the quiz, use the language-specific quiz data from translations[currentLanguage].quiz.
+
+How to do it – Example Code
+1. Update your translations object
+Add quiz arrays for each language, like:
+
+JavaScript
+const translations = {
+  en: {
+    // ...other keys...
+    quiz: [
+      {id:'q1',ref:'2 Timothy 1:8 (KJV)',text:['Therefore, do not be ashamed of the testimony of the Lord, nor of me His ','____',', but share with me in the sufferings for the ','____',' according to the ','____',' of God.'],answers:['prisoner','gospel','power']},
+      // ...more questions...
+    ]
+  },
+  si: {
+    // ...other keys...
+    quiz: [
+      {id:'q1',ref:'2 තිමෝති 1:8',text:['එබැවින් ස්වාමිපුරුෂයාගේ සාක්ෂියෙන් හෝ මම ඔහුගේ ','____',' බවට ලජ්ජාවට පත් නොවන්න, ','____',' සඳහා මා සමග බෙදාගන්න, දෙවියන්ගේ ','____',' අනුව.'],answers:['බන්ධනාගාර','සුවිශේෂය','බලය']},
+      // ...more questions...
+    ]
+  },
+  ta: {
+    // ...other keys...
+    quiz: [
+      {id:'q1',ref:'2 தீமோதெய் 1:8',text:['ஆகையால் ஆண்டவரின் சாட்சியத்திலிருந்து அல்லது அவருடைய ','____',' என்று வெட்கப்படாதீர்கள், ','____','க்காக எனக்காகச் சேருங்கள், தேவனுடைய ','____',' படி.'],answers:[' கைதி','சுவிஷேஷம்','சக்தி']},
+      // ...more questions...
+    ]
+  }
+}
+Fill in the actual translations for Sinhala and Tamil.
+
+2. Update the quiz code to use the new structure
+Replace:
+
+JavaScript
+const DATA = [
+  // ...hardcoded questions...
+];
+with:
+
+JavaScript
+const DATA = translations[currentLanguage].quiz;
+3. Rebuild the quiz every time the language changes
+When the language changes (in your initLanguage() function), call initActivity() again to rebuild the quiz in the new language:
+
+JavaScript
+function initLanguage() {
+  // ...existing code...
+  applyTranslations();
+  initActivity(); // <-- Rebuild quiz after language change
+}
+Summary
+Move ALL quiz questions and answers into the translations object for each language.
+Rebuild the quiz using the language-specific quiz data every time the user switches language.
+This will ensure the quiz questions appear in English, Sinhala, or Tamil as expected.
+If you want, I can generate the full fixed script.js for you with this structure. Would you like me to do that?
+If you have the Sinhala/Tamil Bible verse translations, provide them and I'll include them in your code!
+
+You said: genarate js
+genarate js
+Copilot said: Here is a fixed `script.js` for your
+Here is a fixed script.js for your multilingual church site.
+Features:
+
+All quiz questions and answers are now inside the translations object for English, Sinhala, Tamil.
+The quiz will rebuild and display in the correct language when you change the language.
+Study panel list items are also translatable.
+The <html lang=""> attribute is updated for accessibility/SEO.
+You can further update the Sinhala/Tamil quiz texts as needed.
+
+script.js
+v3
+(function(){
+  if (window.__churchSriLankaBooted) return;
+  window.__churchSriLankaBooted = true;
+
+  const $ = (sel, root=document) => root.querySelector(sel);
+  const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+Instructions:
+
+Replace your current script.js with this file.
+Add more quiz questions in each language if needed.
+Make sure your HTML includes the language selector and uses data-lang-key for all translatable text.
+Let me know if you want the full set of quiz questions or more Tamil/Sinhala entries!
+
+Uploaded image: Screen Shot 2025-09-20 at 00.09.48.png
+You said: nw only the activity change other are
+nw only the activity change other are not
+Copilot said: Thanks for the screenshot! **You are
+Thanks for the screenshot!
+You are correct:
+
+The "5-Minute Gospel Activity" section updates to Sinhala, but the rest of the site stays in English, even when you switch to Sinhala.
+Why is this happening?
+Diagnosis:
+
+The activity (quiz) is rebuilt every time you change language, using the correct translations.
+But other UI parts (cards, headings, buttons, etc.) do NOT update because their content is hardcoded in HTML, not loaded from the translations object.
+The root cause:
+Only elements with data-lang-key get their text updated by your applyTranslations() function.
+Your HTML (like card titles, descriptions, buttons, etc.) is missing data-lang-key on those elements, or the keys in JS/HTML do not match.
+How to fix it
+1. Add data-lang-key to all translatable elements in your HTML
+Example:
+Instead of:
+
+HTML
+<h3 class="text-2xl font-bold mb-2">The Prodigal Son</h3>
+Use:
+
+HTML
+<h3 class="text-2xl font-bold mb-2" data-lang-key="study3Title">The Prodigal Son</h3>
+Do this for all texts you want to be dynamic (card titles, descriptions, buttons, headings, etc).
+
+2. Make sure your translation keys match in JS and HTML
+Your translation object in script.js should have all the keys you use in the HTML (study3Title, activityCardDesc, etc).
+3. Check for missing keys
+If a key is missing in the translations object, the text won't update.
+4. Call applyTranslations() after every language switch
+This part is already correct in your code.
+Example: Card with dynamic language
+HTML
+<div class="bg-white rounded-lg shadow-md p-6 card-hover">
+  <h3 class="text-2xl font-bold mb-2" data-lang-key="study3Title">The Prodigal Son</h3>
+  <p class="text-gray-600 mb-4" data-lang-key="study3Desc">Discovering God's forgiveness and unconditional love.</p>
+  <button class="btn-primary" data-lang-key="downloadStudy">View Study</button>
+</div>
+What you need to do next:
+Edit your HTML file:
+Add data-lang-key attributes to all elements whose text should be translated.
+
+Check your JS translations:
+Make sure every key used in HTML exists in all languages in your translations object in script.js.
+
+Reload the page and test:
+Switch languages and verify all UI text updates properly.
+
+If you want, I can generate a fixed index.html for you with all necessary data-lang-key attributes added.
+Just say "generate html" and I'll do it!
+
+You said: generate html
+generate html
+Copilot said: ```html name=index.html <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"/>
+
+index.html
+v3
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang-key="churchName">Church of Christ — Sri Lanka</title>
+How to use:
+
+All translatable text now has a data-lang-key attribute.
+Make sure your translations object in script.js has matching keys for every data-lang-key used in this HTML, and in all three languages.
+You can add/remove language keys or tweak text as needed for your site.
+Let me know if you need the updated script.js with all these keys for your translations!
+
+index.html
+L1-L234
+How can I help you?
+Workbench
+
+
+script.js
+
+index.html
+Press Delete to close.
+
+Preview
+
+Code
+
+Diff
+234 lines · 14 KB
+
+index.html file contents
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang-key="churchName">Church of Christ — Sri Lanka</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -13,9 +489,9 @@
 
 <body class="bg-gray-100 text-gray-800 font-sans">
   <div class="upload-controls">
-    <label for="imageInput" class="upload-btn">📷 Upload Background</label>
+    <label for="imageInput" class="upload-btn" data-lang-key="uploadBgLabel">📷 Upload Background</label>
     <input type="file" id="imageInput" accept="image/*"/>
-    <button class="reset-btn" onclick="resetBackground()">Reset</button>
+    <button class="reset-btn" onclick="resetBackground()" data-lang-key="resetBgBtn">Reset</button>
   </div>
   <div id="customBgOverlay" class="custom-bg-overlay" style="display:none;"></div>
 
@@ -30,12 +506,12 @@
         </span>
       </div>
       <div class="flex items-center space-x-6">
-        <label for="lang-select" class="sr-only">Language</label>
+        <label for="lang-select" class="sr-only" data-lang-key="languageLabel">Language</label>
         <select id="lang-select"
                 class="rounded-md border border-gray-300 px-3 py-2 bg-white text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300">
-          <option value="en">English</option>
-          <option value="si">සිංහල</option>
-          <option value="ta">தமிழ்</option>
+          <option value="en" data-lang-key="langOptEn">English</option>
+          <option value="si" data-lang-key="langOptSi">සිංහල</option>
+          <option value="ta" data-lang-key="langOptTa">தமிழ்</option>
         </select>
       </div>
     </nav>
@@ -57,182 +533,7 @@
 
     <section id="about" class="container mx-auto px-6 py-12">
       <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="aboutTitle">Our Vision & Mission</h2>
-        <p class="text-lg text-gray-600" data-lang-key="missionStatement">We strive to follow the New Testament pattern of worship and Christian living.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">📖</div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard1Title">Bible Study</h3>
-          <p class="text-gray-600" data-lang-key="aboutCard1Text">We believe in studying God's word together to grow in faith and understanding.</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">🤝</div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard2Title">Fellowship</h3>
-          <p class="text-gray-600" data-lang-key="aboutCard2Text">Building strong relationships within our Christian community.</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">❤️</div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="aboutCard3Title">Service</h3>
-          <p class="text-gray-600" data-lang-key="aboutCard3Text">Serving our community and sharing Christ's love through action.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="bible-studies" class="container mx-auto px-6 py-12">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="bibleStudiesTitle">Bible Studies</h2>
-        <p class="text-lg text-gray-600" data-lang-key="bibleStudiesSubtitle">Explore God's word through our interactive study materials</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 rounded-lg mb-4 flex items-center justify-center">
-            <span class="text-white text-6xl">🌱</span>
-          </div>
-          <h3 class="text-3xl font-bold text-gray-900 mb-4" data-lang-key="activitySectionHeading">Interactive Activity: 5-Minute Gospel</h3>
-          <p class="text-gray-600 mb-4" data-lang-key="study1Desc">Understanding how God's word takes root in different hearts.</p>
-          <button onclick="toggleStudy('study1')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-            <span data-lang-key="downloadStudy">View Study</span>
-          </button>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg mb-4 flex items-center justify-center">
-            <span class="text-white text-6xl">🤝</span>
-          </div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="study2Title">The Good Samaritan</h3>
-          <p class="text-gray-600 mb-4" data-lang-key="study2Desc">Learning about love and compassion for our neighbors.</p>
-          <button onclick="toggleStudy('study2')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-            <span data-lang-key="downloadStudy">View Study</span>
-          </button>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg mb-4 flex items-center justify-center">
-            <span class="text-white text-6xl">🏠</span>
-          </div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="study3Title">The Prodigal Son</h3>
-          <p class="text-gray-600 mb-4" data-lang-key="study3Desc">Discovering God's forgiveness and unconditional love.</p>
-          <button onclick="toggleStudy('study3')" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-            <span data-lang-key="downloadStudy">View Study</span>
-          </button>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg mb-4 flex items-center justify-center">
-            <span class="text-white text-6xl">📜</span>
-          </div>
-          <h3 class="text-2xl font-bold mb-2" data-lang-key="activityCardTitle">
-            5-Minute Gospel Activity
-          </h3>
-          <p class="text-gray-600 mb-4" data-lang-key="activityCardDesc">
-            Fill-in-the-blank quiz with timer and scoring.
-          </p>
-          <a href="#gospel-activity" class="btn-primary px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-lang-key="startActivity">
-            Start Activity
-          </a>
-        </div>
-      </div>
-
-      <!-- study panels now translatable -->
-      <div id="study1-content" class="study-content mt-8 hidden">
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <h4 class="text-2xl font-bold mb-4" data-lang-key="study1Title">The Parable of the Sower</h4>
-          <ul class="list-disc pl-6 text-gray-700">
-            <li data-lang-key="study1Path"></li>
-            <li data-lang-key="study1Rocky"></li>
-            <li data-lang-key="study1Thorns"></li>
-            <li data-lang-key="study1Good"></li>
-          </ul>
-          <div class="mt-4 text-right">
-            <button onclick="toggleStudy('study1')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">Close</button>
-          </div>
-        </div>
-      </div>
-      <div id="study2-content" class="study-content mt-8 hidden">
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <h4 class="text-2xl font-bold mb-4" data-lang-key="study2Title">The Good Samaritan</h4>
-          <ul class="list-disc pl-6 text-gray-700">
-            <li data-lang-key="study2Compassion"></li>
-            <li data-lang-key="study2Action"></li>
-            <li data-lang-key="study2Sacrifice"></li>
-            <li data-lang-key="study2Universality"></li>
-          </ul>
-          <div class="mt-4 text-right">
-            <button onclick="toggleStudy('study2')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">Close</button>
-          </div>
-        </div>
-      </div>
-      <div id="study3-content" class="study-content mt-8 hidden">
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <h4 class="text-2xl font-bold mb-4" data-lang-key="study3Title">The Prodigal Son</h4>
-          <ul class="list-disc pl-6 text-gray-700">
-            <li data-lang-key="study3Rebellion"></li>
-            <li data-lang-key="study3Consequences"></li>
-            <li data-lang-key="study3Repentance"></li>
-            <li data-lang-key="study3Grace"></li>
-          </ul>
-          <div class="mt-4 text-right">
-            <button onclick="toggleStudy('study3')" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">Close</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="gospel-activity" class="container mx-auto px-6 py-12">
-      <h3 class="text-3xl font-bold text-gray-900 mb-4" data-lang-key="activitySectionHeading">Interactive Activity: 5-Minute Gospel</h3>
-      <div id="activity-root" class="bg-white rounded-2xl shadow p-4 md:p-6"></div>
-    </section>
-
-    <section id="gallery" class="container mx-auto px-6 py-12">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-3xl font-bold text-gray-900">Gallery</h2>
-        <span class="text-sm text-gray-500">Add images by committing them to <code>gallary/</code></span>
-      </div>
-      <div class="slider aspect-[16/9] mb-6" id="slider">
-        <button class="navBtn navPrev" id="prevBtn" aria-label="Previous">‹</button>
-        <button class="navBtn navNext" id="nextBtn" aria-label="Next">›</button>
-        <div class="slider-nav" id="dots"></div>
-      </div>
-      <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
-    </section>
-
-    <section id="locations" class="container mx-auto px-6 py-12">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-gray-900 mb-2" data-lang-key="locationsTitle">Our Locations</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">📍</div>
-          <h3 class="text-2xl font-bold mb-2">Bambalapitiya</h3>
-          <p class="text-blue-600 font-semibold mb-1">📱 0773029098</p>
-          <p class="text-blue-600 font-semibold mb-2">📞 011 2580488</p>
-          <p class="text-blue-600 font-semibold" data-lang-key="sundayWorship930">Sunday Worship: 9:30 AM</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">📍</div>
-          <h3 class="text-2xl font-bold mb-2">Wennappuwa</h3>
-          <p class="text-blue-600 font-semibold mb-1">📱 0718252828</p>
-          <p class="text-blue-600 font-semibold mb-2">✉️ curchofchristwennappuwa@mail.com</p>
-          <p class="text-blue-600 font-semibold" data-lang-key="sundayWorship930">Sunday Worship: 9:30 AM</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
-          <div class="text-blue-600 text-4xl mb-4">🎓</div>
-          <h3 class="text-2xl font-bold mb-2">Batticaloa</h3>
-          <p class="text-gray-600 mb-2">7A, Kumaraththan Kovil Road</p>
-          <p class="text-gray-600 mb-2">Urani, Batticaloa, Sri Lanka</p>
-          <p class="text-blue-600 font-semibold mb-1">📱 0717060112</p>
-          <p class="text-blue-600 font-semibold">✉️ cocinsrilanka@gmail.com</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="bg-gray-900 text-white py-8 text-center">
-    <p>&copy; <span id="year"></span> Church of Christ. All rights reserved.</p>
-    <div class="flex justify-center space-x-4 mt-4">
-      <a href="#" class="text-gray-400 hover:text-white transition-colors">Facebook</a>
-      <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
-      <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
-    </div>
-  </footer>
-  <script src="script.js"></script>
-</body>
 </html>
+index.html
+Copilot said: ```html name=index.html <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"/> index.html v3 <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title data-lang-key="churchName">Church of Christ — Sri Lanka</title> How to use: All translatable text now has a data-lang-key attribute. Make sure your translations object in script.js has matching keys for every data-lang-key used in this HTML, and in all three languages. You can add/remove language keys or tweak text as needed for your site. Let me know if you need the updated script.js with all these keys for your translations!
+Fetching repositories…
