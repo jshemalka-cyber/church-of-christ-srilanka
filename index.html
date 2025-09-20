@@ -211,7 +211,7 @@
     <section class="bg-white py-12" id="gallery">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold mb-4 text-center" data-lang-key="galleryTitle">Gallery</h2>
-        <p class="text-gray-600 mb-8 text-center"><span data-lang-key="gallerySubtitle">Add images by committing them to</span> <code class="bg-gray-100 px-2 py-1 rounded">gallery/</code> directory.</p>
+        <p class="text-gray-600 mb-8 text-center"><span data-lang-key="gallerySubtitle">Add images by committing them to</span> <code class="bg-gray-100 px-2 py-1 rounded">gallary/</code> directory.</p>
         
         <div class="max-w-4xl mx-auto">
           <div class="relative mb-4">
@@ -328,13 +328,13 @@
       reset: "Reset",
       score: "Score",
       questionLabel: "Question",
-      galleryEmpty: "No images found in gallery/.",
+      galleryEmpty: "No images found in gallary/.",
       startActivity: "Start Activity",
       closeBtn: "Close",
       uploadBgLabel: "📷 Upload Background",
       resetBgBtn: "Reset",
       galleryTitle: "Gallery",
-      gallerySubtitle: "Add images by committing them to",
+      gallerySubtitle: "Add images by committing them to gallary/",
       galleryPrev: "‹",
       galleryNext: "›",
       locationBambalapitiya: "Bambalapitiya",
@@ -414,13 +414,13 @@
       reset: "යළි පිහිටුවන්න",
       score: "ලකුණු",
       questionLabel: "ප්‍රශ්නය",
-      galleryEmpty: "gallery/ හි රූප නොමැත.",
+      galleryEmpty: "gallary/ හි රූප නොමැත.",
       startActivity: "ක්‍රියාකාරකම ආරම්භ කරන්න",
       closeBtn: "වසන්න",
       uploadBgLabel: "📷 පසුබැසීම උඩුගත කරන්න",
       resetBgBtn: "යළි පිහිටුවන්න",
       galleryTitle: "පින්තූර ගොනු",
-      gallerySubtitle: "පින්තූර gallery/ වෙත commit කරන්න",
+      gallerySubtitle: "පින්තූර gallary/ වෙත commit කරන්න",
       galleryPrev: "‹",
       galleryNext: "›",
       locationBambalapitiya: "බම්බලපිටිය",
@@ -500,13 +500,13 @@
       reset: "மீட்டமை",
       score: "மதிப்பெண்",
       questionLabel: "கேள்வி",
-      galleryEmpty: "gallery/ இல் படங்கள் இல்லை.",
+      galleryEmpty: "gallary/ இல் படங்கள் இல்லை.",
       startActivity: "செயல்பாட்டை தொடங்கு",
       closeBtn: "மூடு",
       uploadBgLabel: "📷 பின்னணி பதிவேற்ற",
       resetBgBtn: "மீட்டமை",
       galleryTitle: "கேலரி",
-      gallerySubtitle: "படங்களை gallery/ இல் commit செய்யவும்",
+      gallerySubtitle: "படங்களை gallary/ இல் commit செய்யவும்",
       galleryPrev: "‹",
       galleryNext: "›",
       locationBambalapitiya: "பம்பலபிட்டிய",
@@ -648,7 +648,7 @@
       if (!urls.length) {
         const empty=document.createElement('div');
         empty.className='slide active';
-        empty.innerHTML=`<div class="w-full h-full flex items-center justify-center text-white/80">${translations[currentLanguage]?.galleryEmpty || 'No images found in gallery/.'}</div>`;
+        empty.innerHTML=`<div class="w-full h-full flex items-center justify-center text-white/80">${translations[currentLanguage]?.galleryEmpty || 'No images found in gallary/.'}</div>`;
         slider.appendChild(empty);
         return;
       }
@@ -713,10 +713,10 @@
     };
 
     try{
-      const r = await fetch('gallery/list.json?ts='+Date.now(), {cache:'no-store'});
+      const r = await fetch('gallary/list.json?ts='+Date.now(), {cache:'no-store'});
       if (!r.ok) throw new Error('no list.json');
       const names = await r.json();
-      const urls = names.map(n=>`gallery/${n}`);
+      const urls = names.map(n=>`gallary/${n}`);
       if (urls.length) return build(urls);
       throw new Error('empty list');
     }catch(error){
@@ -724,7 +724,7 @@
     }
 
     // Fallback to check for default images
-    const candidates=['gallery/c.jpeg','gallery/ca.jpeg','gallery/cb.jpeg','gallery/cc.jpeg'];
+    const candidates=['gallary/c.jpeg','gallary/ca.jpeg','gallary/cb.jpeg','gallary/cc.jpeg'];
     const urls=[];
     for (const u of candidates){
       try{ 
