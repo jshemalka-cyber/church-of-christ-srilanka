@@ -81,6 +81,66 @@
       margin-bottom: 1rem;
       object-fit: cover;
     }
+    /* Special Custom Location Icons */
+    .location-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-right: 12px;
+      flex-shrink: 0;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .location-icon:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .time-icon {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    .time-icon::before {
+      content: "⏰";
+      font-size: 14px;
+    }
+    .phone-icon {
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: white;
+    }
+    .phone-icon::before {
+      content: "📞";
+      font-size: 14px;
+    }
+    .mobile-icon {
+      background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+      color: white;
+    }
+    .mobile-icon::before {
+      content: "📱";
+      font-size: 14px;
+    }
+    .email-icon {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+    }
+    .email-icon::before {
+      content: "✉";
+      font-size: 14px;
+    }
+    .address-icon {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      color: white;
+    }
+    .address-icon::before {
+      content: "📍";
+      font-size: 14px;
+    }
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
@@ -238,30 +298,30 @@
           
           <div class="bg-white rounded-lg shadow-md p-6">
             <h3 class="text-xl font-bold mb-4 text-blue-600" data-lang-key="locationBambalapitiya">Bambalapitiya</h3>
-            <div class="space-y-2 text-gray-600">
-              <p data-lang-key="sundayWorship930">Sunday Worship: 9:30 AM</p>
-              <p data-lang-key="locationBambPhone1">📱 0773029098</p>
-              <p data-lang-key="locationBambPhone2">📞 011 2580488</p>
+            <div class="space-y-3 text-gray-600">
+              <p class="flex items-center"><span class="location-icon time-icon"></span><span data-lang-key="sundayWorship930">Sunday Worship: 9:30 AM</span></p>
+              <p class="flex items-center"><span class="location-icon mobile-icon"></span><span data-lang-key="locationBambPhone1">0773029098</span></p>
+              <p class="flex items-center"><span class="location-icon phone-icon"></span><span data-lang-key="locationBambPhone2">011 2580488</span></p>
             </div>
           </div>
 
           <div class="bg-white rounded-lg shadow-md p-6">
             <h3 class="text-xl font-bold mb-4 text-blue-600" data-lang-key="locationWennappuwa">Wennappuwa</h3>
-            <div class="space-y-2 text-gray-600">
-              <p data-lang-key="sunday930">Sunday: 9:30 AM</p>
-              <p data-lang-key="locationWennPhone1">📱 0718252828</p>
-              <p data-lang-key="locationWennEmail">✉️ curchofchristwennappuwa@mail.com</p>
+            <div class="space-y-3 text-gray-600">
+              <p class="flex items-center"><span class="location-icon time-icon"></span><span data-lang-key="sunday930">Sunday: 9:30 AM</span></p>
+              <p class="flex items-center"><span class="location-icon mobile-icon"></span><span data-lang-key="locationWennPhone1">0718252828</span></p>
+              <p class="flex items-center"><span class="location-icon email-icon"></span><span data-lang-key="locationWennEmail">curchofchristwennappuwa@mail.com</span></p>
             </div>
           </div>
 
           <div class="bg-white rounded-lg shadow-md p-6">
             <h3 class="text-xl font-bold mb-4 text-blue-600" data-lang-key="locationBatticaloa">Batticaloa</h3>
-            <div class="space-y-2 text-gray-600">
-              <p data-lang-key="sunday930">Sunday: 9:30 AM</p>
-              <p data-lang-key="locationBattAddress1">7A, Kumaraththan Kovil Road</p>
-              <p data-lang-key="locationBattAddress2">Urani, Batticaloa, Sri Lanka</p>
-              <p data-lang-key="locationBattPhone">📱 0717060112</p>
-              <p data-lang-key="locationBattEmail">✉️ cocinsrilanka@gmail.com</p>
+            <div class="space-y-3 text-gray-600">
+              <p class="flex items-center"><span class="location-icon time-icon"></span><span data-lang-key="sunday930">Sunday: 9:30 AM</span></p>
+              <p class="flex items-center"><span class="location-icon address-icon"></span><span data-lang-key="locationBattAddress1">7A, Kumaraththan Kovil Road</span></p>
+              <p class="flex items-center"><span class="location-icon address-icon"></span><span data-lang-key="locationBattAddress2">Urani, Batticaloa, Sri Lanka</span></p>
+              <p class="flex items-center"><span class="location-icon mobile-icon"></span><span data-lang-key="locationBattPhone">0717060112</span></p>
+              <p class="flex items-center"><span class="location-icon email-icon"></span><span data-lang-key="locationBattEmail">cocinsrilanka@gmail.com</span></p>
             </div>
           </div>
 
@@ -338,16 +398,16 @@
       galleryPrev: "‹",
       galleryNext: "›",
       locationBambalapitiya: "Bambalapitiya",
-      locationBambPhone1: "📱 0773029098",
-      locationBambPhone2: "📞 011 2580488",
+      locationBambPhone1: "0773029098",
+      locationBambPhone2: "011 2580488",
       locationWennappuwa: "Wennappuwa",
-      locationWennPhone1: "📱 0718252828",
-      locationWennEmail: "✉️ curchofchristwennappuwa@mail.com",
+      locationWennPhone1: "0718252828",
+      locationWennEmail: "curchofchristwennappuwa@mail.com",
       locationBatticaloa: "Batticaloa",
       locationBattAddress1: "7A, Kumaraththan Kovil Road",
       locationBattAddress2: "Urani, Batticaloa, Sri Lanka",
-      locationBattPhone: "📱 0717060112",
-      locationBattEmail: "✉️ cocinsrilanka@gmail.com",
+      locationBattPhone: "0717060112",
+      locationBattEmail: "cocinsrilanka@gmail.com",
       footerFacebook: "Facebook",
       footerTwitter: "Twitter",
       footerInstagram: "Instagram",
@@ -424,16 +484,16 @@
       galleryPrev: "‹",
       galleryNext: "›",
       locationBambalapitiya: "බම්බලපිටිය",
-      locationBambPhone1: "📱 0773029098",
-      locationBambPhone2: "📞 011 2580488",
+      locationBambPhone1: "0773029098",
+      locationBambPhone2: "011 2580488",
       locationWennappuwa: "වෙන්නප්පුව",
-      locationWennPhone1: "📱 0718252828",
-      locationWennEmail: "✉️ curchofchristwennappuwa@mail.com",
+      locationWennPhone1: "0718252828",
+      locationWennEmail: "curchofchristwennappuwa@mail.com",
       locationBatticaloa: "බැටික්කලෝවා",
       locationBattAddress1: "7A, කුමරත්තාන් කෝවිල් පාර",
       locationBattAddress2: "උරණි, බැටික්කලෝවා, ශ්‍රී ලංකා",
-      locationBattPhone: "📱 0717060112",
-      locationBattEmail: "✉️ cocinsrilanka@gmail.com",
+      locationBattPhone: "0717060112",
+      locationBattEmail: "cocinsrilanka@gmail.com",
       footerFacebook: "ෆේස්බුක්",
       footerTwitter: "ට්විටර්",
       footerInstagram: "ඉන්ස්ටග්‍රෑම්",
@@ -510,16 +570,16 @@
       galleryPrev: "‹",
       galleryNext: "›",
       locationBambalapitiya: "பம்பலபிட்டிய",
-      locationBambPhone1: "📱 0773029098",
-      locationBambPhone2: "📞 011 2580488",
+      locationBambPhone1: "0773029098",
+      locationBambPhone2: "011 2580488",
       locationWennappuwa: "வென்னப்புவா",
-      locationWennPhone1: "📱 0718252828",
-      locationWennEmail: "✉️ curchofchristwennappuwa@mail.com",
+      locationWennPhone1: "0718252828",
+      locationWennEmail: "curchofchristwennappuwa@mail.com",
       locationBatticaloa: "பட்டிகலோ",
       locationBattAddress1: "7A, குமரதான்கோவில் ரோடு",
       locationBattAddress2: "உரணி, பட்டிகலோ, இலங்கை",
-      locationBattPhone: "📱 0717060112",
-      locationBattEmail: "✉️ cocinsrilanka@gmail.com",
+      locationBattPhone: "0717060112",
+      locationBattEmail: "cocinsrilanka@gmail.com",
       footerFacebook: "Facebook",
       footerTwitter: "Twitter",
       footerInstagram: "Instagram",
@@ -712,29 +772,69 @@
       restart();
     };
 
+    // GitHub Pages compatible image loading
+    console.log('Initializing gallery...');
+    
+    // Method 1: Try list.json first
     try{
       const r = await fetch('gallary/list.json?ts='+Date.now(), {cache:'no-store'});
-      if (!r.ok) throw new Error('no list.json');
-      const names = await r.json();
-      const urls = names.map(n=>`gallary/${n}`);
-      if (urls.length) return build(urls);
-      throw new Error('empty list');
+      if (r.ok) {
+        const names = await r.json();
+        const urls = names.map(n=>`gallary/${n}`);
+        console.log('✅ Found images via list.json:', urls);
+        return build(urls);
+      }
     }catch(error){
-      console.warn('Gallery list.json not found:', error);
+      console.warn('❌ Gallery list.json not found:', error);
     }
 
-    // Fallback to check for default images
-    const candidates=['gallary/c.jpeg','gallary/ca.jpeg','gallary/cb.jpeg','gallary/cc.jpeg'];
-    const urls=[];
-    for (const u of candidates){
-      try{ 
-        const head=await fetch(u,{method:'HEAD',cache:'no-store'}); 
-        if(head.ok) urls.push(u); 
-      }catch(error){
-        console.warn(`Failed to load ${u}:`, error);
+    // Method 2: Try your known images with multiple approaches
+    const imageNames = ['c.jpeg', 'ca.jpeg', 'cb.jpeg', 'cc.jpeg'];
+    const foundUrls = [];
+    
+    // Test each image existence using different methods
+    for (const imageName of imageNames) {
+      const imageUrl = `gallary/${imageName}`;
+      
+      try {
+        // Method A: Create image element test
+        const testImg = new Image();
+        const imageLoaded = new Promise((resolve) => {
+          testImg.onload = () => {
+            console.log(`✅ Image loaded: ${imageUrl}`);
+            foundUrls.push(imageUrl);
+            resolve(true);
+          };
+          testImg.onerror = () => {
+            console.log(`❌ Image failed: ${imageUrl}`);
+            resolve(false);
+          };
+          // Add timestamp to bypass cache
+          testImg.src = imageUrl + '?v=' + Date.now();
+        });
+        
+        // Don't wait for each image, test them all in parallel
+        imageLoaded.then(() => {
+          // Update gallery when any image loads
+          if (foundUrls.length > 0) {
+            build([...foundUrls]);
+          }
+        });
+        
+      } catch (error) {
+        console.warn(`Error testing ${imageUrl}:`, error);
       }
     }
-    build(urls);
+    
+    // Fallback: Show empty gallery after 3 seconds if no images found
+    setTimeout(() => {
+      if (foundUrls.length === 0) {
+        console.log('⚠️ No images found after 3 seconds, showing empty gallery message');
+        build([]);
+      } else {
+        console.log(`✅ Final gallery: ${foundUrls.length} images found`, foundUrls);
+      }
+    }, 3000);
   }
 
   function initActivity(){
